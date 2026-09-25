@@ -16,7 +16,8 @@
     "seed": "payload run scripts/seed.ts",
     "images:import": "payload run scripts/import-photos.ts",
     "backup": "payload run scripts/backup.ts",
-    "create-admin": "payload run scripts/create-admin.ts"
+    "create-admin": "payload run scripts/create-admin.ts",
+    "setup": "node scripts/setup.mjs"
   },
   "engines": {
     "node": ">=20.9"
