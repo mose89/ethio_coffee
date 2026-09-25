@@ -43,7 +43,7 @@ export const viewport: Viewport = { themeColor: "#2F5D50" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable}`}>
-      <body>
+      <body suppressHydrationWarning>
         <a className="skip-link" href="#main">
           Skip to content
         </a>

@@ -12,14 +12,18 @@ if (site.production && missingForProduction.length) {
 const turnstile = site.turnstileSiteKey ? " https://challenges.cloudflare.com" : "";
 const analytics = site.analyticsDomain ? " https://plausible.io" : "";
 
-// Public website CSP. Next.js injects small inline bootstrapping scripts and font styles, hence 'unsafe-inline'.
+// Public website CSP. Next.js injects small inline bootstrapping scripts and font styles,
+// hence 'unsafe-inline'. React also uses eval() for development-only debugging (call stacks);
+// that is allowed only outside production. Production never includes 'unsafe-eval'.
+// Do not remove the NODE_ENV branch: pulling a CSP without 'unsafe-eval' breaks `next dev`.
+const isDev = process.env.NODE_ENV !== "production";
 const siteCsp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${turnstile}${analytics}`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}${turnstile}${analytics}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  `connect-src 'self'${analytics}`,
+  `connect-src 'self'${isDev ? " ws: wss:" : ""}${analytics}`,
   `frame-src ${turnstile ? turnstile.trim() : "'none'"}`,
   "form-action 'self'",
   "base-uri 'self'",
