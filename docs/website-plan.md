@@ -17,6 +17,32 @@ Placeholders in draft copy use `{{double_braces}}`. Nothing in `{{…}}` may go 
 
 ---
 
+## Revision, 25 September 2026: launch-day corrections
+
+**This section supersedes any conflicting text below.** The rest of the document stays as background for post-launch work.
+
+**Launch scope (replaces the 27-day backlog in Section 12 and the stack in Section 11):**
+- A same-day release built with Next.js (React, TypeScript, plain CSS). There is no database, CMS or Wagtail.
+- Pages: home, green coffee, roasted coffee, how it works (including about), inquiry form, privacy notice.
+- One inquiry route handler with server-side validation, spam and abuse controls, and delivery to email (Resend) and/or a webhook.
+- The buyer sees success only when delivery is confirmed.
+- There is no catalogue, CRM, analytics or article content. Deployment and configuration steps are in `README.md`.
+- Lot pages, origin pages, articles and the other Section 12 items move to the post-launch backlog, to be justified by data.
+
+**Corrections:**
+1. **Acquisition.** Organic inbound (search, AI-assisted research, referrals, industry mentions) remains the **intended primary acquisition strategy**. Its viability is a working assumption to test with Search Console and inquiry-source data. Outreach and referrals may support early acquisition but do not replace it. Section 1's "change the channel mix" recommendation is withdrawn.
+2. **Competitive evidence is preliminary.** The review in Section 4 relied on search snippets and sites' own descriptions, not full page audits. Competitor capabilities quoted there (minimums, stock locations, scores, services) are the competitors' own unverified claims. They cannot establish how much relevant traffic or business we can win.
+3. **Bypass risk.** Buyers and exporters can transact directly after an introduction. Two things together reduce that risk, and neither eliminates it:
+   - **Contractual protection:** introduced-buyer registration, a defined protection period, and commission on repeat orders, agreed in writing with each exporter.
+   - **Ongoing service value:** requirement matching across several exporters, clear information, sample and quotation coordination, and follow-through. This keeps buyers choosing to work through us.
+4. **Regulatory and commercial claims.** None of these go into public copy unless verified against current authoritative sources:
+   - **EUDR dates depend on operator category.** As reported by the European Commission (Access2Markets, retrieved via search), application is 30 Dec 2026 for large and medium operators and traders, and 30 Jun 2027 for micro and small operators. Recheck against the Official Journal before relying on it. Plot geolocation data is only one element of an operator's due-diligence obligations; it does **not** equal compliance.
+   - **Export licensing vs. our agency model.** Licensing rules govern who may export coffee from Ethiopia. Our proposed arrangement, where the exporter acts as seller, invoices and ships, is a commercial choice and is not required by those rules. The site says only that we don't hold an export licence and that each quotation states the seller.
+   - **Pricing.** Quotation-only pricing is a **commercial choice**, because prices vary by lot, volume, terms and season. The reported ECTA minimum export price (secondary sources) constrains contract prices; it does not by itself prohibit publishing prices. No specific legal requirement has been verified.
+   - Regulatory articles are deferred and must not delay launch.
+
+---
+
 ## 1. Executive recommendation
 
 **Build a lean, green-coffee-led website (about 8 pages).** It should present you honestly as an independent sourcing agency that connects business buyers with ECTA-licensed Ethiopian exporters, and it should convert visitors into one unified, well-qualified inquiry.
@@ -31,12 +57,12 @@ Placeholders in draft copy use `{{double_braces}}`. Nothing in `{{…}}` may go 
 - Every buyer you meet through a referral, an event or outreach will check you online. Without a credible site, you lose those deals.
 - Clear, specific commercial information is rare among small Ethiopian exporter sites. That is a real gap.
 
-**Why organic inbound alone is a weak primary channel at launch:**
+**Why organic inbound alone may be slow to produce results (preliminary; see Revision):**
 - **The search results are crowded with the actual sellers.** Ethiopian exporters already publish buyer guides aimed at importers and roasters. One exporter, for example, publishes guides on the export process, ECX, traceability, choosing an exporter, minimum prices, and private vs. cooperative exporters ([ethiocoffee.co insights](https://www.ethiocoffee.co/insights/ethiopian-coffee-export-process-buyers-guide)). Specialist importers such as Trabocca, Royal Coffee and Cafe Imports have offices in Addis Ababa and warehoused stock in buyer markets **[FACT]** (Trabocca, Royal Coffee, Cafe Imports; Appendix A).
 - **A new agency with no lots, no licence and no track record will rank slowly** for generic "Ethiopian green coffee supplier" terms.
-- **Agents face disintermediation.** Once introduced, a buyer can go straight to the exporter. The site cannot solve that; your exporter agreements must.
+- **Agents face disintermediation.** Once introduced, a buyer can go straight to the exporter. Contractual protection and ongoing service value together reduce this risk (see Revision, correction 3).
 
-**[REC] Change the channel mix, not the budget.** Keep "no paid advertising." But make founder-led, personalised outreach to a short list of well-fitting buyers the primary early channel, together with referrals. The website does three jobs:
+**[Withdrawn, see Revision correction 1] Change the channel mix, not the budget.** Keep "no paid advertising." But make founder-led, personalised outreach to a short list of well-fitting buyers the primary early channel, together with referrals. The website does three jobs:
 1. Converts that outreach.
 2. Earns search visibility over time for specific, evidence-backed pages.
 3. Gives AI assistants accurate facts to describe you with.
@@ -64,7 +90,7 @@ You told us you want to connect any company, of any size, with the Ethiopian cof
 | # | Assumption | Consequence for the site | Must be verified by |
 |---|---|---|---|
 | A1 | **[ASSUME]** Partner exporters are ECTA-licensed and act as seller of record (they sign the contract, invoice and ship). | "Who does what" copy names the exporter as seller. | Founder, using exporter licence copies |
-| A2 | **[FACT]** Coffee export from Ethiopia requires an ECTA export licence and is reserved for Ethiopian nationals/entities. Contracts must be registered with ECTA and priced at or above a weekly minimum export price. | We never imply we export. Prices are quotation-only. | Background (Addis Fortune, The Reporter, Trabocca; Appendix A) |
+| A2 | **[REPORTED, secondary sources]** Coffee export from Ethiopia requires an ECTA export licence. Export contracts are registered and subject to a weekly minimum export price. | We never imply we export. Quotation-only pricing is our commercial choice, not a legal requirement. | Background (Addis Fortune, The Reporter, Trabocca; Appendix A) |
 | A3 | **[ASSUME]** You are paid a commission by the exporter. Buyers pay the exporter. | Disclose this plainly on the How-it-works page. | Founder + exporter agreement |
 | A4 | **[ASSUME]** Green minimums are driven by the exporter, typically full-container (FCL) loads, with some part-container options. | We state "minimums vary by exporter and shipment; tell us your volume." No small-bag promise. | Exporters |
 | A5 | **[ASSUME]** No stock is held outside Ethiopia. | We never market "spot", "in stock in [country]" or small-parcel delivery. | Exporters |
@@ -181,7 +207,7 @@ Promote it fully only when Section 15's readiness criteria are met.
 
 ## 4. Competitor and search findings
 
-### 4.1 Competitor set reviewed
+### 4.1 Competitor set reviewed (preliminary: based on search snippets and sites' own descriptions; capabilities unverified)
 
 | Type | Example | Positioning (from their own descriptions) | Operational advantage we lack |
 |---|---|---|---|
@@ -519,7 +545,7 @@ For each page: audience/intent · URL · objective · H1 & core message · secti
   2. Who does what: a roles table (buyer / us / exporter / freight forwarder).
   3. Step-by-step: inquiry → qualification call → shortlist → samples → quotation → contract (with the exporter) → PSS approval → shipment & documents → arrival follow-up.
   4. Samples (types, cost, timing: placeholders).
-  5. Quotations & pricing ("Prices are quoted per lot and shipment; Ethiopian export contracts must be registered at or above the regulator's minimum export price").
+  5. Quotations & pricing ("Prices are quoted per lot and shipment; we confirm current prices for your requirement"). Regulatory statements are omitted unless verified.
   6. Payment `{{placeholder}}`.
   7. If something goes wrong.
   8. Who we're not a fit for.
@@ -792,9 +818,9 @@ The site stays useful between crops, and it never implies live inventory.
 
 ### 8.4 Pricing
 
-**[REC] Quotation-only, publicly explained.** Reasons:
+**[REC] Quotation-only, publicly explained. This is a commercial choice (see Revision, correction 4).** Reasons:
 - Prices move with the market.
-- Ethiopian contracts must meet a weekly minimum export price **[FACT]**.
+- A reported weekly minimum export price constrains contract prices. It does not by itself prohibit publishing prices.
 - Prices depend on incoterm, volume and exporter.
 
 Explain what a quotation includes: price basis (e.g., US¢/lb FOB Djibouti), validity period, payment terms, shipment window. Don't publish indicative prices until you have a reliable weekly update process.
@@ -1151,7 +1177,7 @@ Each piece must contain something competitors' generic guides lack: exporter-sou
 
 ---
 
-## 11. Technical architecture
+## 11. Technical architecture (superseded for launch: Next.js; see Revision and README)
 
 ### 11.1 Options considered
 
@@ -1214,7 +1240,7 @@ Each piece must contain something competitors' generic guides lack: exporter-sou
 
 ---
 
-## 12. Prioritised implementation backlog
+## 12. Prioritised implementation backlog (superseded for launch; items below form the post-launch backlog)
 
 Effort is in founder-days with AI assistance (≈ 6 productive hours each). Rough estimates.
 

@@ -1,0 +1,19 @@
+{
+  "_comment": "Public business identity used by the site (lib/site.ts). Leave a value empty (\"\") if it is not confirmed; optional sections are omitted automatically. Production builds (SITE_ENV=production) fail if any required value is empty. Never put secrets here.",
+
+  "brand_name": "",
+  "site_url": "",
+  "operator_name": "",
+  "operator_country": "",
+  "contact_email": "",
+
+  "whatsapp_number": "",
+  "phone_number": "",
+  "linkedin_url": "",
+  "founder_name": "",
+  "founder_bio": "",
+
+  "response_time": "one business day",
+  "turnstile_site_key": "",
+  "email_notifications": false
+}
