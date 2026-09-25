@@ -51,11 +51,11 @@ const FAQ = [
     ),
   },
   {
-    q: "Is roasted coffee suitable for small cafés?",
+    q: "Can smaller businesses order?",
     a: (
       <p>
-        Roasted coffee is shipped internationally from Ethiopia, so it usually suits businesses that order in volume or distribute to
-        others. A single café may find a local distributor more practical, but you’re welcome to ask.
+        Yes, tell us what you need. Roasted coffee ships internationally from Ethiopia, so freight is a bigger share of the cost on small
+        orders. We’ll tell you what’s realistic for your volume and destination before you commit.
       </p>
     ),
   },

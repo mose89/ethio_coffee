@@ -139,7 +139,7 @@ export default async function GreenCoffeePage() {
               </li>
             </ul>
             <p>
-              Coffee is shipped from Ethiopia for each order. We do not hold green coffee in warehouses abroad.
+              Coffee ships directly from Ethiopia for each order.
             </p>
           </div>
         </div>

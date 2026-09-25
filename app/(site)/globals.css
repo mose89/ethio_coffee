@@ -2047,3 +2047,14 @@ ol {
     height: 1.5rem;
   }
 }
+
+.section-note {
+  margin: var(--space-4) 0 0;
+  font-size: 1.05rem;
+  max-width: 48rem;
+}
+
+.section-note a {
+  font-weight: 600;
+  white-space: nowrap;
+}

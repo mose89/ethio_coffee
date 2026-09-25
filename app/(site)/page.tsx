@@ -167,23 +167,32 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section section-stone" aria-labelledby="fit-title">
-        <div className="container split">
-          <div>
-            <p className="eyebrow">Is this for you?</p>
-            <h2 id="fit-title">Built for businesses buying Ethiopian coffee</h2>
-          </div>
-          <div className="prose">
-            <ul className="check-list">
-              <li>You buy coffee for a business: importing, roasting, distribution, retail or hospitality.</li>
-              <li>You want Ethiopian coffee specifically, green or roasted.</li>
-              <li>You can receive an international shipment from Ethiopia, or work with an importer who can.</li>
-            </ul>
-            <p>
-              We don’t hold stock outside Ethiopia. If you need small quantities quickly from local stock, a local importer may suit you
-              better, but tell us anyway and we’ll say honestly what’s feasible.
-            </p>
-          </div>
+      <section className="section section-stone" aria-labelledby="serve-title">
+        <div className="container">
+          <p className="eyebrow">Who we work with</p>
+          <h2 id="serve-title">Business buyers of Ethiopian coffee</h2>
+          <ul className="topic-grid topic-grid-4">
+            <li className="topic">
+              <h3>Importers and traders</h3>
+              <p>New Ethiopian coffees and additional export partners, with one point of contact.</p>
+            </li>
+            <li className="topic">
+              <h3>Roasters</h3>
+              <p>Green coffee matched to your profile, with samples and clear information before you buy.</p>
+            </li>
+            <li className="topic">
+              <h3>Distributors and retailers</h3>
+              <p>Green or roasted Ethiopian coffee to supply your own customers.</p>
+            </li>
+            <li className="topic">
+              <h3>Hospitality</h3>
+              <p>Roasted Ethiopian coffee for hotels, restaurant groups and cafés.</p>
+            </li>
+          </ul>
+          <p className="section-note">
+            Coffee ships directly from Ethiopia for each order. Whatever your volume, tell us what you need and we’ll tell you what’s
+            realistic. <Link href="/inquiry">Send an inquiry</Link>
+          </p>
         </div>
       </section>
 
