@@ -1,7 +1,6 @@
 import { CtaBand } from "@/components/CtaBand";
 import { Faq } from "@/components/Faq";
 import { ProcessSteps } from "@/components/ProcessSteps";
-import { RoleSummary } from "@/components/RoleSummary";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -15,15 +14,15 @@ export const metadata = pageMetadata({
 const ROLES = [
   {
     party: "You, the buyer",
-    does: "Share your requirement, evaluate information and samples, decide whether to accept a quotation, and arrange import in your country (directly or through your importer).",
+    does: "Shares the brief, cups the samples, accepts or declines the quotation, and arranges import into their country, directly or through an importer.",
   },
   {
     party: "Us",
-    does: "Clarify your requirement, match it with suitable exporters in our network, gather information, samples and quotations, and coordinate communication through to shipment.",
+    does: "Sharpens the brief, matches it with the right exporters, gathers lot details, samples and quotations, and keeps everyone in step through to shipment.",
   },
   {
     party: "The Ethiopian exporter",
-    does: "Supplies and exports the coffee. The quotation states the seller, invoicing, payment and shipping terms for your order.",
+    does: "Supplies, prepares and exports the coffee, and issues the quotation stating the seller, invoicing, payment and shipping terms.",
   },
 ];
 
@@ -32,8 +31,8 @@ const FAQ = [
     q: "Do you export the coffee yourselves?",
     a: (
       <p>
-        No. We are a sourcing business. The coffee is supplied and exported by Ethiopian exporters in our network. We don’t own farms,
-        washing stations, processing facilities or warehouses, and we don’t hold an export licence.
+        No. We’re a sourcing business: the coffee is supplied and exported by Ethiopian exporters in our network, who hold the export
+        licences. Our role is to find the right coffee for you and manage the process on your behalf.
       </p>
     ),
   },
@@ -41,34 +40,34 @@ const FAQ = [
     q: "Who will I contract with and pay?",
     a: (
       <p>
-        It depends on the coffee and the exporter, and it is always stated in writing before you commit: the quotation sets out who sells
-        the coffee to you, who invoices you, and the payment and shipping terms.
+        It’s always set out in writing before you commit. The quotation states who sells the coffee to you, who invoices you, and the
+        payment and shipping terms.
       </p>
     ),
   },
   {
     q: "How are you paid?",
-    a: <p>We explain how we are compensated for your order before you commit to it.</p>,
+    a: <p>We tell you how we’re compensated for your order before you commit to it. No surprises.</p>,
   },
   {
     q: "Why don’t you publish prices?",
     a: (
       <p>
-        Coffee prices and availability change through the season and differ by lot, quantity and shipping terms. Rather than publish
-        figures that may be out of date, we confirm current options and prices for your specific requirement.
+        Green coffee prices move with the market and differ by lot, volume and shipping terms. Rather than publish figures that are out of
+        date the week after, we quote current prices for your specific brief.
       </p>
     ),
   },
   {
     q: "Do you hold stock outside Ethiopia?",
-    a: <p>No. Coffee is sourced and shipped from Ethiopia for each order.</p>,
+    a: <p>No. Each order is sourced and shipped directly from Ethiopia.</p>,
   },
   {
     q: "What happens after I send an inquiry?",
     a: (
       <p>
-        We review it and reply{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions. Then we check your
-        requirement with suitable exporters and come back with options or an honest answer if we can’t help.
+        We read it and reply{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions. Then we check your
+        brief with the right exporters and come back with options, or an honest answer if we can’t help.
       </p>
     ),
   },
@@ -80,18 +79,17 @@ export default function HowItWorksPage() {
       <section className="page-hero" aria-labelledby="page-title">
         <div className="container narrow">
           <p className="eyebrow">How it works</p>
-          <h1 id="page-title">How sourcing Ethiopian coffee with us works</h1>
+          <h1 id="page-title">How sourcing with us works</h1>
           <p className="lead">
-            We are a sourcing business focused only on Ethiopian coffee. We connect international business buyers with exporters in our
-            Ethiopian network, and we coordinate the process so you have clear information and one point of contact from first inquiry to
-            shipment.
+            Five steps from first message to shipment, with one point of contact throughout. Here’s what happens, who does what, and the
+            questions buyers ask most.
           </p>
         </div>
       </section>
 
       <section className="section" aria-labelledby="steps-title">
         <div className="container">
-          <h2 id="steps-title">The process, step by step</h2>
+          <h2 id="steps-title">Five steps to your coffee</h2>
           <ProcessSteps />
         </div>
       </section>
@@ -118,20 +116,6 @@ export default function HowItWorksPage() {
               </tbody>
             </table>
           </div>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="about-title">
-        <div className="container">
-          <p className="eyebrow">About us</p>
-          <h2 id="about-title">{site.brandName ? `About ${site.brandName}` : "About us"}</h2>
-          {site.founderName && (
-            <div className="founder prose">
-              <p className="founder-name">{site.founderName}, founder</p>
-              {site.founderBio && <p>{site.founderBio}</p>}
-            </div>
-          )}
-          <RoleSummary />
         </div>
       </section>
 

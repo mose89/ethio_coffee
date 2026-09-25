@@ -13,14 +13,14 @@ export default function ThanksPage() {
   return (
     <section className="section" aria-labelledby="page-title">
       <div className="container narrow form-success">
-        <h1 id="page-title">Thank you. We’ve received your inquiry.</h1>
+        <h1 id="page-title">Thank you. Your brief is with us.</h1>
         <p>
-          We’ll reply to the email address you gave{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions
-          about your requirement. Please check your spam folder if you don’t see our reply.
+          We’ll reply to the email address you gave{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions or a
+          first shortlist. If you don’t see our reply, please check your spam folder.
         </p>
         <p>
           <Link className="text-link" href="/how-it-works">
-            Read how the process works <span aria-hidden="true">→</span>
+            See what happens next <span aria-hidden="true">→</span>
           </Link>
         </p>
       </div>

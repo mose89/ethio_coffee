@@ -20,11 +20,11 @@ const sans = localFont({
 });
 
 const description =
-  "Source Ethiopian green and roasted coffee for your business through our network of Ethiopian exporters. Tell us what you need; we coordinate the process from inquiry to quotation.";
+  "Ethiopian green and roasted coffee for importers, roasters, distributors and hospitality. One accountable contact from first sample to shipment.";
 
 export const metadata: Metadata = {
   ...(site.siteUrl ? { metadataBase: new URL(site.siteUrl) } : {}),
-  title: { default: `${site.brand}: Ethiopian coffee sourcing for business buyers`, template: `%s | ${site.brand}` },
+  title: { default: `${site.brand}: Ethiopian green and roasted coffee sourcing`, template: `%s | ${site.brand}` },
   description,
   applicationName: site.brand,
   robots: site.indexable ? { index: true, follow: true } : { index: false, follow: false },

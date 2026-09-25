@@ -47,47 +47,47 @@ export default async function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Ethiopian coffee sourcing for business buyers</p>
-            <h1 id="hero-title">{home?.heroTitle || "Source Ethiopian coffee through one clear point of contact."}</h1>
+            <p className="eyebrow">Ethiopian coffee sourcing for the trade</p>
+            <h1 id="hero-title">{home?.heroTitle || "Ethiopian coffee, sourced with clarity."}</h1>
             <p className="lead">
               {home?.heroIntro ||
-                "We help importers, roasters, distributors and hospitality businesses find suitable green and roasted coffee through our network of Ethiopian exporters, and coordinate each step from your first message to samples, quotation and shipment."}
+                "Green coffee for importers and roasters. Roasted coffee for distributors and hospitality. We connect you with the right Ethiopian exporters and manage everything in between, from first samples to shipment, so you deal with one accountable contact."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/green-coffee">
-                Green coffee
+                Source green coffee
               </Link>
               <Link className="button button-roasted" href="/roasted-coffee">
-                Roasted coffee
+                Source roasted coffee
               </Link>
             </div>
             <p className="hero-note">
-              Not sure which you need? <Link href="/inquiry">Send a general inquiry</Link>.
+              Not sure which you need? <Link href="/inquiry">Tell us what you have in mind</Link>.
             </p>
           </div>
           <div className="hero-media">
             <Visual media={asMedia(home?.heroImage)} fallback="cherries" sizes="(min-width: 960px) 48vw, 100vw" priority className="hero-visual" />
             <aside className="brief-card" aria-labelledby="brief-title">
-              <p className="brief-kicker">Your inquiry brief</p>
+              <p className="brief-kicker">Start here</p>
               <h2 id="brief-title" className="brief-title">
-                What to tell us
+                Three things we need to know
               </h2>
               <dl className="brief-list">
                 <div>
                   <dt>Coffee</dt>
-                  <dd>Green, roasted, or not sure yet</dd>
+                  <dd>Green, roasted, or undecided</dd>
                 </div>
                 <div>
                   <dt>Destination</dt>
-                  <dd>Where it would be shipped</dd>
+                  <dd>Country, and port if you know it</dd>
                 </div>
                 <div>
                   <dt>Quantity</dt>
-                  <dd>Approximate, or “not sure yet”</dd>
+                  <dd>A rough figure is enough</dd>
                 </div>
               </dl>
               <Link className="text-link" href="/inquiry">
-                Start an inquiry <span aria-hidden="true">→</span>
+                Send your brief <span aria-hidden="true">→</span>
               </Link>
             </aside>
           </div>
@@ -96,17 +96,17 @@ export default async function HomePage() {
 
       <section className="section" aria-labelledby="paths-title">
         <div className="container">
-          <p className="eyebrow">Two buying paths</p>
-          <h2 id="paths-title">What are you looking to source?</h2>
+          <p className="eyebrow">Two ways to buy</p>
+          <h2 id="paths-title">Start with what you buy</h2>
           <div className="paths">
             <article className="path-card path-green">
               <Visual media={asMedia(content?.green?.heroImage)} fallback="green" sizes="(min-width: 820px) 46vw, 100vw" className="path-visual" />
               <div className="path-body">
                 <p className="path-label">Green coffee</p>
-                <h3>Unroasted Ethiopian coffee for importers and roasters</h3>
+                <h3>Green coffee for importers and roasters</h3>
                 <p>
-                  Tell us the origin, process, grade, quantity and timing you need. We check what exporters in our network can offer and
-                  help you move from samples to a formal quotation.
+                  Share the origin, process, grade and volume you’re after. We check what’s available this season, arrange samples and
+                  bring you a formal offer from the exporter.
                 </p>
                 <Link className="text-link" href="/green-coffee">
                   Explore green coffee <span aria-hidden="true">→</span>
@@ -117,10 +117,10 @@ export default async function HomePage() {
               <Visual media={asMedia(content?.roasted?.heroImage)} fallback="roasted" sizes="(min-width: 820px) 46vw, 100vw" className="path-visual" />
               <div className="path-body">
                 <p className="path-label">Roasted coffee</p>
-                <h3>Roasted Ethiopian coffee for distributors, retailers and hospitality</h3>
+                <h3>Roasted coffee for distributors, retailers and hospitality</h3>
                 <p>
-                  Discuss format, quantity, destination and timing with us. We confirm what can be supplied for your market before any
-                  quotation.
+                  Tell us the format, volume and market. We confirm with the supplier what can be delivered to you before anything is
+                  quoted.
                 </p>
                 <Link className="text-link" href="/roasted-coffee">
                   Explore roasted coffee <span aria-hidden="true">→</span>
@@ -136,14 +136,14 @@ export default async function HomePage() {
           <Visual media={asMedia(home?.introImage)} fallback="highlands" sizes="(min-width: 900px) 45vw, 100vw" className="split-visual" />
           <div className="prose">
             <p className="eyebrow">About us</p>
-            <h2 id="intro-title">{home?.introTitle || "A sourcing business focused only on Ethiopian coffee"}</h2>
+            <h2 id="intro-title">{home?.introTitle || "Ethiopian coffee is all we do"}</h2>
             <p>
               {home?.introText ||
-                "We work through established relationships with Ethiopian coffee exporters. Our job is to understand what your business needs, find suitable coffee in our network, and keep the process clear: who sells, what is confirmed, and what happens next."}
+                "We work closely with established Ethiopian coffee exporters. Our job is to understand what your business needs, find coffee that fits, and keep every step clear, so you always know what is confirmed and what happens next."}
             </p>
             <p>
-              The coffee is supplied and exported by Ethiopian exporters in our network. We find the right coffee for your business and
-              coordinate everything in between, so you have one clear point of contact.
+              The exporter supplies and ships the coffee. We find the right lots, coordinate samples and offers, and stay with your order
+              until it leaves Ethiopia.
             </p>
             <Link className="text-link" href="/about">
               More about us <span aria-hidden="true">→</span>
@@ -160,7 +160,7 @@ export default async function HomePage() {
               <h2 id="process-title">From first message to shipment</h2>
             </div>
             <Link className="text-link" href="/how-it-works">
-              The process in detail <span aria-hidden="true">→</span>
+              See the full process <span aria-hidden="true">→</span>
             </Link>
           </div>
           <ProcessSteps />
@@ -170,19 +170,19 @@ export default async function HomePage() {
       <section className="section section-stone" aria-labelledby="serve-title">
         <div className="container">
           <p className="eyebrow">Who we work with</p>
-          <h2 id="serve-title">Business buyers of Ethiopian coffee</h2>
+          <h2 id="serve-title">Built for the coffee trade</h2>
           <ul className="topic-grid topic-grid-4">
             <li className="topic">
               <h3>Importers and traders</h3>
-              <p>New Ethiopian coffees and additional export partners, with one point of contact.</p>
+              <p>New Ethiopian offers and additional export partners, through a single point of contact.</p>
             </li>
             <li className="topic">
               <h3>Roasters</h3>
-              <p>Green coffee matched to your profile, with samples and clear information before you buy.</p>
+              <p>Green coffee matched to your roast profile, with samples to cup before you commit.</p>
             </li>
             <li className="topic">
               <h3>Distributors and retailers</h3>
-              <p>Green or roasted Ethiopian coffee to supply your own customers.</p>
+              <p>Green or roasted Ethiopian coffee for your own customers.</p>
             </li>
             <li className="topic">
               <h3>Hospitality</h3>
@@ -190,8 +190,8 @@ export default async function HomePage() {
             </li>
           </ul>
           <p className="section-note">
-            Coffee ships directly from Ethiopia for each order. Whatever your volume, tell us what you need and we’ll tell you what’s
-            realistic. <Link href="/inquiry">Send an inquiry</Link>
+            Every order ships directly from Ethiopia. Large volume or small, tell us what you need and we’ll tell you honestly what makes
+            sense. <Link href="/inquiry">Start an inquiry</Link>
           </p>
         </div>
       </section>
@@ -205,7 +205,7 @@ export default async function HomePage() {
                 <h2 id="resources-title">Buying guides</h2>
               </div>
               <Link className="text-link" href="/resources">
-                All resources <span aria-hidden="true">→</span>
+                All guides <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="card-grid">

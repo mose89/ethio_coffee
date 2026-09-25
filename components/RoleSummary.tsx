@@ -5,24 +5,24 @@ export function RoleSummary() {
         <div className="role-col">
           <h3>What we do</h3>
           <ul className="check-list">
-            <li>Understand your coffee requirement and your market</li>
-            <li>Match it with suitable exporters in our Ethiopian network</li>
-            <li>Gather and clarify coffee information, samples and quotations</li>
-            <li>Coordinate communication with the exporter from inquiry to shipment</li>
+            <li>Turn your needs into a clear coffee brief</li>
+            <li>Match it with the right exporters in our network</li>
+            <li>Gather samples, lot details and quotations</li>
+            <li>Keep everything moving, from first inquiry to shipment</li>
           </ul>
         </div>
         <div className="role-col role-col-muted">
           <h3>What the exporter does</h3>
           <ul className="check-list">
             <li>Supplies the coffee and prepares it for export</li>
-            <li>Handles export licensing, export documents and shipping from Ethiopia</li>
-            <li>Confirms the offer for your order in a written quotation</li>
+            <li>Handles the export licence, export documents and shipping</li>
+            <li>Issues the written quotation for your order</li>
           </ul>
         </div>
       </div>
       <p className="role-note">
-        Before you commit to anything, you’ll know who sells the coffee to you, who invoices you, the payment and shipping terms, and how
-        we are paid.
+        Before you commit, you’ll know exactly who sells to you, who invoices you, the payment and shipping terms, and how we are
+        paid.
       </p>
     </>
   );

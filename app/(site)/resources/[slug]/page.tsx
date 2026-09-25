@@ -56,9 +56,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const CTA = {
-  green: { title: "Looking for Ethiopian green coffee?", body: "Tell us your origin, process, quantity and destination. We’ll check what our exporter network can offer.", href: "/inquiry?product=green", label: "Send a green coffee inquiry", link: { href: "/green-coffee", label: "About green coffee sourcing" } },
-  roasted: { title: "Interested in roasted Ethiopian coffee?", body: "Tell us your format, quantity, destination and timing. We’ll confirm what can be supplied for your market.", href: "/inquiry?product=roasted", label: "Send a roasted coffee inquiry", link: { href: "/roasted-coffee", label: "About roasted coffee sourcing" } },
-  general: { title: "Sourcing Ethiopian coffee for your business?", body: "Green or roasted: tell us what you need and we’ll reply with questions or next steps.", href: "/inquiry", label: "Send an inquiry", link: { href: "/how-it-works", label: "How sourcing with us works" } },
+  green: { title: "Sourcing Ethiopian green coffee?", body: "Share your origin, process, volume and destination. We’ll shortlist what our exporter partners can offer this season.", href: "/inquiry?product=green", label: "Send a green coffee inquiry", link: { href: "/green-coffee", label: "About green coffee sourcing" } },
+  roasted: { title: "Looking for roasted Ethiopian coffee?", body: "Tell us your format, volume, market and timing. We’ll confirm what can be delivered before anything is quoted.", href: "/inquiry?product=roasted", label: "Send a roasted coffee inquiry", link: { href: "/roasted-coffee", label: "About roasted coffee sourcing" } },
+  general: { title: "Ready to source Ethiopian coffee?", body: "Green or roasted, send us a short brief and we’ll reply with questions or a first shortlist.", href: "/inquiry", label: "Send an inquiry", link: { href: "/how-it-works", label: "How sourcing with us works" } },
 } as const;
 
 export default async function ArticlePage({ params }: Props) {

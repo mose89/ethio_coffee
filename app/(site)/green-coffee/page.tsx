@@ -9,49 +9,49 @@ export const metadata = pageMetadata({
   path: "/green-coffee",
   title: "Ethiopian green coffee for importers and roasters",
   description:
-    "Source unroasted Ethiopian coffee through our exporter network. Describe the origin, process, grade, quantity and timing you need, and we check what can be offered.",
+    "Source Ethiopian green coffee from origin. Share the region, process, grade and volume you need; we shortlist lots, arrange samples and bring you a formal offer.",
 });
 
 const REQUIREMENTS = [
   {
     field: "Origin",
-    examples: "A region you have in mind, such as Yirgacheffe, Sidama, Guji, Limu, Jimma or Harar, or “open to suggestions”.",
-    why: "Ethiopian coffees vary widely by area. Naming a preference, or the cup profile you want, narrows the search quickly.",
+    examples: "A region such as Yirgacheffe, Sidama, Guji, Limu, Jimma or Harar, or simply the cup profile you want.",
+    why: "Ethiopian coffees vary enormously from one area to the next. A region or a flavour target narrows the search fast.",
   },
   {
     field: "Process",
-    examples: "Washed, natural, or another method you are looking for.",
-    why: "Processing shapes flavour, and availability differs by process.",
+    examples: "Washed, natural, or another method you’re looking for.",
+    why: "Process shapes the cup, and availability differs from one method to another.",
   },
   {
     field: "Grade or quality level",
-    examples: "An Ethiopian export grade, a quality level you buy against, or your usual quality specification.",
-    why: "It tells us which coffees to put in front of you, and which not to.",
+    examples: "An export grade (for example Grade 1 or 2), a minimum cup score under a named protocol, or your usual spec.",
+    why: "It tells us which coffees to put in front of you, and which to leave out.",
   },
   {
     field: "Quantity",
-    examples: "Approximate kg, 60 kg bags, tonnes or containers, per shipment or per year. “Not sure yet” is fine.",
-    why: "Volume affects which exporters and shipping options are realistic.",
+    examples: "Kilos, 60 kg bags, tonnes or containers, per shipment or per year. A rough figure, or “not sure yet”, is fine.",
+    why: "Volume decides which exporters and shipping options make sense.",
   },
   {
     field: "Destination",
     examples: "Country, and port if you know it.",
-    why: "Shipping routes, documents and terms depend on where the coffee is going.",
+    why: "Routes, documents and shipping terms all depend on where the coffee is going.",
   },
   {
     field: "Timing",
-    examples: "When you would like the coffee shipped, or the crop you are planning for.",
-    why: "Ethiopian availability changes through the season.",
+    examples: "When you want the coffee shipped, or the crop you’re planning for.",
+    why: "Ethiopian availability shifts through the harvest and export season.",
   },
   {
     field: "Packaging and documents",
-    examples: "Bag type or liners you need, and any certificates or paperwork your market or customers require.",
-    why: "We confirm these with the exporter before any quotation, rather than assuming them.",
+    examples: "Bag type and liners, plus any certificates or paperwork your market or customers require.",
+    why: "We confirm these with the exporter before any quotation. Nothing is assumed.",
   },
   {
     field: "Shipping terms",
-    examples: "Your preferred terms, if you have them (for example FOB or CIF).",
-    why: "Terms are confirmed in the exporter’s quotation. Telling us your preference early saves a round of questions.",
+    examples: "Your preferred Incoterm, if you have one (for example FOB or CIF).",
+    why: "Terms are confirmed in the exporter’s quotation; knowing your preference early saves a round of emails.",
   },
 ];
 
@@ -60,8 +60,8 @@ const FAQ = [
     q: "Do you have a list of available lots?",
     a: (
       <p>
-        Not publicly. Ethiopian coffee is offered lot by lot and season by season, so a published list goes out of date quickly. Instead,
-        we check current options against your requirement and share the details the exporter provides for each coffee we propose.
+        Not publicly. Ethiopian coffee is offered lot by lot and season by season, so any published list would be out of date within
+        weeks. Instead, we check what’s available against your brief and share the exporter’s details for every coffee we propose.
       </p>
     ),
   },
@@ -69,8 +69,8 @@ const FAQ = [
     q: "What is the minimum order for green coffee?",
     a: (
       <p>
-        There is no single minimum. It depends on the coffee, the exporter and how it is shipped. Tell us your approximate quantity, even
-        if it is small or uncertain, and we’ll tell you what is realistic.
+        There’s no single minimum: it depends on the coffee, the exporter and how it ships. Tell us your rough volume, however small or
+        uncertain, and we’ll tell you what’s realistic.
       </p>
     ),
   },
@@ -78,8 +78,8 @@ const FAQ = [
     q: "Can I get samples before ordering?",
     a: (
       <p>
-        We discuss samples for every coffee we propose. Whether samples are available, their size and any cost depend on the exporter and
-        are confirmed with you before anything is sent.
+        We discuss samples for every coffee we propose. Availability, sample size and any cost depend on the exporter, and we confirm
+        them with you before anything is sent.
       </p>
     ),
   },
@@ -87,8 +87,8 @@ const FAQ = [
     q: "Can you supply certified coffee?",
     a: (
       <p>
-        Only where the specific coffee holds a current certification, and we’ll share the evidence with you. Tell us which certifications
-        you require in your inquiry.
+        Yes, where the specific coffee holds a current certificate, and we’ll share the evidence with you. Tell us which certifications
+        you need in your inquiry.
       </p>
     ),
   },
@@ -105,7 +105,7 @@ export default async function GreenCoffeePage() {
             <h1 id="page-title">{pc?.heroTitle || "Ethiopian green coffee for importers and roasters"}</h1>
             <p className="lead">
               {pc?.heroIntro ||
-                "We help importers, roasters and other trade buyers source unroasted Ethiopian coffee through our network of Ethiopian exporters. You tell us what you need; we check what can be offered, gather the details and samples you need to decide, and coordinate the process through to the exporter’s quotation and shipment."}
+                "Tell us the cup you’re after and the volume you need. We check what our Ethiopian exporter partners can offer this season, arrange samples, bring you a formal offer, and stay with your order all the way to shipment."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry?product=green">
@@ -123,23 +123,23 @@ export default async function GreenCoffeePage() {
       <section className="section" aria-labelledby="who-title">
         <div className="container split">
           <div>
-            <h2 id="who-title">Who this is for</h2>
+            <h2 id="who-title">Who we source for</h2>
           </div>
           <div className="prose">
             <ul className="check-list">
               <li>
-                <strong>Importers and green coffee traders</strong> adding Ethiopian coffees or looking for further Ethiopian export
-                partners.
+                <strong>Importers and green coffee traders</strong> adding Ethiopian coffees to their offer lists, or looking for new
+                export partners.
               </li>
               <li>
-                <strong>Roasters</strong> buying from origin, or ready to, who want one point of contact in Ethiopia.
+                <strong>Roasters</strong> buying from origin, or ready to start, who want one dependable contact for Ethiopia.
               </li>
               <li>
-                <strong>Distributors and other trade buyers</strong> who can receive an international shipment of green coffee.
+                <strong>Distributors and other trade buyers</strong> able to receive an international shipment, directly or through an importer.
               </li>
             </ul>
             <p>
-              Coffee ships directly from Ethiopia for each order.
+              Every order ships directly from Ethiopia, so you buy at origin.
             </p>
           </div>
         </div>
@@ -147,9 +147,9 @@ export default async function GreenCoffeePage() {
 
       <section className="section section-stone" aria-labelledby="spec-title">
         <div className="container">
-          <h2 id="spec-title">Describe your requirement</h2>
+          <h2 id="spec-title">Build your brief</h2>
           <p className="section-intro">
-            You don’t need every answer to get started. The more of these you can share, the more useful our first reply will be.
+            You don’t need every answer to get started. The more you can share, the sharper our first shortlist.
           </p>
           <div className="spec-table-wrap">
             <table className="spec-table">
@@ -178,19 +178,19 @@ export default async function GreenCoffeePage() {
       <section className="section" aria-labelledby="next-title">
         <div className="container split">
           <div>
-            <h2 id="next-title">What happens after you inquire</h2>
+            <h2 id="next-title">After you send your brief</h2>
           </div>
           <ol className="plain-steps">
-            <li>We review your requirement and reply with any questions.</li>
-            <li>We check with suitable exporters in our network what they can offer against it.</li>
-            <li>We share the coffee information the exporter provides and discuss samples.</li>
-            <li>If you want to proceed, you receive a written quotation stating the seller, price, payment and shipping terms.</li>
+            <li>We read it and come back with any questions.</li>
+            <li>We check with the right exporters what they can offer against it.</li>
+            <li>We share the lot details for each coffee that fits and arrange samples.</li>
+            <li>When you’re ready, you receive a written quotation with the seller, price, payment and shipping terms.</li>
           </ol>
         </div>
       </section>
 
       <Faq items={FAQ} id="green-faq" />
-      <CtaBand title="Looking for Ethiopian green coffee?" href="/inquiry?product=green" label="Send a green coffee inquiry" cue="green" />
+      <CtaBand title="Ready to brief us on green coffee?" href="/inquiry?product=green" label="Send a green coffee inquiry" cue="green" />
     </div>
   );
 }

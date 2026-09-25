@@ -1,23 +1,23 @@
 const STEPS = [
   {
-    title: "Tell us what you need",
-    body: "Use the inquiry form or email us: coffee type, destination, approximate quantity and any requirements you already know.",
+    title: "Share your brief",
+    body: "Coffee type, destination and a rough volume. Add anything else you know: region, process, grade, timing.",
   },
   {
-    title: "We clarify and check",
-    body: "We review your requirement, ask about anything missing, and check with suitable exporters in our network what they can offer.",
+    title: "We shortlist",
+    body: "We fill any gaps with a few questions, then check with the right exporters what they can offer this season.",
   },
   {
-    title: "Samples and details",
-    body: "When a coffee looks suitable, we discuss samples and pass on the information the exporter provides, so you can judge it before committing.",
+    title: "You taste before you buy",
+    body: "For coffees that fit, we arrange samples where available and pass on the lot details, so you judge the coffee itself, not just a description.",
   },
   {
-    title: "Written quotation",
-    body: "You receive a quotation that sets out the seller, price, payment terms and shipping terms. You decide whether to proceed.",
+    title: "A clear written offer",
+    body: "The quotation names the seller and sets out price, payment and shipping terms. Nothing is agreed until you say yes.",
   },
   {
-    title: "Follow-through",
-    body: "If you order, we stay involved, coordinating communication with the exporter through to shipment.",
+    title: "We see it through",
+    body: "Once you order, we keep you and the exporter in step through to shipment.",
   },
 ];
 

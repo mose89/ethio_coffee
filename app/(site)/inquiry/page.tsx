@@ -4,9 +4,9 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   path: "/inquiry",
-  title: "Send an Ethiopian coffee inquiry",
+  title: "Request a quote for Ethiopian coffee",
   description:
-    "Tell us which Ethiopian coffee you need (green or roasted), where it is going and roughly how much. We reply with questions or next steps.",
+    "Send your Ethiopian coffee brief: green or roasted, destination and a rough volume. We reply with questions or a first shortlist.",
 });
 
 export default function InquiryPage() {
@@ -17,12 +17,12 @@ export default function InquiryPage() {
           <p className="eyebrow">Inquiry</p>
           <h1 id="page-title">Tell us what you’re looking for</h1>
           <p className="lead">
-            A few details are enough to start. You don’t need a full specification. We’ll help you work it out.
+            A few details are enough to start. No full specification needed: we’ll help you shape the brief.
           </p>
           <h2 className="h-small">What happens next</h2>
           <ol className="plain-steps">
             <li>We read your inquiry and reply{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions.</li>
-            <li>We check your requirement with suitable exporters in our Ethiopian network.</li>
+            <li>We check your brief with the right exporters in our network.</li>
             <li>We come back with options and next steps, or tell you honestly if we can’t help.</li>
           </ol>
           {(site.contactEmail || site.whatsappHref || site.phoneHref) && (

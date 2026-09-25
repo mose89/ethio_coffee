@@ -42,4 +42,4 @@ export const site = {
 };
 
 export const ORG_DESCRIPTION =
-  "Sourcing business that helps international business buyers source Ethiopian green and roasted coffee through a network of Ethiopian coffee exporters.";
+  "Sourcing business dedicated to Ethiopian green and roasted coffee, connecting importers, roasters, distributors and hospitality businesses with established Ethiopian exporters.";

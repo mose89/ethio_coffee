@@ -9,16 +9,16 @@ export const metadata = pageMetadata({
   path: "/roasted-coffee",
   title: "Roasted Ethiopian coffee for distributors and hospitality",
   description:
-    "Source roasted Ethiopian coffee for distribution, retail or hospitality through our Ethiopian exporter network. Tell us your format, quantity, destination and timing.",
+    "Roasted Ethiopian coffee for distributors, retailers and hospitality. Tell us your format, volume, market and timing; we confirm what can be delivered before anything is quoted.",
 });
 
 const TOPICS = [
-  { title: "Format", body: "Whole bean or ground, and the kind of pack your customers or your operation use." },
-  { title: "Quantity and frequency", body: "An approximate volume per order, and whether you expect a one-off order or regular supply." },
-  { title: "Destination", body: "The country the coffee would be shipped to, and whether you already import food products there." },
-  { title: "Timing", body: "When you would need a first shipment, so we can check what is realistic." },
-  { title: "Product and branding", body: "Whether you want an existing Ethiopian product, or have other arrangements in mind. We’ll tell you plainly what can and can’t be done." },
-  { title: "Your market’s requirements", body: "Roasted coffee is a food product. Tell us about any registration, labelling or documentation your market or customers require." },
+  { title: "Format", body: "Whole bean or ground, and the pack your customers or your kitchen actually use." },
+  { title: "Volume and frequency", body: "A rough volume per order, and whether you need a one-off shipment or regular supply." },
+  { title: "Destination", body: "Where the coffee is going, and whether you already import food products into that market." },
+  { title: "Timing", body: "When you need a first shipment, so we can plan roasting and transit realistically." },
+  { title: "Product and branding", body: "An existing Ethiopian product, or something else in mind. We’ll tell you plainly what can and can’t be done." },
+  { title: "Your market’s rules", body: "Roasted coffee is a food product. Tell us about the registration, labelling or documents your market or customers require." },
 ];
 
 const FAQ = [
@@ -26,9 +26,8 @@ const FAQ = [
     q: "What roasted coffee can you supply?",
     a: (
       <p>
-        Roasted Ethiopian coffee can be sourced through exporters in our network. What’s available, including formats, pack types and
-        minimum quantities, depends on the supplier and your market, so we confirm it for your specific inquiry rather than publishing a
-        fixed list.
+        Roasted Ethiopian coffee from exporters in our network. Formats, pack types and minimum quantities depend on the supplier and your
+        market, so we confirm them for your inquiry rather than publish a fixed list that may not apply to you.
       </p>
     ),
   },
@@ -36,8 +35,8 @@ const FAQ = [
     q: "How fresh will the coffee be when it arrives?",
     a: (
       <p>
-        Freshness depends on roast timing, packaging, transit and storage. Before any quotation, we ask the supplier for roast dates,
-        packaging details and their storage guidance, and discuss the shipping time to your destination with you.
+        That depends on roast date, packaging, transit and storage. Before any quotation we get the supplier’s roast-to-dispatch timing,
+        packaging details and storage guidance, and talk through transit time to your destination with you.
       </p>
     ),
   },
@@ -45,8 +44,8 @@ const FAQ = [
     q: "Can the coffee be packed under my own brand?",
     a: (
       <p>
-        We don’t offer this as a standard service. If it matters to you, mention it in your inquiry and we’ll tell you whether it is
-        possible for your requirement.
+        It isn’t a standard service. If your own brand matters, mention it in your inquiry and we’ll tell you honestly whether it can be
+        done for your volume and market.
       </p>
     ),
   },
@@ -72,7 +71,7 @@ export default async function RoastedCoffeePage() {
             <h1 id="page-title">{pc?.heroTitle || "Roasted Ethiopian coffee for distributors, retailers and hospitality"}</h1>
             <p className="lead">
               {pc?.heroIntro ||
-                "Roasted Ethiopian coffee can be sourced through our network of Ethiopian exporters. Because roasted coffee is time-sensitive and subject to food rules in your market, every inquiry starts with a conversation: we confirm format, quantity, destination and timing with you and the supplier before any quotation."}
+                "Ethiopian coffee roasted for your shelves, your cafés and your customers. Freshness and food rules matter from the day of roasting, so every inquiry starts with a conversation: we agree format, volume, destination and timing with you and the supplier before anything is quoted."}
             </p>
             <div className="button-row">
               <Link className="button button-roasted" href="/inquiry?product=roasted">
@@ -91,11 +90,11 @@ export default async function RoastedCoffeePage() {
         <div className="container media-split">
           <Visual media={asMedia(pc?.detailImage)} fallback="roasted" sizes="(min-width: 900px) 45vw, 100vw" className="split-visual" />
           <div className="prose">
-            <h2 id="who-title">Who this is for</h2>
+            <h2 id="who-title">Who we source for</h2>
             <ul className="check-list">
-              <li><strong>Distributors and wholesalers</strong> supplying retailers, offices or food service.</li>
-              <li><strong>Retailers</strong> looking to stock roasted Ethiopian coffee.</li>
-              <li><strong>Hotels, restaurant groups and other hospitality businesses</strong> buying in volume.</li>
+              <li><strong>Distributors and wholesalers</strong> supplying retail, offices or food service.</li>
+              <li><strong>Retailers</strong> adding Ethiopian coffee to their shelves.</li>
+              <li><strong>Hotels, restaurant groups and cafés</strong> serving Ethiopian coffee to their guests.</li>
             </ul>
           </div>
         </div>
@@ -103,8 +102,8 @@ export default async function RoastedCoffeePage() {
 
       <section className="section section-stone" aria-labelledby="topics-title">
         <div className="container">
-          <h2 id="topics-title">What we’ll discuss with you</h2>
-          <p className="section-intro">Share what you know in your inquiry. We’ll ask about the rest.</p>
+          <h2 id="topics-title">What we’ll agree before quoting</h2>
+          <p className="section-intro">Share what you already know in your inquiry. We’ll ask about the rest.</p>
           <ul className="topic-grid">
             {TOPICS.map((t) => (
               <li key={t.title} className="topic">
@@ -117,7 +116,7 @@ export default async function RoastedCoffeePage() {
       </section>
 
       <Faq items={FAQ} id="roasted-faq" />
-      <CtaBand title="Interested in roasted Ethiopian coffee?" href="/inquiry?product=roasted" label="Send a roasted coffee inquiry" cue="roasted" />
+      <CtaBand title="Bring Ethiopian coffee to your customers" href="/inquiry?product=roasted" label="Send a roasted coffee inquiry" cue="roasted" />
     </div>
   );
 }

@@ -37,7 +37,7 @@ export default async function CategoryPage({ params }: Props) {
           <PostGrid posts={posts} />
         </div>
       </section>
-      <CtaBand title="Have a sourcing question?" />
+      <CtaBand title="Have a sourcing question? Ask us." />
     </>
   );
 }

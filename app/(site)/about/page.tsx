@@ -13,22 +13,22 @@ export const metadata = pageMetadata({
   path: "/about",
   title: "About us",
   description:
-    "Who we are and how we work: a sourcing business focused on Ethiopian green and roasted coffee, helping international business buyers through established Ethiopian exporter relationships.",
+    "A sourcing business dedicated to Ethiopian green and roasted coffee. We connect international trade buyers with established Ethiopian exporters and manage the process from brief to shipment.",
 });
 
 const SERVE = [
-  { title: "Importers and green coffee traders", body: "Looking for Ethiopian coffees or additional Ethiopian export partners." },
-  { title: "Roasters", body: "Buying from origin, or preparing to, who want one clear point of contact in Ethiopia." },
-  { title: "Distributors and retailers", body: "Looking to supply Ethiopian coffee, green or roasted, to their own customers." },
-  { title: "Hospitality businesses", body: "Hotels, restaurant groups and others buying roasted coffee in volume." },
+  { title: "Importers and green traders", body: "Adding Ethiopian coffees to their offer, or looking for new export partners." },
+  { title: "Roasters", body: "Buying from origin, or ready to start, with one dependable contact for Ethiopia." },
+  { title: "Distributors and retailers", body: "Supplying Ethiopian coffee, green or roasted, to their own customers." },
+  { title: "Hospitality", body: "Hotels, restaurant groups and cafés serving Ethiopian coffee." },
 ];
 
 const HELP = [
-  { title: "Clarifying what you need", body: "We help you turn a general interest into a clear requirement: origin, process, quality level, quantity, destination and timing." },
-  { title: "Finding suitable coffee", body: "We check your requirement with suitable exporters in our network, rather than offering one company’s list." },
-  { title: "Making information clear", body: "We pass on what the exporter provides, say what is confirmed and what isn’t, and ask the follow-up questions for you." },
-  { title: "Coordinating samples and quotations", body: "We keep samples, feedback and quotations moving, so you can decide with the right information." },
-  { title: "Following through", body: "If you order, we stay involved, coordinating communication with the exporter through to shipment." },
+  { title: "A clear brief", body: "We help you turn “we’d like Ethiopian coffee” into a precise brief: origin, process, quality, volume, destination and timing." },
+  { title: "More than one exporter’s list", body: "We check your brief with the right exporters in our network, not just a single company’s offer." },
+  { title: "Straight answers", body: "We pass on what the exporter provides, say plainly what is confirmed and what isn’t, and chase the follow-up questions for you." },
+  { title: "Samples and offers, on track", body: "We keep samples, feedback and quotations moving, so you decide on facts, not guesswork." },
+  { title: "Follow-through", body: "Once you order, we stay involved, keeping you and the exporter in step through to shipment." },
 ];
 
 export default async function AboutPage() {
@@ -42,14 +42,14 @@ export default async function AboutPage() {
         <div className="container page-hero-grid">
           <div className="page-hero-copy">
             <p className="eyebrow">About us</p>
-            <h1 id="page-title">{about?.heroTitle || "Helping business buyers source Ethiopian coffee with confidence"}</h1>
+            <h1 id="page-title">{about?.heroTitle || "Your partner for sourcing Ethiopian coffee"}</h1>
             <p className="lead">
               {about?.heroIntro ||
-                "We are a sourcing business focused only on Ethiopian coffee, green and roasted. We help international business buyers find suitable coffee through our established relationships with Ethiopian exporters, and we keep the process clear from first inquiry to shipment."}
+                "We’re a sourcing business dedicated to Ethiopian coffee, green and roasted. Through established relationships with Ethiopian exporters, we help international buyers find the right coffee, and we keep every step clear from first inquiry to shipment."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry">
-                Talk to us about your requirement
+                Tell us what you’re looking for
               </Link>
             </div>
           </div>
@@ -61,18 +61,17 @@ export default async function AboutPage() {
         <div className="container split">
           <div>
             <p className="eyebrow">What we do</p>
-            <h2 id="what-title">Ethiopian coffee sourcing, and nothing else</h2>
+            <h2 id="what-title">Ethiopian coffee, and nothing else</h2>
           </div>
           <div className="prose">
             <p>
-              We help companies outside Ethiopia source Ethiopian coffee. That includes <Link href="/green-coffee">green (unroasted) coffee</Link>{" "}
-              for importers and roasters, and <Link href="/roasted-coffee">roasted coffee</Link> for distributors, retailers and hospitality
-              businesses. Coffee is our only product.
+              We help businesses around the world buy Ethiopian coffee: <Link href="/green-coffee">green coffee</Link> for importers and
+              roasters, and <Link href="/roasted-coffee">roasted coffee</Link> for distributors, retailers and hospitality. Coffee is our only
+              product, and Ethiopia our only origin.
             </p>
             <p>
-              We work through existing relationships with Ethiopian coffee exporters. The exporter supplies and exports the coffee. Our role
-              is to understand what you need, find suitable options in our network, and coordinate the sourcing process so you always know
-              what has been confirmed and what happens next.
+              We work through established relationships with Ethiopian coffee exporters. They supply and export the coffee; we make sure it’s
+              the right coffee for you, and that the path from first sample to shipment is clear, with no surprises about who does what.
             </p>
           </div>
         </div>
@@ -81,7 +80,7 @@ export default async function AboutPage() {
       <section className="section section-stone" aria-labelledby="serve-title">
         <div className="container">
           <p className="eyebrow">Whom we serve</p>
-          <h2 id="serve-title">Business buyers of Ethiopian coffee</h2>
+          <h2 id="serve-title">Built for the coffee trade</h2>
           <ul className="topic-grid topic-grid-4">
             {SERVE.map((s) => (
               <li key={s.title} className="topic">
@@ -99,8 +98,7 @@ export default async function AboutPage() {
             <p className="eyebrow">How we help</p>
             <h2 id="help-title">Navigating sourcing from Ethiopia</h2>
             <p className="muted">
-              Buying from origin involves many details: grades, samples, shipping terms, documents and timing. We help you work through
-              them.
+              Buying from origin means grades, samples, shipping terms, documents and timing. We guide you through each of them.
             </p>
           </div>
           <ol className="help-list">
@@ -141,7 +139,7 @@ export default async function AboutPage() {
           <div className="section-head">
             <div>
               <p className="eyebrow">Process</p>
-              <h2 id="process-title">How working with us works</h2>
+              <h2 id="process-title">Working with us, step by step</h2>
             </div>
             <Link className="text-link" href="/how-it-works">
               Full process and FAQs <span aria-hidden="true">→</span>
@@ -159,8 +157,8 @@ export default async function AboutPage() {
           </div>
           <div className="prose">
             <p>
-              The quickest way to start is the <Link href="/inquiry">inquiry form</Link>: tell us the coffee type, destination and
-              approximate quantity, and we’ll reply{site.responseTime ? ` within ${site.responseTime}` : ""}.
+              The quickest way to start is our <Link href="/inquiry">inquiry form</Link>. Tell us the coffee type, destination and a rough
+              volume, and we’ll reply{site.responseTime ? ` within ${site.responseTime}` : ""}.
             </p>
             {(site.contactEmail || site.whatsappHref || site.phoneHref) && (
               <ul className="contact-list">

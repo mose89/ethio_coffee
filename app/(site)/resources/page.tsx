@@ -20,8 +20,8 @@ export default async function ResourcesPage() {
           <p className="eyebrow">Resources</p>
           <h1 id="page-title">Buying guides for Ethiopian coffee</h1>
           <p className="lead">
-            Practical answers to the questions business buyers ask when sourcing Ethiopian coffee: what to request from suppliers, how
-            to evaluate samples, and how to choose the right supply format.
+            Practical guides for trade buyers sourcing from Ethiopia: what to ask exporters, how to judge samples, and how to choose
+            between green and roasted supply.
           </p>
         </div>
       </section>
@@ -32,16 +32,16 @@ export default async function ResourcesPage() {
             <PostGrid posts={posts} />
           ) : (
             <div className="empty-state">
-              <h2>Guides are being prepared</h2>
+              <h2>First guides coming soon</h2>
               <p>
-                Our first buying guides are being reviewed before publication. In the meantime, see{" "}
+                Our first buying guides are on their way. Meanwhile, see{" "}
                 <Link href="/how-it-works">how sourcing with us works</Link> or <Link href="/inquiry">ask us a question</Link>.
               </p>
             </div>
           )}
         </div>
       </section>
-      <CtaBand title="Have a sourcing question?" />
+      <CtaBand title="Have a sourcing question? Ask us." />
     </>
   );
 }

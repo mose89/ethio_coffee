@@ -8,10 +8,10 @@ type Errors = Partial<Record<FieldName, string>>;
 type Status = "idle" | "submitting" | "success" | "error";
 
 const MESSAGE_HINTS: Record<string, string> = {
-  green: "For example: region or cup profile, process, grade, timing, packaging, certifications or documents you need.",
-  roasted: "For example: whole bean or ground, pack type, one-off or regular supply, timing, and any labelling rules in your market.",
-  unsure: "Tell us a little about your business and what you are hoping to find.",
-  "": "Anything that helps us understand your requirement: region, process, grade, format, timing or documents.",
+  green: "For example: region or cup profile, process, grade, shipment timing, bag type, and any certificates or documents you need.",
+  roasted: "For example: whole bean or ground, pack size, one-off or regular supply, timing, and any labelling rules in your market.",
+  unsure: "Tell us a little about your business and your customers, and we’ll suggest where to start.",
+  "": "Anything that helps us understand what you need: region, process, grade, format, timing or documents.",
 };
 
 const FIELD_ORDER: FieldName[] = ["product", "name", "email", "company", "country", "quantity", "message"];
@@ -82,7 +82,7 @@ export function InquiryForm({
     return (
       <div className="form-success" role="status">
         <h2 ref={successRef} tabIndex={-1}>
-          Thank you. We’ve received your inquiry.
+          Thank you. Your brief is with us.
         </h2>
         {reference && (
           <p>
@@ -90,12 +90,12 @@ export function InquiryForm({
           </p>
         )}
         <p>
-          We’ll reply to the email address you gave{responseTime ? ` within ${responseTime}` : ""}, usually with a few questions about your
-          requirement. Please check your spam folder if you don’t see our reply.
+          We’ll reply to the email address you gave{responseTime ? ` within ${responseTime}` : ""}, usually with a few questions or a first
+          shortlist. If you don’t see our reply, please check your spam folder.
         </p>
         <p>
           <Link className="text-link" href="/how-it-works">
-            Read how the process works <span aria-hidden="true">→</span>
+            See what happens next <span aria-hidden="true">→</span>
           </Link>
         </p>
       </div>
@@ -140,8 +140,8 @@ export function InquiryForm({
         <div className="choice-row">
           {[
             ["green", "Green coffee", "Unroasted, for roasting or trading"],
-            ["roasted", "Roasted coffee", "For distribution, retail or hospitality"],
-            ["unsure", "Not sure yet", "Tell us about your needs"],
+            ["roasted", "Roasted coffee", "Ready to sell or serve"],
+            ["unsure", "Not sure yet", "We’ll help you decide"],
           ].map(([value, label, sub]) => (
             <label key={value} className={`choice choice-${value}`}>
               <input
@@ -187,7 +187,7 @@ export function InquiryForm({
           <label htmlFor="country">
             Destination country <span className="req">(required)</span>
           </label>
-          <p className="hint" id="country-hint">Where the coffee would be shipped to.</p>
+          <p className="hint" id="country-hint">Where the coffee will be shipped.</p>
           {fieldError("country")}
           <input id="country" name="country" type="text" autoComplete="country-name" maxLength={80} required aria-invalid={!!errors.country} aria-describedby={describedBy("country", "country-hint")} />
         </div>
@@ -198,7 +198,7 @@ export function InquiryForm({
           Approximate quantity <span className="req">(required, or tick “not sure yet”)</span>
         </legend>
         <p className="hint" id="quantity-hint">
-          A rough figure per order or per year is fine. For reference, green coffee is often traded in 60 kg bags.
+          A rough figure per order or per year is fine. Green coffee is usually traded in 60 kg bags.
         </p>
         {fieldError("quantity")}
         <div className="quantity-row">
@@ -256,8 +256,8 @@ export function InquiryForm({
       )}
 
       <p className="privacy-line">
-        We use your details only to respond to your inquiry and, where needed, share your requirement with exporters in our network to
-        check what they can offer. See our <Link href="/privacy">privacy notice</Link>.
+        We use your details only to answer your inquiry and, where needed, to check availability with exporters in our network. See
+        our <Link href="/privacy">privacy notice</Link>.
       </p>
 
       <button className="button button-green button-submit" type="submit" disabled={status === "submitting"} aria-disabled={status === "submitting"}>
