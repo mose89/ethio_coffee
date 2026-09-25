@@ -204,7 +204,7 @@ export interface Post {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Upload photos here or from any image field. Always record where an image came from and whether it shows your real business.
+ * Upload photos here or from any image field. Always record where an image came from and its licence.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
@@ -220,7 +220,7 @@ export interface Media {
    */
   caption?: string | null;
   /**
-   * Leave ticked unless this photo genuinely shows your own team, exporter partners (with permission) or products. Illustrative images are labelled as such on the site.
+   * For your records: tick for stock or general photos, untick for photos of your own team, partners (with permission) or products. Never caption a general photo as your own operations.
    */
   illustrative?: boolean | null;
   /**
