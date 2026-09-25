@@ -9,4 +9,4 @@ next-env.d.ts
 data/
 media/
 backups/
-downloads/
+/downloads/
