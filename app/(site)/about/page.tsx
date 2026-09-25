@@ -131,7 +131,7 @@ export default async function AboutPage() {
       <section className="section" aria-labelledby="role-title">
         <div className="container">
           <p className="eyebrow">Our role</p>
-          <h2 id="role-title">Clear about what we do, and what we don’t</h2>
+          <h2 id="role-title">Who does what</h2>
           <RoleSummary />
         </div>
       </section>

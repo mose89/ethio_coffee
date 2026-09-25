@@ -48,7 +48,7 @@ const converters: JSXConvertersFunction = ({ defaultConverters }) => ({
     const alt = (node.fields as { alt?: string } | undefined)?.alt || doc.alt || "";
     const w = doc.width ?? 1600;
     const h = doc.height ?? 1000;
-    const credit = doc.illustrative ? ["Illustrative photo", doc.credit].filter(Boolean).join(" · ") : doc.credit;
+    const credit = doc.credit;
     return (
       <figure className="article-figure">
         <Image src={doc.url.split("?")[0]} alt={alt} width={w} height={h} sizes="(min-width: 800px) 720px, 100vw" />

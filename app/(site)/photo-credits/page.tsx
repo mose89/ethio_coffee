@@ -25,10 +25,7 @@ export default async function PhotoCreditsPage() {
       <div className="container narrow prose legal">
         <p className="eyebrow">Legal</p>
         <h1 id="page-title">Photo credits</h1>
-        <p>
-          Photos marked <strong>illustrative</strong> are stock photography used to illustrate topics. They do not show our suppliers,
-          exporter partners, farms, facilities or team.
-        </p>
+        <p>Sources and licences for the photographs on this website.</p>
         {media.length === 0 ? (
           <p>No photographs are currently in use.</p>
         ) : (
@@ -46,7 +43,6 @@ export default async function PhotoCreditsPage() {
                   <tr key={m.id}>
                     <td>
                       {m.alt}
-                      {m.illustrative ? " (illustrative)" : ""}
                     </td>
                     <td>
                       {m.sourceUrl ? (

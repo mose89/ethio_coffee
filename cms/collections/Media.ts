@@ -9,7 +9,7 @@ export const Media: CollectionConfig = {
     group: "Content",
     useAsTitle: "alt",
     defaultColumns: ["filename", "alt", "credit", "illustrative"],
-    description: "Upload photos here or from any image field. Always record where an image came from and whether it shows your real business.",
+    description: "Upload photos here or from any image field. Always record where an image came from and its licence.",
   },
   access: { read: anyone, create: authenticated, update: authenticated, delete: authenticated },
   upload: {
@@ -42,7 +42,7 @@ export const Media: CollectionConfig = {
       defaultValue: true,
       admin: {
         description:
-          "Leave ticked unless this photo genuinely shows your own team, exporter partners (with permission) or products. Illustrative images are labelled as such on the site.",
+          "For your records: tick for stock or general photos, untick for photos of your own team, partners (with permission) or products. Never caption a general photo as your own operations.",
       },
     },
     {

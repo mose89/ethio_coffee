@@ -48,9 +48,7 @@ export function SiteFooter() {
       <div className="container footer-legal">
         <p>
           © {year} {site.brand}
-          {site.operatorName && <> · Operated by {site.operatorName}{site.operatorCountry && `, ${site.operatorCountry}`}</>}. We are a
-          sourcing business. We do not own farms, processing facilities or warehouses, and we do not hold an export licence. Photos
-          marked “illustrative” show Ethiopian coffee in general and do not show our exporter partners, their facilities or our team.
+          {site.operatorName && <> · Operated by {site.operatorName}{site.operatorCountry && `, ${site.operatorCountry}`}</>}.
         </p>
       </div>
     </footer>

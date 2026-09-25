@@ -12,12 +12,11 @@ export function RoleSummary() {
           </ul>
         </div>
         <div className="role-col role-col-muted">
-          <h3>What we don’t do</h3>
-          <ul className="cross-list">
-            <li>Own farms, washing stations or processing facilities</li>
-            <li>Hold stock or run warehouses, in Ethiopia or abroad</li>
-            <li>Hold an export licence or export coffee in our own name</li>
-            <li>Publish prices or availability that may be out of date</li>
+          <h3>What the exporter does</h3>
+          <ul className="check-list">
+            <li>Supplies the coffee and prepares it for export</li>
+            <li>Handles export licensing, export documents and shipping from Ethiopia</li>
+            <li>Confirms the offer for your order in a written quotation</li>
           </ul>
         </div>
       </div>

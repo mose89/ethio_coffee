@@ -142,8 +142,8 @@ export default async function HomePage() {
                 "We work through established relationships with Ethiopian coffee exporters. Our job is to understand what your business needs, find suitable coffee in our network, and keep the process clear: who sells, what is confirmed, and what happens next."}
             </p>
             <p>
-              We don’t own farms, washing stations or warehouses, and we don’t export in our own name. The coffee is supplied and exported
-              by the exporter; we coordinate the sourcing on your behalf.
+              The coffee is supplied and exported by Ethiopian exporters in our network. We find the right coffee for your business and
+              coordinate everything in between, so you have one clear point of contact.
             </p>
             <Link className="text-link" href="/about">
               More about us <span aria-hidden="true">→</span>

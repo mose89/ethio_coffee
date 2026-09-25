@@ -51,7 +51,7 @@ Other wording (FAQs, process steps, legal text) is in the code; ask a developer 
 
 - Upload photos under **Content → Images**, or from any image field.
 - For every image, record **Source and licence**: the credit, a source URL and the licence.
-- Leave **"Stock or illustrative image"** ticked unless the photo genuinely shows your own team, products, or exporter partners who have given permission. Illustrative photos are labelled "Illustrative photo" on the site and listed on **/photo-credits**.
+- Tick **"Stock or illustrative image"** for general photos (your records only; it isn't shown on the site). Never caption a general photo as if it showed your own team, partners or facilities. All photos with a credit or licence are listed on **/photo-credits**.
 - Photos are resized and converted automatically. Upload the largest good-quality version you have (a JPEG or WebP around 2,000–2,500 px wide is ideal). Use the **focal point** tool so important details stay visible when images are cropped.
 
 ## Inquiries

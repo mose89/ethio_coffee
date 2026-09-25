@@ -3,9 +3,8 @@ import type { Media } from "@/payload-types";
 
 /**
  * Responsive CMS image. Fills its container (which sets the aspect ratio, so
- * there is no layout shift), respects the focal point chosen in the CMS, and
- * labels stock/illustrative photos so they are never mistaken for our own
- * suppliers, facilities or team.
+ * there is no layout shift) and respects the focal point chosen in the CMS.
+ * A small photographer credit is shown when one is recorded.
  */
 export function Photo({
   media,
@@ -22,7 +21,7 @@ export function Photo({
 }) {
   const src = (media.url ?? "").split("?")[0];
   const position = `${media.focalX ?? 50}% ${media.focalY ?? 50}%`;
-  const label = media.illustrative ? ["Illustrative photo", media.credit].filter(Boolean).join(" · ") : media.credit;
+  const label = media.credit;
   return (
     <div className={`photo ${className ?? ""}`}>
       <Image
