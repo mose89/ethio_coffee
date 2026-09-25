@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
@@ -17,6 +18,9 @@ import { PageContent } from "./cms/globals/PageContent";
 import { site } from "./lib/site";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Default local database lives in ./data (created on first run).
+if (!process.env.DATABASE_URL) fs.mkdirSync(path.resolve(dirname, "data"), { recursive: true });
 
 const secret = process.env.PAYLOAD_SECRET;
 if (!secret && process.env.NODE_ENV === "production" && process.env.NEXT_PHASE !== "phase-production-build") {
