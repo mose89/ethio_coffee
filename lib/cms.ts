@@ -2,7 +2,7 @@ import "server-only";
 import config from "@payload-config";
 import { cache } from "react";
 import { getPayload, type Where } from "payload";
-import type { Category, Media, PageContent, Post } from "@/payload-types";
+import type { Author, Category, Download, Media, PageContent, Post } from "@/payload-types";
 
 export const getPayloadClient = cache(() => getPayload({ config }));
 
@@ -106,3 +106,33 @@ export async function findRedirect(fromPath: string): Promise<string | null> {
   if (target && typeof target === "object" && target._status === "published" && target.slug) return `/resources/${target.slug}`;
   return null;
 }
+
+/** Team members marked “Show on About page”, in display order. */
+export const getTeam = cache(async (): Promise<Author[]> => {
+  try {
+    const payload = await getPayloadClient();
+    const res = await payload.find({ collection: "authors", where: { showOnAbout: { equals: true } }, sort: "sortOrder", depth: 1, limit: 12 });
+    return res.docs as Author[];
+  } catch {
+    return [];
+  }
+});
+
+/** Published downloads (metadata only; files are served through signed links). */
+export const getDownloads = cache(async (): Promise<Pick<Download, "id" | "slug" | "title" | "description" | "format" | "audience">[]> => {
+  try {
+    const payload = await getPayloadClient();
+    const res = await payload.find({
+      collection: "downloads",
+      where: { published: { equals: true } },
+      sort: "sortOrder",
+      depth: 0,
+      limit: 20,
+      overrideAccess: true,
+      select: { slug: true, title: true, description: true, format: true, audience: true },
+    });
+    return res.docs as Pick<Download, "id" | "slug" | "title" | "description" | "format" | "audience">[];
+  } catch {
+    return [];
+  }
+});

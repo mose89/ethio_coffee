@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
+import { DownloadList } from "@/components/Downloads";
+import { NewsletterBand } from "@/components/NewsletterBand";
 import { CategoryNav, PostGrid } from "@/components/ResourcesList";
-import { getActiveCategories, getPublishedPosts } from "@/lib/cms";
+import { getActiveCategories, getDownloads, getPublishedPosts } from "@/lib/cms";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -12,7 +14,7 @@ export const metadata = pageMetadata({
 });
 
 export default async function ResourcesPage() {
-  const [posts, categories] = await Promise.all([getPublishedPosts(), getActiveCategories()]);
+  const [posts, categories, downloads] = await Promise.all([getPublishedPosts(), getActiveCategories(), getDownloads()]);
   return (
     <>
       <section className="page-hero" aria-labelledby="page-title">
@@ -25,8 +27,18 @@ export default async function ResourcesPage() {
           </p>
         </div>
       </section>
-      <section className="section section-tight" aria-label="Articles">
+      {downloads.length > 0 && (
+        <section className="section section-tight" aria-labelledby="tools-title">
+          <div className="container">
+            <h2 id="tools-title">Free buyer tools</h2>
+            <p className="section-intro">Checklists and templates for buying Ethiopian coffee. Free in exchange for your email.</p>
+            <DownloadList downloads={downloads} />
+          </div>
+        </section>
+      )}
+      <section className="section section-tight" aria-labelledby="guides-title">
         <div className="container">
+          <h2 id="guides-title">Buying guides</h2>
           <CategoryNav categories={categories} />
           {posts.length ? (
             <PostGrid posts={posts} />
@@ -41,6 +53,7 @@ export default async function ResourcesPage() {
           )}
         </div>
       </section>
+      <NewsletterBand />
       <CtaBand title="Have a sourcing question? Ask us." />
     </>
   );

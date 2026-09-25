@@ -30,6 +30,10 @@ Other commands: `npm test` (form validation tests), `npm run lint` (TypeScript t
 
 - **Required for production:** `brand_name`, `site_url`, `operator_name`, `contact_email`. A build with `SITE_ENV=production` fails without them.
 - **Without `SITE_ENV=production`:** the site is a noindex **preview** with a banner.
+- **`contact_email` is a placeholder** (`hello@ethiopiancoffeesourcing.com`). Replace it with a real, monitored address on your own domain before launch.
+- **`whatsapp_number`** and **`whatsapp_message`** power the WhatsApp buttons (floating button on desktop, bottom bar on mobile, About and inquiry pages). Leave the number empty to hide them.
+- **`analytics_domain`**: set to your domain (for example `ethiopiancoffeesourcing.com`) after creating a site in [Plausible](https://plausible.io). The script and CSP entry are added only when it is set. Tracked events: `Inquiry`, `Lead`, `Download`, `WhatsApp click`, `CTA click`. Add them as custom-event goals in Plausible.
+- **Founders** are edited in the CMS under **Team** (name, role, bio, highlights, photo, LinkedIn). Starter content is in `content/team.json` and loaded by `npm run seed`.
 
 ## Hosting (recommended: Railway, one service with one volume)
 
@@ -42,6 +46,7 @@ The CMS needs a long-running Node server and a persistent disk for the database 
    - `PAYLOAD_SECRET` (random, 32+ characters)
    - `DATABASE_URL=file:/data/cms.db`
    - `MEDIA_DIR=/data/media`
+   - `DOWNLOADS_DIR=/data/downloads`
    - optionally `RESEND_API_KEY`, `INQUIRY_TO`, `INQUIRY_FROM`, `CMS_EMAIL_FROM`
 4. **Deploy.** Before sharing the URL, open the Railway shell and run:
    - `ADMIN_EMAIL=… ADMIN_PASSWORD=… npm run create-admin`, so nobody else can claim the first-user screen;
@@ -72,6 +77,18 @@ Delivery goes to every configured destination, and the buyer sees success only i
 | JSON webhook | `INQUIRY_WEBHOOK_URL` (+ `INQUIRY_WEBHOOK_SECRET`) |
 | JSON Lines file | `INQUIRY_FILE_STORE` |
 
+## Lead capture: buyer tools and updates
+
+- **Buyer tools** (`/resources`, home page, end of each article): a visitor gives name, email, company and business type, and gets the file immediately through a signed link that expires after 7 days (`/api/lead/download`). The files themselves are never publicly reachable. If Resend is configured, the link is also emailed.
+- **Updates sign-up** (newsletter band): email only; consent is stored with the exact wording shown.
+- Both are stored in the CMS under **Leads & subscribers**, and share the inquiry form's spam protection.
+- **Sending updates:** there is no automatic newsletter. `npm run backup` writes `subscribers.csv` containing only people who agreed to receive email; import that into your email tool. Never email people who only downloaded a file without ticking the box.
+- **The two starter files** live in `content/downloads/` and are uploaded by `npm run seed`. To change them, edit the sources in `content/downloads/src/` and rebuild:
+  - PDF checklist: `node content/downloads/src/build-pdf.cjs` (uses Playwright/Chromium);
+  - Excel template: `python3 content/downloads/src/build-xlsx.py` (needs `openpyxl`);
+  - then upload the new file over the old one in the CMS under **Downloads**.
+- **Sample requests:** the inquiry form asks whether the buyer wants a quotation, samples, both or advice. Links with `?request=samples` preselect it.
+
 ## Photography
 
 Real photos are managed in the CMS. `npm run images:import` loads two sources, recording each photo's source and licence, marking it as illustrative, and filling only empty photo slots and empty article featured images:
@@ -92,6 +109,7 @@ Until a slot has a photo, the site shows a decorative illustration, never a fake
 - `content.json`;
 - each article as HTML;
 - a database copy;
-- all uploaded images.
+- all uploaded images and download files;
+- `subscribers.csv` (people who agreed to receive updates).
 
 Download it regularly.

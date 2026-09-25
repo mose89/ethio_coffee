@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
+import { DownloadList } from "@/components/Downloads";
+import { NewsletterBand } from "@/components/NewsletterBand";
+import { TeamStrip } from "@/components/Team";
+import { TrustStrip } from "@/components/TrustStrip";
 import { CtaBand } from "@/components/CtaBand";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { Visual } from "@/components/Visual";
-import { asMedia, getPageContent, getPublishedPosts } from "@/lib/cms";
+import { asMedia, getDownloads, getPageContent, getPublishedPosts, getTeam } from "@/lib/cms";
 import { ORG_DESCRIPTION, site } from "@/lib/site";
 
 export const metadata = site.siteUrl
@@ -13,7 +17,7 @@ export const metadata = site.siteUrl
 export default async function HomePage() {
   const content = await getPageContent();
   const home = content?.home;
-  const posts = (await getPublishedPosts({ limit: 3 }).catch(() => [])) ?? [];
+  const [posts, team, downloads] = await Promise.all([getPublishedPosts({ limit: 3 }).catch(() => []), getTeam(), getDownloads()]);
 
   const jsonLd =
     site.siteUrl && site.brandName
@@ -94,6 +98,8 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <TrustStrip />
+
       <section className="section" aria-labelledby="paths-title">
         <div className="container">
           <p className="eyebrow">Two ways to buy</p>
@@ -136,17 +142,18 @@ export default async function HomePage() {
           <Visual media={asMedia(home?.introImage)} fallback="highlands" sizes="(min-width: 900px) 45vw, 100vw" className="split-visual" />
           <div className="prose">
             <p className="eyebrow">About us</p>
-            <h2 id="intro-title">{home?.introTitle || "Ethiopian coffee is all we do"}</h2>
+            <h2 id="intro-title">{home?.introTitle || "Built from our own search for a reliable exporter"}</h2>
             <p>
               {home?.introText ||
-                "We work closely with established Ethiopian coffee exporters. Our job is to understand what your business needs, find coffee that fits, and keep every step clear, so you always know what is confirmed and what happens next."}
+                "We are Norwegians with Ethiopian roots. Finding a reliable, compliant Ethiopian exporter took us time and hard lessons, so we built a network we trust, with a co-founder on the ground in Ethiopia for the past ten years. Now we use it to help other businesses buy with confidence."}
             </p>
             <p>
               The exporter supplies and ships the coffee. We find the right lots, coordinate samples and offers, and stay with your order
               until it leaves Ethiopia.
             </p>
+            <TeamStrip team={team} />
             <Link className="text-link" href="/about">
-              More about us <span aria-hidden="true">→</span>
+              Our story and the founders <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -217,6 +224,25 @@ export default async function HomePage() {
         </section>
       )}
 
+      {downloads.length > 0 && (
+        <section className="section section-stone" aria-labelledby="tools-title">
+          <div className="container">
+            <div className="section-head">
+              <div>
+                <p className="eyebrow">Free buyer tools</p>
+                <h2 id="tools-title">Buy Ethiopian coffee with fewer surprises</h2>
+              </div>
+              <Link className="text-link" href="/resources">
+                All resources <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+            <p className="section-intro">Practical tools we use ourselves. Free to download in exchange for your email.</p>
+            <DownloadList downloads={downloads} />
+          </div>
+        </section>
+      )}
+
+      <NewsletterBand />
       <CtaBand />
     </>
   );

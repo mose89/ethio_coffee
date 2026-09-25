@@ -3,43 +3,12 @@ import { NextResponse, type NextRequest } from "next/server";
 import { looksLikeSpam, validateInquiry, type FieldErrors } from "@/lib/inquiry";
 import { deliverInquiry } from "@/lib/delivery";
 import { site } from "@/lib/site";
+import { clientIp, rateLimited, turnstileOk } from "@/lib/abuse";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const MAX_BODY_BYTES = 20_000;
-const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 };
-// Best-effort, per-instance limiter. Pair with a host/CDN rate-limit rule for stronger protection.
-const recent = new Map<string, number[]>();
-
-function rateLimited(ip: string, now = Date.now()): boolean {
-  const hits = (recent.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT.windowMs);
-  hits.push(now);
-  recent.set(ip, hits);
-  if (recent.size > 5000) recent.clear();
-  return hits.length > RATE_LIMIT.max;
-}
-
-function clientIp(req: NextRequest): string {
-  return req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
-}
-
-async function turnstileOk(token: string, ip: string): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
-  try {
-    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      body: new URLSearchParams({ secret, response: token, remoteip: ip }),
-      signal: AbortSignal.timeout(8000),
-    });
-    const data = (await res.json()) as { success?: boolean };
-    return data.success === true;
-  } catch {
-    return false;
-  }
-}
 
 const FAILURE_MESSAGE = site.contactEmail
   ? `We couldn't receive your inquiry because of a problem on our side. Please try again in a few minutes, or email us at ${site.contactEmail}.`
@@ -70,8 +39,8 @@ export async function POST(req: NextRequest) {
     return respond(req, 415, { ok: false, message: "Unsupported submission format." });
   }
 
-  const ip = clientIp(req);
-  if (rateLimited(ip)) {
+  const ip = clientIp(req.headers);
+  if (rateLimited(`inquiry:${ip}`)) {
     return respond(req, 429, { ok: false, message: "Too many inquiries from your connection. Please wait a few minutes and try again." });
   }
 

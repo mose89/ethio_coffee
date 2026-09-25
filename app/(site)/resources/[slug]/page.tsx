@@ -3,9 +3,10 @@ import { draftMode, headers } from "next/headers";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { ArticleCard } from "@/components/ArticleCard";
+import { DownloadList } from "@/components/Downloads";
 import { Photo } from "@/components/Photo";
 import { extractHeadings, RichContent } from "@/components/RichContent";
-import { asMedia, findRedirect, getPayloadClient, getPost, getRelatedPosts } from "@/lib/cms";
+import { asMedia, findRedirect, getDownloads, getPayloadClient, getPost, getRelatedPosts } from "@/lib/cms";
 import { formatDate, isoDate } from "@/lib/format";
 import { site } from "@/lib/site";
 import type { Author, Category, Post } from "@/payload-types";
@@ -74,7 +75,7 @@ export default async function ArticlePage({ params }: Props) {
   const categories = (post.categories ?? []).filter((c): c is Category => typeof c === "object");
   const author = typeof post.author === "object" ? (post.author as Author | null) : null;
   const featured = asMedia(post.featuredImage);
-  const related = await getRelatedPosts(post);
+  const [related, downloads] = await Promise.all([getRelatedPosts(post), getDownloads()]);
   const headings = extractHeadings(post.content);
   const cta = CTA[(post.cta as keyof typeof CTA) || "general"] ?? CTA.general;
   const updated = post.contentUpdatedAt && post.publishedAt && post.contentUpdatedAt > post.publishedAt ? post.contentUpdatedAt : null;
@@ -183,6 +184,12 @@ export default async function ArticlePage({ params }: Props) {
                 </Link>
               </div>
             </aside>
+            {downloads.length > 0 && (
+              <aside className="article-tool" aria-labelledby="article-tool-title">
+                <p className="eyebrow" id="article-tool-title">Free buyer tool</p>
+                <DownloadList downloads={downloads.slice(0, 1)} />
+              </aside>
+            )}
             {author?.bio && (
               <div className="author-box">
                 <p className="author-name">About {author.name}</p>

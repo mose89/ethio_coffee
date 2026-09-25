@@ -36,12 +36,13 @@ export default function PrivacyPage() {
         )}
 
         <h2>What we collect</h2>
-        <p>When you send an inquiry, we receive the information you enter in the form:</p>
+        <p>When you send an inquiry, download a buyer tool or subscribe to updates, we receive the information you enter:</p>
         <ul>
           <li>your name, email address and company;</li>
           <li>the coffee type, destination country and approximate quantity you are interested in;</li>
           <li>anything you write in the message field;</li>
-          <li>the page of our website you sent the inquiry from.</li>
+          <li>for downloads and updates: your business type, which download you requested, and whether you agreed to receive updates by email;</li>
+          <li>the page of our website you sent the form from.</li>
         </ul>
         <p>
           Like most websites, our hosting provider processes technical information, such as your IP address and browser type, to deliver
@@ -53,6 +54,8 @@ export default function PrivacyPage() {
         <ul>
           <li>to reply to your inquiry and discuss your coffee requirement;</li>
           <li>to check with Ethiopian coffee exporters in our network what they can offer, and to arrange samples and quotations you ask for;</li>
+          <li>to send you the download you requested;</li>
+          <li>to send you crop updates and offers by email, only if you agreed to this (you can unsubscribe at any time, by replying to any email or contacting us);</li>
           <li>to keep a record of our business communications.</li>
         </ul>
         <p>
@@ -75,9 +78,14 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
+        <p>
+          If you contact us on WhatsApp, WhatsApp (Meta) processes that conversation under its own privacy terms.
+          {site.analyticsDomain && " We use Plausible Analytics, which measures visits without cookies and without collecting personal data."}
+        </p>
+
         <h2>Where it is stored</h2>
         <p>
-          Inquiries are stored in our website’s content management system on our hosting provider’s servers. Only people we authorise can
+          Inquiries, downloads and subscriptions are stored in our website’s content management system on our hosting provider’s servers. Only people we authorise can
           log in to read them.
         </p>
 

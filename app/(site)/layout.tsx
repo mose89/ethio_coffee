@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@/components/Analytics";
+import { ContactDock } from "@/components/ContactDock";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/lib/site";
@@ -47,8 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {!site.production && (
           <div className="preview-banner" role="note">
-            Preview build, not for publication. Business identity and contact details are not yet configured, and search engines are
-            asked not to index this version.
+            Preview version, not yet live. Search engines are asked not to index it.
           </div>
         )}
         <SiteHeader />
@@ -56,6 +57,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        <ContactDock whatsappHref={site.whatsappHref} />
+        <Analytics />
       </body>
     </html>
   );

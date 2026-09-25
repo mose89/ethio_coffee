@@ -68,9 +68,10 @@ export const PageContent: GlobalConfig = {
               name: "story",
               label: "Our story (optional)",
               type: "richText",
-              admin: { description: "A short founder or company story. Shown on the About page only when filled in. Use confirmed facts only." },
+              admin: { description: "Replaces the built-in story on the About page when filled in. Leave empty to keep the built-in story. Founder profiles are edited under Team." },
             },
-            image("founderPortrait", "Founder portrait", "Only a real photo of the founder."),
+            // Superseded by the Team collection; kept (hidden) so existing data and the schema stay intact.
+            { ...image("founderPortrait", "Founder portrait"), hidden: true } as Field,
           ],
         },
         {

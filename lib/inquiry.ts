@@ -9,6 +9,13 @@ export const PRODUCTS = {
   unsure: "Not sure yet",
 } as const;
 
+export const REQUEST_TYPES = {
+  quote: "Quotation",
+  samples: "Samples",
+  both: "Samples and quotation",
+  advice: "Advice / first conversation",
+} as const;
+
 export const UNITS = {
   kg: "kg",
   bags60: "60 kg bags",
@@ -18,9 +25,11 @@ export const UNITS = {
 
 export type Product = keyof typeof PRODUCTS;
 export type Unit = keyof typeof UNITS;
+export type RequestType = keyof typeof REQUEST_TYPES;
 
 export type Inquiry = {
   product: Product;
+  requestType: RequestType;
   name: string;
   email: string;
   company: string;
@@ -51,7 +60,10 @@ export function validateInquiry(form: FormLike): { ok: true; inquiry: Inquiry } 
   const errors: FieldErrors = {};
 
   const product = text(form, "product");
-  if (!(product in PRODUCTS)) errors.product = "Choose green coffee, roasted coffee or not sure yet.";
+  if (!Object.hasOwn(PRODUCTS, product)) errors.product = "Choose green coffee, roasted coffee or not sure yet.";
+
+  const requestRaw = text(form, "request_type") || "quote";
+  if (!Object.hasOwn(REQUEST_TYPES, requestRaw)) errors.product = "Choose what you would like from us.";
 
   const name = oneLine(text(form, "name"));
   if (!name) errors.name = "Enter your name.";
@@ -77,7 +89,7 @@ export function validateInquiry(form: FormLike): { ok: true; inquiry: Inquiry } 
     const amount = Number(rawAmount);
     if (!rawAmount || !Number.isFinite(amount) || amount <= 0 || amount > 10_000_000) {
       errors.quantity = "Enter an approximate quantity, or tick “I’m not sure yet”.";
-    } else if (!(unit in UNITS)) {
+    } else if (!Object.hasOwn(UNITS, unit)) {
       errors.quantity = "Choose a unit for the quantity.";
     } else {
       quantity = { amount, unit: unit as Unit };
@@ -94,6 +106,7 @@ export function validateInquiry(form: FormLike): { ok: true; inquiry: Inquiry } 
     ok: true,
     inquiry: {
       product: product as Product,
+      requestType: requestRaw as RequestType,
       name,
       email,
       company,

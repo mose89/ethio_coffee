@@ -1,0 +1,28 @@
+{
+  "_comment": "Founders, loaded into the CMS (Content → Team) by `npm run seed` if they don't exist yet. Edit them in the CMS afterwards.",
+  "members": [
+    {
+      "name": "Mose Gebreselassie",
+      "role": "Co-founder & Commercial Leader",
+      "bio": "Mose brings more than ten years of commercial experience in international trade and logistics, quality control and sales. Having lived in more than eleven countries and speaking more than seven languages, he understands your market as well as the origin. He leads our buyer relationships, from the first brief to the repeat order.",
+      "highlights": ["10+ years in trade, logistics, QC and sales", "Has lived in 11+ countries", "Speaks 7+ languages"],
+      "photo": "content/photos/team/mose-gebreselassie.webp",
+      "photoAlt": "Portrait of Mose Gebreselassie, co-founder of Ethiopian Coffee Sourcing",
+      "sortOrder": 1,
+      "showOnAbout": true,
+      "authorOf": [
+        "how-to-source-ethiopian-coffee-information-to-request",
+        "green-vs-roasted-ethiopian-coffee-supply-format",
+        "how-to-assess-coffee-samples-and-communicate-requirements"
+      ]
+    },
+    {
+      "name": "Natnael Samson",
+      "role": "Co-founder & Operations Leader",
+      "bio": "Natnael has lived in Ethiopia for the past ten years and built an extensive network there, which is now at the heart of the company. He is our team on the ground: in close contact with exporters, following your samples and shipments, and making sure what is agreed is what happens.",
+      "highlights": ["Based in Ethiopia for 10 years", "Extensive network on the ground", "Your contact point at origin"],
+      "sortOrder": 2,
+      "showOnAbout": true
+    }
+  ]
+}

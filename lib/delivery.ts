@@ -3,7 +3,7 @@ import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import config from "@payload-config";
 import { getPayload } from "payload";
-import { PRODUCTS, describeQuantity, type Inquiry } from "./inquiry";
+import { PRODUCTS, REQUEST_TYPES, describeQuantity, type Inquiry } from "./inquiry";
 
 /**
  * Delivers an inquiry to every configured destination. The submission counts
@@ -52,6 +52,7 @@ function summary(i: StoredInquiry): string {
     `Reference: ${i.reference}`,
     `Received: ${i.receivedAt}`,
     `Product: ${PRODUCTS[i.product]}`,
+    `Request: ${REQUEST_TYPES[i.requestType]}`,
     `Name: ${i.name}`,
     `Email: ${i.email}`,
     `Company: ${i.company}`,
@@ -66,7 +67,7 @@ function summary(i: StoredInquiry): string {
 
 async function sendEmail(i: StoredInquiry, env: NodeJS.ProcessEnv) {
   const to = env.INQUIRY_TO!.split(",").map((s) => s.trim()).filter(Boolean);
-  const subject = `New ${PRODUCTS[i.product].toLowerCase()} inquiry: ${i.company} (${i.country}) [${i.reference}]`.replace(/[\r\n]+/g, " ");
+  const subject = `New ${PRODUCTS[i.product].toLowerCase()} inquiry (${REQUEST_TYPES[i.requestType].toLowerCase()}): ${i.company} (${i.country}) [${i.reference}]`.replace(/[\r\n]+/g, " ");
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
@@ -108,6 +109,7 @@ async function storeInCms(i: StoredInquiry) {
     data: {
       reference: i.reference,
       product: i.product,
+      requestType: i.requestType,
       name: i.name,
       email: i.email,
       company: i.company,

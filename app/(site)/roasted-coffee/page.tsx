@@ -77,8 +77,8 @@ export default async function RoastedCoffeePage() {
               <Link className="button button-roasted" href="/inquiry?product=roasted">
                 Send a roasted coffee inquiry
               </Link>
-              <Link className="button button-outline" href="/green-coffee">
-                Looking for green coffee?
+              <Link className="button button-outline" href="/inquiry?product=roasted&request=samples">
+                Request samples
               </Link>
             </div>
           </div>

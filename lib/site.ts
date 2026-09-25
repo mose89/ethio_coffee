@@ -16,6 +16,7 @@ const siteUrl = clean(config.site_url).replace(/\/+$/, "");
 export const missingForProduction = REQUIRED_FOR_PRODUCTION.filter((k) => !clean(config[k]));
 
 const whatsappDigits = clean(config.whatsapp_number).replace(/\D/g, "");
+const whatsappText = clean((config as { whatsapp_message?: string }).whatsapp_message);
 const phone = clean(config.phone_number);
 
 export const site = {
@@ -30,14 +31,14 @@ export const site = {
   operatorCountry: clean(config.operator_country),
   contactEmail: clean(config.contact_email),
   whatsappNumber: clean(config.whatsapp_number),
-  whatsappHref: whatsappDigits ? `https://wa.me/${whatsappDigits}` : "",
+  whatsappHref: whatsappDigits ? `https://wa.me/${whatsappDigits}${whatsappText ? `?text=${encodeURIComponent(whatsappText)}` : ""}` : "",
   phoneNumber: phone,
   phoneHref: phone ? `tel:${phone.replace(/[^\d+]/g, "")}` : "",
   linkedinUrl: clean(config.linkedin_url),
-  founderName: clean(config.founder_name),
-  founderBio: clean(config.founder_bio),
   responseTime: clean(config.response_time),
   turnstileSiteKey: clean(config.turnstile_site_key),
+  /** Plausible Analytics domain (cookieless). Empty = no analytics loaded. */
+  analyticsDomain: clean((config as { analytics_domain?: string }).analytics_domain),
   emailNotifications: Boolean(config.email_notifications),
 };
 

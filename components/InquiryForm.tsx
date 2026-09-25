@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { track } from "@/lib/analytics";
 
 type FieldName = "product" | "name" | "email" | "company" | "country" | "quantity" | "message";
 type Errors = Partial<Record<FieldName, string>>;
@@ -26,6 +27,7 @@ export function InquiryForm({
   turnstileSiteKey: string;
 }) {
   const [product, setProduct] = useState("");
+  const [request, setRequest] = useState("quote");
   const [unsure, setUnsure] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
@@ -39,6 +41,8 @@ export function InquiryForm({
     if (startedRef.current) startedRef.current.value = String(Date.now());
     const preset = new URLSearchParams(window.location.search).get("product");
     if (preset && ["green", "roasted", "unsure"].includes(preset)) setProduct(preset);
+    const presetRequest = new URLSearchParams(window.location.search).get("request");
+    if (presetRequest && ["quote", "samples", "both", "advice"].includes(presetRequest)) setRequest(presetRequest);
   }, []);
 
   useEffect(() => {
@@ -65,6 +69,7 @@ export function InquiryForm({
       const body = (await res.json().catch(() => null)) as { ok?: boolean; message?: string; errors?: Errors; reference?: string } | null;
       if (res.ok && body?.ok) {
         setReference(body.reference && body.reference !== "received" ? body.reference : "");
+        track("Inquiry", { product: product || "none", request });
         setStatus("success");
         window.scrollTo({ top: 0 });
         return;
@@ -156,6 +161,23 @@ export function InquiryForm({
                 <span className="choice-label">{label}</span>
                 <span className="choice-sub">{sub}</span>
               </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset className="field" id="field-request">
+        <legend>What would you like from us?</legend>
+        <div className="pill-row">
+          {[
+            ["quote", "A quotation"],
+            ["samples", "Samples first"],
+            ["both", "Samples and a quotation"],
+            ["advice", "Advice to get started"],
+          ].map(([value, label]) => (
+            <label key={value} className="pill">
+              <input type="radio" name="request_type" value={value} checked={request === value} onChange={() => setRequest(value)} />
+              <span>{label}</span>
             </label>
           ))}
         </div>

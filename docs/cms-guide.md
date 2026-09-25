@@ -43,9 +43,35 @@ The **SEO** section below the content is optional. If you leave it empty, the si
 
 ## Editing pages and photos
 
-Go to **Content → Page content**. The tabs (Home, Green coffee, Roasted coffee, About us, Sourcing process) hold the main headlines, introductions and photos. **Empty fields use the built-in wording**, so you only fill in what you want to change. On the About us tab you can add a short story and a founder portrait (real photos only).
+Go to **Content → Page content**. The tabs (Home, Green coffee, Roasted coffee, About us, Sourcing process) hold the main headlines, introductions and photos. **Empty fields use the built-in wording**, so you only fill in what you want to change. On the About us tab, **Our story** replaces the built-in story when filled in; leave it empty to keep the current one. Founder profiles and photos are under **Team**.
 
 Other wording (FAQs, process steps, legal text) is in the code; ask a developer to change it.
+
+## Team (founders)
+
+**Content → Team** holds the people shown on the About page and home page, and the authors of articles.
+
+- **Role**, **Bio** and up to four short **Highlights** (for example "Speaks 7+ languages") are shown on the About page.
+- **Photo**: a real portrait of that person. Without one, their initials are shown.
+- **Show on About page** and **Sort order** control who appears and in which order.
+- Every article needs an author from this list. The three starter drafts are attributed to Mose Gebreselassie: read them and edit anything you wouldn't say yourself before publishing.
+
+## Buyer tools (downloads)
+
+**Content → Downloads** holds the free files offered in exchange for contact details (PDF, Excel or Word).
+
+- Give each a clear **Title** and a one or two sentence **Description** of what the buyer gets.
+- Tick **Published** to offer it on the site. Unticked files are hidden and their links stop working.
+- To replace a file, open it and upload the new version. Existing links from the last 7 days then deliver the new file.
+- The files are private: they are only reachable through the form.
+
+## Leads & subscribers
+
+**Leads & subscribers** lists everyone who downloaded a buyer tool or signed up for updates, with their business type and the page they came from.
+
+- **Follow up personally** on promising downloads (an importer or roaster downloading the checklist is often planning a purchase).
+- **Only send marketing email to people with **Marketing consent** ticked.** The wording they agreed to is saved with each record.
+- To send updates, run `npm run backup` on the server and import `subscribers.csv` into your email tool (for example Brevo or Mailchimp). Remove anyone who asks to unsubscribe, in both places.
 
 ## Photos: the rules
 
@@ -56,15 +82,16 @@ Other wording (FAQs, process steps, legal text) is in the code; ask a developer 
 
 ## Inquiries
 
-Inquiries from the website form appear under **Inquiries**. Reply from your own email; use **Status** (New, Replied, Closed) and **Notes** to keep track.
+Inquiries from the website form appear under **Inquiries**. **Request** shows whether the buyer wants a quotation, samples, both, or a first conversation. Reply from your own email; use **Status** (New, Replied, Closed) and **Notes** to keep track.
 
 ## Backing up and exporting
 
 - On the server, `npm run backup` writes a folder in `backups/` with:
-  - `content.json`: everything, including drafts, images metadata, page content and inquiries;
+  - `content.json`: everything, including drafts, images metadata, page content, inquiries and leads;
+  - `subscribers.csv`: people who agreed to receive updates;
   - each article as a standalone **HTML** file;
   - a copy of the database;
-  - all uploaded images.
+  - all uploaded images and download files.
 
   Download that folder regularly and keep it somewhere safe.
 - Individual items can also be read through the CMS API while logged in (for example `/api/posts?limit=100`).

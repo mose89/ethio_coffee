@@ -10,15 +10,16 @@ if (site.production && missingForProduction.length) {
 }
 
 const turnstile = site.turnstileSiteKey ? " https://challenges.cloudflare.com" : "";
+const analytics = site.analyticsDomain ? " https://plausible.io" : "";
 
 // Public website CSP. Next.js injects small inline bootstrapping scripts and font styles, hence 'unsafe-inline'.
 const siteCsp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${turnstile}`,
+  `script-src 'self' 'unsafe-inline'${turnstile}${analytics}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  `connect-src 'self'${analytics}`,
   `frame-src ${turnstile ? turnstile.trim() : "'none'"}`,
   "form-action 'self'",
   "base-uri 'self'",

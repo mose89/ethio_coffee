@@ -10,7 +10,9 @@ import { buildConfig, type Field } from "payload";
 import sharp from "sharp";
 import { Authors } from "./cms/collections/Authors";
 import { Categories } from "./cms/collections/Categories";
+import { Downloads } from "./cms/collections/Downloads";
 import { Inquiries } from "./cms/collections/Inquiries";
+import { Leads } from "./cms/collections/Leads";
 import { Media } from "./cms/collections/Media";
 import { Posts } from "./cms/collections/Posts";
 import { Users } from "./cms/collections/Users";
@@ -35,7 +37,7 @@ export default buildConfig({
     meta: { titleSuffix: ` | ${site.brand} CMS` },
     importMap: { baseDir: dirname },
   },
-  collections: [Posts, Categories, Authors, Media, Inquiries, Users],
+  collections: [Posts, Categories, Authors, Downloads, Media, Inquiries, Leads, Users],
   globals: [PageContent],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures, EXPERIMENTAL_TableFeature()],

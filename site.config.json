@@ -1,19 +1,19 @@
 {
-  "_comment": "Public business identity used by the site (lib/site.ts). Leave a value empty (\"\") if it is not confirmed; optional sections are omitted automatically. Production builds (SITE_ENV=production) fail if any required value is empty. Never put secrets here.",
+  "_comment": "Public business identity used by the site (lib/site.ts). Leave a value empty (\"\") if it is not confirmed; optional sections are omitted automatically. Production builds (SITE_ENV=production) fail if any required value is empty. Never put secrets here. contact_email is a PLACEHOLDER until the domain and mailbox exist.",
 
-  "brand_name": "",
+  "brand_name": "Ethiopian Coffee Sourcing",
   "site_url": "",
   "operator_name": "",
   "operator_country": "",
-  "contact_email": "",
+  "contact_email": "hello@ethiopiancoffeesourcing.com",
 
-  "whatsapp_number": "",
+  "whatsapp_number": "+47 973 44 353",
+  "whatsapp_message": "Hello, I'm interested in sourcing Ethiopian coffee.",
   "phone_number": "",
   "linkedin_url": "",
-  "founder_name": "",
-  "founder_bio": "",
 
   "response_time": "one business day",
   "turnstile_site_key": "",
+  "analytics_domain": "",
   "email_notifications": false
 }

@@ -1,105 +1,162 @@
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
-import { Photo } from "@/components/Photo";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { RichContent } from "@/components/RichContent";
 import { RoleSummary } from "@/components/RoleSummary";
+import { TeamGrid } from "@/components/Team";
 import { Visual } from "@/components/Visual";
-import { asMedia, getPageContent } from "@/lib/cms";
+import { asMedia, getPageContent, getTeam } from "@/lib/cms";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   path: "/about",
-  title: "About us",
+  title: "About us: Norwegian–Ethiopian coffee sourcing",
   description:
-    "A sourcing business dedicated to Ethiopian green and roasted coffee. We connect international trade buyers with established Ethiopian exporters and manage the process from brief to shipment.",
+    "Founded by Norwegians with Ethiopian roots, with a team on the ground in Ethiopia. We built a network of reliable, compliant Ethiopian exporters, and now help other businesses source with confidence.",
 });
 
-const SERVE = [
-  { title: "Importers and green traders", body: "Adding Ethiopian coffees to their offer, or looking for new export partners." },
-  { title: "Roasters", body: "Buying from origin, or ready to start, with one dependable contact for Ethiopia." },
-  { title: "Distributors and retailers", body: "Supplying Ethiopian coffee, green or roasted, to their own customers." },
-  { title: "Hospitality", body: "Hotels, restaurant groups and cafés serving Ethiopian coffee." },
+const WHY = [
+  {
+    title: "Both sides of the trade",
+    body: "Norwegian business standards and Ethiopian roots. We understand what international buyers expect, and how things work at origin.",
+  },
+  {
+    title: "On the ground in Ethiopia",
+    body: "Our operations leader has lived in Ethiopia for ten years. Samples, questions and shipments are followed up locally, not from a distance.",
+  },
+  {
+    title: "A network we trust",
+    body: "Exporters we know, chosen because they deliver: reliable quality, correct paperwork, communication you can count on.",
+  },
+  {
+    title: "Your language, your market",
+    body: "Communication in more than seven languages, and experience from more than eleven countries. You get clear answers, in terms that fit your market.",
+  },
 ];
 
 const HELP = [
   { title: "A clear brief", body: "We help you turn “we’d like Ethiopian coffee” into a precise brief: origin, process, quality, volume, destination and timing." },
-  { title: "More than one exporter’s list", body: "We check your brief with the right exporters in our network, not just a single company’s offer." },
+  { title: "The right exporters", body: "We check your brief with exporters in our network who fit it, not just a single company’s offer list." },
   { title: "Straight answers", body: "We pass on what the exporter provides, say plainly what is confirmed and what isn’t, and chase the follow-up questions for you." },
   { title: "Samples and offers, on track", body: "We keep samples, feedback and quotations moving, so you decide on facts, not guesswork." },
   { title: "Follow-through", body: "Once you order, we stay involved, keeping you and the exporter in step through to shipment." },
 ];
 
 export default async function AboutPage() {
-  const about = (await getPageContent())?.about;
-  const portrait = asMedia(about?.founderPortrait);
+  const [content, team] = await Promise.all([getPageContent(), getTeam()]);
+  const about = content?.about;
   const hasStory = Boolean(about?.story?.root?.children?.length);
+
+  const jsonLd =
+    site.siteUrl && site.brandName && team.length
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": `${site.siteUrl}/#organization`,
+          name: site.brandName,
+          url: `${site.siteUrl}/`,
+          founder: team.map((p) => ({ "@type": "Person", name: p.name, ...(p.role ? { jobTitle: p.role } : {}) })),
+        }
+      : null;
 
   return (
     <>
+      {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />}
       <section className="page-hero page-hero-media" aria-labelledby="page-title">
         <div className="container page-hero-grid">
           <div className="page-hero-copy">
             <p className="eyebrow">About us</p>
-            <h1 id="page-title">{about?.heroTitle || "Your partner for sourcing Ethiopian coffee"}</h1>
+            <h1 id="page-title">{about?.heroTitle || "We built the exporter network we wish we’d had"}</h1>
             <p className="lead">
               {about?.heroIntro ||
-                "We’re a sourcing business dedicated to Ethiopian coffee, green and roasted. Through established relationships with Ethiopian exporters, we help international buyers find the right coffee, and we keep every step clear from first inquiry to shipment."}
+                "Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Today we have a network we trust, and we use it to help other businesses source Ethiopian coffee with confidence."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry">
                 Tell us what you’re looking for
               </Link>
+              {site.whatsappHref && (
+                <a className="button button-outline" href={site.whatsappHref} target="_blank" rel="noopener">
+                  Chat on WhatsApp
+                </a>
+              )}
             </div>
           </div>
           <Visual media={asMedia(about?.heroImage)} fallback="highlands" sizes="(min-width: 960px) 40vw, 100vw" priority className="page-hero-visual" />
         </div>
       </section>
 
-      <section className="section" aria-labelledby="what-title">
+      <section className="section" aria-labelledby="story-title">
         <div className="container split">
           <div>
-            <p className="eyebrow">What we do</p>
-            <h2 id="what-title">Ethiopian coffee, and nothing else</h2>
+            <p className="eyebrow">Our story</p>
+            <h2 id="story-title">From a hard search to a trusted network</h2>
           </div>
-          <div className="prose">
-            <p>
-              We help businesses around the world buy Ethiopian coffee: <Link href="/green-coffee">green coffee</Link> for importers and
-              roasters, and <Link href="/roasted-coffee">roasted coffee</Link> for distributors, retailers and hospitality. Coffee is our only
-              product, and Ethiopia our only origin.
-            </p>
-            <p>
-              We work through established relationships with Ethiopian coffee exporters. They supply and export the coffee; we make sure it’s
-              the right coffee for you, and that the path from first sample to shipment is clear, with no surprises about who does what.
-            </p>
+          <div className="prose story">
+            {hasStory ? (
+              <RichContent data={about!.story!} />
+            ) : (
+              <>
+                <p>
+                  We are Norwegians with Ethiopian roots, so we know Ethiopian coffee from both sides: the culture it comes from, and the
+                  standards international buyers expect.
+                </p>
+                <p>
+                  When we set out to source Ethiopian coffee ourselves, we learned how hard it is to find an exporter that is both reliable
+                  and fully compliant: quality that matches the sample, paperwork that is right first time, and communication you can count
+                  on. It took time, persistence and a presence on the ground.
+                </p>
+                <p>
+                  So we built the network we had been looking for. One of us has lived in Ethiopia for the past ten years and built an
+                  extensive network there; the other brings more than a decade in international trade, logistics, quality
+                  control and sales. Together, we got to know exporters personally and learned which ones deliver.
+                </p>
+                <p className="story-emphasis">
+                  Now we put that network to work for other businesses, so you get the right Ethiopian coffee without the years of searching
+                  it took us.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>
 
-      <section className="section section-stone" aria-labelledby="serve-title">
+      {team.length > 0 && (
+        <section className="section section-stone" aria-labelledby="team-title">
+          <div className="container">
+            <p className="eyebrow">The founders</p>
+            <h2 id="team-title">The people you’ll work with</h2>
+            <TeamGrid team={team} />
+          </div>
+        </section>
+      )}
+
+      <section className="section" aria-labelledby="why-title">
         <div className="container">
-          <p className="eyebrow">Whom we serve</p>
-          <h2 id="serve-title">Built for the coffee trade</h2>
+          <p className="eyebrow">Why buyers work with us</p>
+          <h2 id="why-title">What makes us different</h2>
           <ul className="topic-grid topic-grid-4">
-            {SERVE.map((s) => (
-              <li key={s.title} className="topic">
-                <h3>{s.title}</h3>
-                <p>{s.body}</p>
+            {WHY.map((w) => (
+              <li key={w.title} className="topic">
+                <h3>{w.title}</h3>
+                <p>{w.body}</p>
               </li>
             ))}
           </ul>
+          <p className="section-note">
+            We don’t publish our exporter partners’ names. We introduce the right exporter when we propose a coffee, and every quotation
+            states exactly who sells to you.
+          </p>
         </div>
       </section>
 
-      <section className="section" aria-labelledby="help-title">
+      <section className="section section-stone" aria-labelledby="help-title">
         <div className="container split">
           <div>
             <p className="eyebrow">How we help</p>
-            <h2 id="help-title">Navigating sourcing from Ethiopia</h2>
-            <p className="muted">
-              Buying from origin means grades, samples, shipping terms, documents and timing. We guide you through each of them.
-            </p>
+            <h2 id="help-title">Buying from origin, made straightforward</h2>
+            <p className="muted">Grades, samples, shipping terms, documents and timing. We guide you through each of them.</p>
           </div>
           <ol className="help-list">
             {HELP.map((h) => (
@@ -111,20 +168,6 @@ export default async function AboutPage() {
           </ol>
         </div>
       </section>
-
-      {(hasStory || site.founderName || portrait) && (
-        <section className="section section-stone" aria-labelledby="story-title">
-          <div className={`container ${portrait ? "media-split" : "narrow"}`}>
-            {portrait && <Photo media={portrait} sizes="(min-width: 900px) 40vw, 100vw" className="split-visual portrait" />}
-            <div className="prose">
-              <p className="eyebrow">Our story</p>
-              <h2 id="story-title">{site.founderName ? `Founded by ${site.founderName}` : "Our story"}</h2>
-              {site.founderBio && <p>{site.founderBio}</p>}
-              {hasStory && <RichContent data={about!.story!} />}
-            </div>
-          </div>
-        </section>
-      )}
 
       <section className="section" aria-labelledby="role-title">
         <div className="container">
@@ -153,32 +196,33 @@ export default async function AboutPage() {
         <div className="container split">
           <div>
             <p className="eyebrow">Contact</p>
-            <h2 id="contact-title">Get in touch</h2>
+            <h2 id="contact-title">Talk to us</h2>
           </div>
           <div className="prose">
             <p>
               The quickest way to start is our <Link href="/inquiry">inquiry form</Link>. Tell us the coffee type, destination and a rough
-              volume, and we’ll reply{site.responseTime ? ` within ${site.responseTime}` : ""}.
+              volume, and we’ll reply{site.responseTime ? ` within ${site.responseTime}` : ""}. Prefer to chat? Message us on WhatsApp.
             </p>
-            {(site.contactEmail || site.whatsappHref || site.phoneHref) && (
-              <ul className="contact-list">
-                {site.contactEmail && (
-                  <li>
-                    Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
-                  </li>
-                )}
-                {site.whatsappHref && (
-                  <li>
-                    WhatsApp: <a href={site.whatsappHref} rel="noopener">{site.whatsappNumber}</a>
-                  </li>
-                )}
-                {site.phoneHref && (
-                  <li>
-                    Phone: <a href={site.phoneHref}>{site.phoneNumber}</a>
-                  </li>
-                )}
-              </ul>
-            )}
+            <ul className="contact-list">
+              {site.contactEmail && (
+                <li>
+                  Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+                </li>
+              )}
+              {site.whatsappHref && (
+                <li>
+                  WhatsApp:{" "}
+                  <a href={site.whatsappHref} target="_blank" rel="noopener">
+                    {site.whatsappNumber}
+                  </a>
+                </li>
+              )}
+              {site.phoneHref && (
+                <li>
+                  Phone: <a href={site.phoneHref}>{site.phoneNumber}</a>
+                </li>
+              )}
+            </ul>
             {site.operatorName && (
               <p className="muted">
                 {site.brandName || "This website"} is operated by {site.operatorName}

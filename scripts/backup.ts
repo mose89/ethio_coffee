@@ -1,10 +1,12 @@
 /**
  * Creates a timestamped backup in ./backups/<timestamp>/:
  *   - content.json    all articles (including drafts), categories, authors, image records,
- *                     redirects, page content and inquiries, readable by any tool
+ *                     redirects, page content, inquiries, leads and downloads, readable by any tool
+ *   - subscribers.csv people who agreed to receive updates by email (for sending the newsletter)
  *   - articles/*.html each article as standalone HTML, easy to read or move to another system
  *   - cms.db          a consistent copy of the SQLite database (local database only)
  *   - media/          the uploaded image files
+ *   - downloads/      the buyer-tool files (PDF, XLSX…)
  *
  *   npm run backup
  */
@@ -21,7 +23,7 @@ const stamp = new Date().toISOString().replace(/[:.]/g, "-");
 const dir = path.resolve(process.cwd(), "backups", stamp);
 fs.mkdirSync(path.join(dir, "articles"), { recursive: true });
 
-const all = async (collection: "posts" | "categories" | "authors" | "media" | "redirects" | "inquiries") =>
+const all = async (collection: "posts" | "categories" | "authors" | "media" | "redirects" | "inquiries" | "downloads") =>
   (await payload.find({ collection, limit: 0, pagination: false, depth: 0, draft: collection === "posts" })).docs;
 
 const posts = (await payload.find({ collection: "posts", limit: 0, pagination: false, depth: 0, draft: true })).docs;
@@ -34,8 +36,21 @@ const out = {
   redirects: await all("redirects"),
   pageContent: await payload.findGlobal({ slug: "page-content", depth: 0 }),
   inquiries: await all("inquiries"),
+  leads: (await payload.find({ collection: "leads", limit: 0, pagination: false, depth: 0, sort: "createdAt" })).docs,
+  downloads: await all("downloads"),
 };
 fs.writeFileSync(path.join(dir, "content.json"), JSON.stringify(out, null, 2));
+
+// Only people who ticked the consent box (or subscribed directly) may receive marketing email.
+const csvCell = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+const subscribers = new Map<string, (typeof out.leads)[number]>();
+for (const l of out.leads) if (l.marketingConsent && !subscribers.has(l.email)) subscribers.set(l.email, l);
+fs.writeFileSync(
+  path.join(dir, "subscribers.csv"),
+  ["email,name,company,buyer_type,signed_up", ...[...subscribers.values()].map((l) =>
+    [l.email, l.name, l.company, l.buyerType, l.createdAt].map(csvCell).join(","),
+  )].join("\n") + "\n",
+);
 
 const esc = (v: unknown) => String(v ?? "").replace(/[&<>"]/g, (c) => `&#${c.charCodeAt(0)};`);
 for (const p of posts) {
@@ -55,6 +70,8 @@ if (!dbUrl || dbUrl.startsWith("file:")) {
 
 const mediaDir = process.env.MEDIA_DIR || path.resolve(process.cwd(), "media");
 if (fs.existsSync(mediaDir)) fs.cpSync(mediaDir, path.join(dir, "media"), { recursive: true });
+const downloadsDir = process.env.DOWNLOADS_DIR || path.resolve(process.cwd(), "downloads");
+if (fs.existsSync(downloadsDir)) fs.cpSync(downloadsDir, path.join(dir, "downloads"), { recursive: true });
 
 payload.logger.info(`backup: written to ${dir}`);
 process.exit(0);

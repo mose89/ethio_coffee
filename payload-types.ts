@@ -70,8 +70,10 @@ export interface Config {
     posts: Post;
     categories: Category;
     authors: Author;
+    downloads: Download;
     media: Media;
     inquiries: Inquiry;
+    leads: Lead;
     users: User;
     redirects: Redirect;
     'payload-kv': PayloadKv;
@@ -84,8 +86,10 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     authors: AuthorsSelect<false> | AuthorsSelect<true>;
+    downloads: DownloadsSelect<false> | DownloadsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
+    leads: LeadsSelect<false> | LeadsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -287,7 +291,7 @@ export interface Category {
   createdAt: string;
 }
 /**
- * Real people only. Articles without an author are attributed to the business.
+ * Real people only. Tick “Show on About page” to feature someone in the founders section. Team members can also be article authors.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "authors".
@@ -297,14 +301,61 @@ export interface Author {
   name: string;
   slug: string;
   /**
-   * e.g. Founder
+   * e.g. Co-founder & Commercial Leader
    */
   role?: string | null;
   bio?: string | null;
+  /**
+   * Short facts shown as bullet points, e.g. “10+ years in international trade”.
+   */
+  highlights?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * A real photo of this person. Leave empty to show their initials.
+   */
   photo?: (number | null) | Media;
   linkedinUrl?: string | null;
+  showOnAbout?: boolean | null;
+  /**
+   * Lower numbers appear first.
+   */
+  sortOrder?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * Guides, checklists and templates visitors can download after leaving their email. Tick “Published” to show one on the site.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "downloads".
+ */
+export interface Download {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  /**
+   * Shown to visitors, e.g. “PDF, 3 pages” or “Excel template”.
+   */
+  format?: string | null;
+  audience?: ('all' | 'green' | 'roasted') | null;
+  published?: boolean | null;
+  sortOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * Inquiries sent through the website. Reply from your email; use Status to keep track.
@@ -317,6 +368,7 @@ export interface Inquiry {
   reference?: string | null;
   status?: ('new' | 'replied' | 'closed') | null;
   product?: ('green' | 'roasted' | 'unsure') | null;
+  requestType?: ('quote' | 'samples' | 'both' | 'advice') | null;
   name?: string | null;
   email?: string | null;
   company?: string | null;
@@ -327,6 +379,32 @@ export interface Inquiry {
   /**
    * Private notes.
    */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Downloads and newsletter sign-ups. Only email people about updates if “Marketing consent” is ticked.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads".
+ */
+export interface Lead {
+  id: number;
+  email: string;
+  name?: string | null;
+  company?: string | null;
+  buyerType?: ('importer' | 'roaster' | 'distributor' | 'retailer' | 'hospitality' | 'other') | null;
+  /**
+   * Which download or form this came from.
+   */
+  source?: string | null;
+  marketingConsent?: boolean | null;
+  /**
+   * The exact wording the person agreed to.
+   */
+  consentText?: string | null;
+  sourcePage?: string | null;
   notes?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -413,12 +491,20 @@ export interface PayloadLockedDocument {
         value: number | Author;
       } | null)
     | ({
+        relationTo: 'downloads';
+        value: number | Download;
+      } | null)
+    | ({
         relationTo: 'media';
         value: number | Media;
       } | null)
     | ({
         relationTo: 'inquiries';
         value: number | Inquiry;
+      } | null)
+    | ({
+        relationTo: 'leads';
+        value: number | Lead;
       } | null)
     | ({
         relationTo: 'users';
@@ -517,10 +603,42 @@ export interface AuthorsSelect<T extends boolean = true> {
   slug?: T;
   role?: T;
   bio?: T;
+  highlights?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   photo?: T;
   linkedinUrl?: T;
+  showOnAbout?: T;
+  sortOrder?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "downloads_select".
+ */
+export interface DownloadsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  description?: T;
+  format?: T;
+  audience?: T;
+  published?: T;
+  sortOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -588,12 +706,30 @@ export interface InquiriesSelect<T extends boolean = true> {
   reference?: T;
   status?: T;
   product?: T;
+  requestType?: T;
   name?: T;
   email?: T;
   company?: T;
   country?: T;
   quantity?: T;
   message?: T;
+  sourcePage?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads_select".
+ */
+export interface LeadsSelect<T extends boolean = true> {
+  email?: T;
+  name?: T;
+  company?: T;
+  buyerType?: T;
+  source?: T;
+  marketingConsent?: T;
+  consentText?: T;
   sourcePage?: T;
   notes?: T;
   updatedAt?: T;
@@ -759,7 +895,7 @@ export interface PageContent {
      */
     heroImage?: (number | null) | Media;
     /**
-     * A short founder or company story. Shown on the About page only when filled in. Use confirmed facts only.
+     * Replaces the built-in story on the About page when filled in. Leave empty to keep the built-in story. Founder profiles are edited under Team.
      */
     story?: {
       root: {
@@ -777,7 +913,7 @@ export interface PageContent {
       [k: string]: unknown;
     } | null;
     /**
-     * Only a real photo of the founder.
+     * Leave empty to show the built-in design without a photo.
      */
     founderPortrait?: (number | null) | Media;
   };
