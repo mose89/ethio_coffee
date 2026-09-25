@@ -51,13 +51,13 @@ function respond(req: NextRequest, status: number, body: { ok: boolean; message?
   if (wantsJson) return NextResponse.json(body, { status, headers: noStore });
 
   // Fallback for browsers without JavaScript: redirect on success, simple page on error.
-  if (body.ok) return NextResponse.redirect(new URL("/inquiry/thanks/", req.url), { status: 303, headers: noStore });
+  if (body.ok) return NextResponse.redirect(new URL("/inquiry/thanks", req.url), { status: 303, headers: noStore });
   const items = body.errors ? Object.values(body.errors) : [body.message ?? "Something went wrong."];
   const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
   const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Please check your inquiry</title></head>
 <body style="font-family:system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1rem;line-height:1.6;color:#1F1A17;background:#FAF7F2">
 <h1>Your inquiry was not sent</h1><ul>${items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
-<p><a href="/inquiry/">Go back to the inquiry form</a></p></body></html>`;
+<p><a href="/inquiry">Go back to the inquiry form</a></p></body></html>`;
   return new NextResponse(html, { status, headers: { "Content-Type": "text/html; charset=utf-8", ...noStore } });
 }
 

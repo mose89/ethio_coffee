@@ -12,7 +12,7 @@ const valid = {
   quantity_amount: "40",
   quantity_unit: "bags60",
   message: "Washed, grade 1",
-  source_page: "/inquiry/?product=green",
+  source_page: "/inquiry?product=green",
 };
 
 test("accepts a complete inquiry and normalises it", () => {

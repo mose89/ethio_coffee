@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export function CtaBand({
   title = "Tell us what you’re looking for",
-  href = "/inquiry/",
+  href = "/inquiry",
   label = "Send an inquiry",
   cue,
 }: {

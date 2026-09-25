@@ -1,9 +1,20 @@
 import type { MetadataRoute } from "next";
+import { getActiveCategories, getPublishedPosts } from "@/lib/cms";
 import { site } from "@/lib/site";
 
-const PATHS = ["/", "/green-coffee/", "/roasted-coffee/", "/how-it-works/", "/inquiry/", "/privacy/"];
+export const dynamic = "force-dynamic";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const PATHS = ["/", "/green-coffee", "/roasted-coffee", "/about", "/how-it-works", "/resources", "/inquiry", "/privacy"];
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (!site.indexable) return [];
-  return PATHS.map((p) => ({ url: `${site.siteUrl}${p}` }));
+  const [posts, categories] = await Promise.all([getPublishedPosts(), getActiveCategories()]);
+  return [
+    ...PATHS.map((p) => ({ url: `${site.siteUrl}${p === "/" ? "/" : p}` })),
+    ...categories.map((c) => ({ url: `${site.siteUrl}/resources/category/${c.slug}` })),
+    ...posts.map((p) => ({
+      url: `${site.siteUrl}/resources/${p.slug}`,
+      lastModified: p.contentUpdatedAt || p.publishedAt || undefined,
+    })),
+  ];
 }

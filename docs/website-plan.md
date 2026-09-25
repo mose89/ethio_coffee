@@ -17,6 +17,17 @@ Placeholders in draft copy use `{{double_braces}}`. Nothing in `{{…}}` may go 
 
 ---
 
+## Revision 2, 25 September 2026: CMS, Resources and imagery
+
+This revision supersedes the "no CMS / no articles" parts of the launch scope above.
+
+- **Added:** Payload CMS 3 inside the Next.js app (`/admin`), a Resources section, a dedicated About page, imagery slots and a licensed-photo import.
+- **Where to look:** `README.md` (hosting and operations) and `docs/cms-guide.md` (editing).
+- **Starter articles:** three researched articles are loaded as **drafts**, to be reviewed before publishing.
+- **Further ideas:** `docs/content-ideas.md`.
+
+---
+
 ## Revision, 25 September 2026: launch-day corrections
 
 **This section supersedes any conflicting text below.** The rest of the document stays as background for post-launch work.

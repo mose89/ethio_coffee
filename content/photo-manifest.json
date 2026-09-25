@@ -1,0 +1,71 @@
+{
+  "_comment": "Licensed photography candidates (Unsplash License: free for commercial use, attribution appreciated but not required). These are stock photos: they do NOT depict our suppliers, farms, facilities or team, and are marked as illustrative in the CMS. Each image must be reviewed visually before launch. Run `npm run images:import` once unsplash.com and images.unsplash.com are reachable.",
+  "license": {
+    "name": "Unsplash License",
+    "url": "https://unsplash.com/license"
+  },
+  "photos": [
+    {
+      "key": "harvest",
+      "slot": "home.heroImage",
+      "unsplashId": "1-ZUhMFleK0",
+      "pageUrl": "https://unsplash.com/photos/farmer-harvesting-coffee-cherries-in-a-field-1-ZUhMFleK0",
+      "alt": "Hands picking ripe coffee cherries from a coffee plant",
+      "note": "Coffee harvest. Location not confirmed as Ethiopia; caption as illustrative."
+    },
+    {
+      "key": "highlands",
+      "slot": "about.heroImage",
+      "unsplashId": "eRFC0_U0hGE",
+      "pageUrl": "https://unsplash.com/photos/aerial-photography-of-mountain-eRFC0_U0hGE",
+      "photographer": "Erik Hathaway",
+      "alt": "Aerial view of mountains in the Ethiopian highlands",
+      "note": "Tagged Ethiopia / Lalibela on Unsplash. Not a coffee-growing claim."
+    },
+    {
+      "key": "green-sack",
+      "slot": "green.heroImage",
+      "unsplashId": "UK6tuYeWq-E",
+      "pageUrl": "https://unsplash.com/photos/a-sack-filled-with-coffee-beans-and-a-scoop-UK6tuYeWq-E",
+      "alt": "A sack of coffee beans with a scoop",
+      "note": "Check the beans are green (unroasted) before using on the green coffee page; otherwise swap with green-scoop."
+    },
+    {
+      "key": "green-scoop",
+      "slot": "process.samplesImage",
+      "unsplashId": "Qx_S2YE5I1o",
+      "pageUrl": "https://unsplash.com/photos/a-scoop-full-of-coffee-beans-next-to-a-sack-of-coffee-beans-Qx_S2YE5I1o",
+      "alt": "A scoop of coffee beans next to a sack of coffee"
+    },
+    {
+      "key": "sack-table",
+      "slot": "home.introImage",
+      "unsplashId": "vFzBSLRkH8s",
+      "pageUrl": "https://unsplash.com/photos/a-sack-of-coffee-beans-on-a-table-vFzBSLRkH8s",
+      "alt": "A sack of coffee beans on a table"
+    },
+    {
+      "key": "roast-tray",
+      "slot": "roasted.heroImage",
+      "unsplashId": "66NjVBij7P8",
+      "pageUrl": "https://unsplash.com/photos/person-holding-stainless-steel-tray-with-brown-and-black-beads-66NjVBij7P8",
+      "photographer": "Carolina Coffee Roasting Company",
+      "alt": "Freshly roasted coffee beans on a metal tray"
+    },
+    {
+      "key": "packaging",
+      "slot": "roasted.detailImage",
+      "unsplashId": "VMB_XcwLk50",
+      "pageUrl": "https://unsplash.com/photos/VMB_XcwLk50",
+      "alt": "A bag of roasted coffee beans next to a box of coffee"
+    },
+    {
+      "key": "shipping",
+      "slot": "process.shippingImage",
+      "unsplashId": "NXF9MI3zby0",
+      "pageUrl": "https://unsplash.com/photos/shipping-containers-stacked-on-a-cargo-ship-NXF9MI3zby0",
+      "photographer": "Walter Frehner",
+      "alt": "Shipping containers stacked on a cargo ship"
+    }
+  ]
+}

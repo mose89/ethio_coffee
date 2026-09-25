@@ -1,0 +1,4 @@
+/* Admin theme accent aligned with the site. */
+:root {
+  --theme-success-500: #2f5d50;
+}

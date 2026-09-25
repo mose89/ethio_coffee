@@ -1,12 +1,15 @@
 import "server-only";
 import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+import config from "@payload-config";
+import { getPayload } from "payload";
 import { PRODUCTS, describeQuantity, type Inquiry } from "./inquiry";
 
 /**
  * Delivers an inquiry to every configured destination. The submission counts
  * as received only if at least one destination confirms it.
  *
+ *   (default)                     stored in the CMS database (Inquiries), unless INQUIRY_STORE_CMS=false
  *   RESEND_API_KEY + INQUIRY_TO   email notification via Resend (recommended)
  *   INQUIRY_WEBHOOK_URL           JSON POST, e.g. to a spreadsheet or automation tool
  *   INQUIRY_FILE_STORE            append to a JSON Lines file (self-hosted or local only)
@@ -20,6 +23,7 @@ type Sink = { name: string; send: (i: StoredInquiry) => Promise<void> };
 
 function configuredSinks(env: NodeJS.ProcessEnv): Sink[] {
   const sinks: Sink[] = [];
+  if (env.INQUIRY_STORE_CMS !== "false") sinks.push({ name: "cms", send: storeInCms });
   if (env.RESEND_API_KEY && env.INQUIRY_TO) sinks.push({ name: "email", send: (i) => sendEmail(i, env) });
   if (env.INQUIRY_WEBHOOK_URL) sinks.push({ name: "webhook", send: (i) => sendWebhook(i, env) });
   if (env.INQUIRY_FILE_STORE) sinks.push({ name: "file", send: (i) => appendToFile(i, env.INQUIRY_FILE_STORE!) });
@@ -94,4 +98,23 @@ async function appendToFile(i: StoredInquiry, file: string) {
   const target = path.resolve(file);
   await mkdir(path.dirname(target), { recursive: true, mode: 0o700 });
   await appendFile(target, JSON.stringify(i) + "\n", { encoding: "utf8", mode: 0o600 });
+}
+
+async function storeInCms(i: StoredInquiry) {
+  const payload = await getPayload({ config });
+  await payload.create({
+    collection: "inquiries",
+    overrideAccess: true,
+    data: {
+      reference: i.reference,
+      product: i.product,
+      name: i.name,
+      email: i.email,
+      company: i.company,
+      country: i.country,
+      quantity: describeQuantity(i.quantity),
+      message: i.message,
+      sourcePage: i.sourcePage,
+    },
+  });
 }

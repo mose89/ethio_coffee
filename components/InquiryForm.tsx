@@ -94,7 +94,7 @@ export function InquiryForm({
           requirement. Please check your spam folder if you don’t see our reply.
         </p>
         <p>
-          <Link className="text-link" href="/how-it-works/">
+          <Link className="text-link" href="/how-it-works">
             Read how the process works <span aria-hidden="true">→</span>
           </Link>
         </p>
@@ -115,7 +115,7 @@ export function InquiryForm({
   const errorList = FIELD_ORDER.filter((f) => errors[f]);
 
   return (
-    <form className="inquiry-form" action="/api/inquiry/" method="post" noValidate onSubmit={onSubmit}>
+    <form className="inquiry-form" action="/api/inquiry" method="post" noValidate onSubmit={onSubmit}>
       {status === "error" && (
         <div className="form-alert" role="alert" tabIndex={-1} ref={summaryRef}>
           <p className="form-alert-title">Your inquiry has not been sent.</p>
@@ -246,7 +246,7 @@ export function InquiryForm({
         <input id="company_website" name="company_website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <input type="hidden" name="form_started" ref={startedRef} defaultValue="" />
-      <input type="hidden" name="source_page" defaultValue="/inquiry/" />
+      <input type="hidden" name="source_page" defaultValue="/inquiry" />
 
       {turnstileSiteKey && (
         <>
@@ -257,7 +257,7 @@ export function InquiryForm({
 
       <p className="privacy-line">
         We use your details only to respond to your inquiry and, where needed, share your requirement with exporters in our network to
-        check what they can offer. See our <Link href="/privacy/">privacy notice</Link>.
+        check what they can offer. See our <Link href="/privacy">privacy notice</Link>.
       </p>
 
       <button className="button button-green button-submit" type="submit" disabled={status === "submitting"} aria-disabled={status === "submitting"}>

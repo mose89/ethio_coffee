@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { BeanMark } from "./BeanMark";
+import { MobileMenu } from "./MobileMenu";
 import { NavLink } from "./NavLink";
 import { site } from "@/lib/site";
+
+export const NAV = [
+  { href: "/green-coffee", label: "Green coffee" },
+  { href: "/roasted-coffee", label: "Roasted coffee" },
+  { href: "/resources", label: "Resources" },
+  { href: "/about", label: "About us" },
+];
 
 export function SiteHeader() {
   return (
@@ -13,22 +21,19 @@ export function SiteHeader() {
         </Link>
         <nav className="site-nav" aria-label="Main">
           <ul>
-            <li>
-              <NavLink href="/green-coffee/">Green coffee</NavLink>
-            </li>
-            <li>
-              <NavLink href="/roasted-coffee/">Roasted coffee</NavLink>
-            </li>
-            <li>
-              <NavLink href="/how-it-works/">How it works</NavLink>
-            </li>
+            {NAV.map((item) => (
+              <li key={item.href}>
+                <NavLink href={item.href}>{item.label}</NavLink>
+              </li>
+            ))}
             <li className="nav-cta">
-              <NavLink href="/inquiry/" className="button button-small">
-                Send an inquiry
+              <NavLink href="/inquiry" className="button button-small">
+                Request a quote
               </NavLink>
             </li>
           </ul>
         </nav>
+        <MobileMenu items={NAV} />
       </div>
     </header>
   );
