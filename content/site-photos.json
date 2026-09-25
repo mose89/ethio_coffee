@@ -1,0 +1,74 @@
+{
+  "_comment": "Photos supplied by the site owner (25 September 2026). Source and licence still to be confirmed in writing before public launch. They illustrate Ethiopian coffee culture and roasted coffee; they do not depict our exporter partners, their facilities or our team, so they are marked as illustrative. Imported by `npm run images:import`, which only fills empty photo slots and empty featured images.",
+  "photos": [
+    {
+      "key": "coffee-ceremony-jebena-pour",
+      "file": "content/photos/coffee-ceremony-jebena-pour.jpg",
+      "alt": "Coffee poured from a black clay jebena into rows of small white cups during an Ethiopian coffee ceremony",
+      "focal": [
+        46,
+        40
+      ],
+      "slots": [
+        "home.heroImage"
+      ],
+      "featuredFor": [
+        "how-to-source-ethiopian-coffee-information-to-request"
+      ]
+    },
+    {
+      "key": "roasted-beans-kraft-bag",
+      "file": "content/photos/roasted-beans-kraft-bag.jpg",
+      "alt": "Roasted coffee beans in an open kraft paper bag",
+      "focal": [
+        45,
+        50
+      ],
+      "slots": [
+        "roasted.heroImage"
+      ],
+      "featuredFor": [
+        "green-vs-roasted-ethiopian-coffee-supply-format"
+      ]
+    },
+    {
+      "key": "roasted-beans-sini-cup",
+      "file": "content/photos/roasted-beans-sini-cup.jpg",
+      "alt": "Roasted coffee beans spilling from a small traditional Ethiopian coffee cup onto a green surface",
+      "focal": [
+        52,
+        55
+      ],
+      "slots": [
+        "home.introImage"
+      ],
+      "featuredFor": [
+        "how-to-assess-coffee-samples-and-communicate-requirements"
+      ]
+    },
+    {
+      "key": "roasted-beans-clay-pan",
+      "file": "content/photos/roasted-beans-clay-pan.jpg",
+      "alt": "A hand holding a clay pan of freshly roasted coffee beans, with a traditional Ethiopian woven garment behind",
+      "focal": [
+        55,
+        55
+      ],
+      "slots": [
+        "about.heroImage"
+      ]
+    },
+    {
+      "key": "cafe-guest-coffee-mug",
+      "file": "content/photos/cafe-guest-coffee-mug.jpg",
+      "alt": "A woman holding a red mug of coffee in a warmly lit café",
+      "focal": [
+        62,
+        58
+      ],
+      "slots": [
+        "roasted.detailImage"
+      ]
+    }
+  ]
+}

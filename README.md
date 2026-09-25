@@ -75,13 +75,17 @@ Delivery goes to every configured destination, and the buyer sees success only i
 
 ## Photography
 
-Real photos are managed in the CMS.
+Real photos are managed in the CMS. `npm run images:import` loads two sources, recording each photo's source and licence, marking it as illustrative, and filling only empty photo slots and empty article featured images:
 
-- `content/photo-manifest.json` lists licensed Unsplash candidates for each page slot, with source URLs.
-- `npm run images:import` downloads them, stores the credit, source and licence, marks them as illustrative, and fills empty slots.
-- Review every imported photo in the CMS.
-- Until a slot has a photo, the site shows a decorative illustration, never a fake documentary image.
-- Credits are listed automatically at `/photo-credits`.
+1. **`content/site-photos.json`** lists the five owner-supplied photos in `content/photos/`, with their alt text, focal points and placements:
+   - home hero: coffee ceremony;
+   - home "About us" introduction: beans and traditional cup;
+   - About page hero: roasting pan;
+   - roasted coffee page hero: kraft bag;
+   - roasted coffee page "Who this is for": café.
+2. **`content/photo-manifest.json`** lists licensed Unsplash candidates. These are skipped if unsplash.com isn't reachable.
+
+Until a slot has a photo, the site shows a decorative illustration, never a fake documentary image. Credits are listed automatically at `/photo-credits`.
 
 ## Backups
 
