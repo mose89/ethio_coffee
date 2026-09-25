@@ -12,16 +12,15 @@ A marketing website for a business that helps international trade buyers source 
 
 ## Local development
 
+Requires Node.js 20.9 or newer.
+
 ```bash
 npm install
-echo "PAYLOAD_SECRET=$(openssl rand -hex 32)" > .env.local
-npx payload migrate                       # create the local database (data/cms.db)
-ADMIN_EMAIL=you@example.com ADMIN_PASSWORD='a long passphrase' npm run create-admin
-npm run seed                              # starter categories + 3 draft articles
-npm run dev                               # http://localhost:3000 and /admin
-npm test                                  # form validation tests
-npm run lint                              # TypeScript type-check
+npm run setup    # creates the database, asks for an editor login, adds starter drafts and photos
+npm run dev      # website: http://localhost:3000 · editor: http://localhost:3000/admin
 ```
+
+Other commands: `npm test` (form validation tests), `npm run lint` (TypeScript type-check), `npm run build` (production build).
 
 **Schema changes** (fields or collections) need a migration: `npm run migrate:create <name>`, commit the file in `cms/migrations/`, then deploy. Migrations run automatically on `npm start`.
 

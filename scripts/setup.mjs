@@ -27,13 +27,23 @@ if (!fs.existsSync(".env.local")) {
 
 run("Creating the local database", ["payload", "migrate"]);
 
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+const rl = readline.createInterface({ input: process.stdin, terminal: false });
+const lines = rl[Symbol.asyncIterator]();
+const ask = async (prompt) => {
+  process.stdout.write(prompt);
+  const { value, done } = await lines.next();
+  if (done) {
+    console.error("\n✖ Setup cancelled.");
+    process.exit(1);
+  }
+  return value;
+};
 console.log("\nChoose the login for the website editor (you can change it later).");
 let email = "";
-while (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) email = (await rl.question("  Email: ")).trim();
+while (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) email = (await ask("  Email: ")).trim();
 let password = "";
 while (password.length < 12) {
-  password = await rl.question("  Password (at least 12 characters): ");
+  password = await ask("  Password (at least 12 characters): ");
   if (password.length < 12) console.log("  That's too short, please try again.");
 }
 rl.close();
