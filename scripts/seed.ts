@@ -21,7 +21,8 @@ const CATEGORIES = [
 ];
 
 function parseFrontMatter(raw: string) {
-  const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const text = raw.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+  const m = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!m) throw new Error("Missing front matter");
   const meta: Record<string, string | string[]> = {};
   for (const line of m[1].split("\n")) {
@@ -132,6 +133,28 @@ const DOWNLOADS = [
   },
 ];
 
+function photoMime(file: string) {
+  if (file.endsWith(".png")) return "image/png";
+  if (file.endsWith(".webp")) return "image/webp";
+  if (file.endsWith(".avif")) return "image/avif";
+  return "image/jpeg";
+}
+
+async function upsertTeamPhoto(payload: Payload, m: TeamMember, existingPhotoId?: number) {
+  if (!m.photo) return existingPhotoId;
+  const abs = path.resolve(process.cwd(), m.photo);
+  if (!fs.existsSync(abs)) return existingPhotoId;
+  const data = fs.readFileSync(abs);
+  const file = { data, mimetype: photoMime(m.photo), name: path.basename(m.photo), size: data.length };
+  const fields = { alt: m.photoAlt || m.name, illustrative: false, license: "own" as const, sourceUrl: `repo:${m.photo}`, credit: "" };
+  if (existingPhotoId) {
+    await payload.update({ collection: "media", id: existingPhotoId, data: fields, file });
+    return existingPhotoId;
+  }
+  const media = await payload.create({ collection: "media", data: fields, file });
+  return media.id as number;
+}
+
 async function seedTeam(payload: Payload) {
   const file = path.resolve(process.cwd(), "content/team.json");
   if (!fs.existsSync(file)) return;
@@ -139,17 +162,9 @@ async function seedTeam(payload: Payload) {
   for (const m of members) {
     const existing = await payload.find({ collection: "authors", where: { name: { equals: m.name } }, limit: 1, depth: 0 });
     let id = existing.docs[0]?.id;
+    const currentPhotoId = typeof existing.docs[0]?.photo === "number" ? existing.docs[0].photo : undefined;
     if (!id) {
-      let photoId: number | undefined;
-      if (m.photo && fs.existsSync(path.resolve(process.cwd(), m.photo))) {
-        const data = fs.readFileSync(path.resolve(process.cwd(), m.photo));
-        const media = await payload.create({
-          collection: "media",
-          data: { alt: m.photoAlt || m.name, illustrative: false, license: "own", sourceUrl: `repo:${m.photo}`, credit: "" },
-          file: { data, mimetype: m.photo.endsWith(".webp") ? "image/webp" : "image/jpeg", name: path.basename(m.photo), size: data.length },
-        });
-        photoId = media.id as number;
-      }
+      const photoId = await upsertTeamPhoto(payload, m);
       const doc = await payload.create({
         collection: "authors",
         data: {
@@ -165,6 +180,12 @@ async function seedTeam(payload: Payload) {
       });
       id = doc.id;
       payload.logger.info(`seed: team member “${m.name}” created`);
+    } else if (m.photo) {
+      const photoId = await upsertTeamPhoto(payload, m, currentPhotoId);
+      if (photoId && photoId !== currentPhotoId) {
+        await payload.update({ collection: "authors", id, data: { photo: photoId } });
+      }
+      payload.logger.info(`seed: team photo refreshed for “${m.name}”`);
     }
     for (const slug of m.authorOf ?? []) {
       const post = (await payload.find({ collection: "posts", where: { slug: { equals: slug } }, draft: true, limit: 1, depth: 0 })).docs[0];
