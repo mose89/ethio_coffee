@@ -39,7 +39,7 @@ rows = [
     ("Region(s)", "", "Yirgacheffe, Sidama, Guji, Limu, Jimma, Harar, or open", "Ethiopian coffees vary widely by area"),
     ("Process", "", "Washed / natural / open to both", "Shapes the cup; availability differs"),
     ("Quality level", "", "Grade 1 or 2 / minimum cup score under a named protocol / blend component", "Filters what is proposed"),
-    ("Quantity per order", "", "e.g. 40 × 60 kg bags", "Decides exporters and shipping options"),
+    ("Quantity per order", "", "e.g. 40 × 60 kg bags", "Decides which coffees and shipping options fit"),
     ("Quantity per year", "", "e.g. 2 containers", "Helps plan across the season"),
     ("Destination", "", "Country and port", "Routes, documents and terms depend on it"),
     ("Timing", "", "Shipment window or crop you are planning for", "Availability shifts through the season"),

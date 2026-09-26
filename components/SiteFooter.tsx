@@ -9,8 +9,8 @@ export function SiteFooter() {
         <div>
           <p className="footer-brand">{site.brand}</p>
           <p>
-            Ethiopian green and roasted coffee, sourced for importers, roasters, distributors and hospitality businesses through
-            established exporter relationships.
+            Ethiopian green and roasted coffee for importers, roasters, distributors and hospitality businesses, prepared and shipped
+            from Ethiopia.
           </p>
           <Link className="button button-light button-small" href="/inquiry">
             Request a quote

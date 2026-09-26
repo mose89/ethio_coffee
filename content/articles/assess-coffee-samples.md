@@ -73,7 +73,7 @@ When you approve a coffee, **confirm the approval in writing with the lot refere
 
 ## How we can help
 
-We coordinate sample requests between business buyers and exporters in our Ethiopian network. We pass on your brief, share the information the exporter provides with each sample, and relay your feedback so the next round is better targeted. Sample availability, sizes and any costs depend on the exporter and are confirmed before anything is sent. If you'd like help writing your first brief, [send us an inquiry](/inquiry).
+We supply Ethiopian green and roasted coffee to business buyers, and samples are part of how we work. We use your brief to propose coffees that fit, share the lot details and quality information with each sample, and use your feedback to target the next round. Sample availability, sizes and any costs depend on the coffee and are confirmed before anything is sent. If you'd like help writing your first brief, [request samples](/inquiry?request=samples) or [send us an inquiry](/inquiry).
 
 ## Sources
 

@@ -1,11 +1,19 @@
 import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
-import { missingForProduction, site } from "./lib/site";
+import { exporterPositioningApproved, missingForProduction, site } from "./lib/site";
 
 if (site.production && missingForProduction.length) {
   throw new Error(
     `SITE_ENV=production but site.config.json is missing: ${missingForProduction.join(", ")}. ` +
       "Refusing to build a public site with incomplete business identity.",
+  );
+}
+
+if (site.production && !exporterPositioningApproved) {
+  throw new Error(
+    "SITE_ENV=production but exporter_positioning_approved is false in site.config.json. The site copy presents the company " +
+      "as seller and exporter, which may only go live after the export licence is issued and publication is approved. " +
+      "See docs/exporter-positioning-review.md.",
   );
 }
 

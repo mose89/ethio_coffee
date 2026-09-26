@@ -9,7 +9,7 @@ export const metadata = pageMetadata({
   path: "/roasted-coffee",
   title: "Roasted Ethiopian coffee for distributors and hospitality",
   description:
-    "Roasted Ethiopian coffee for distributors, retailers and hospitality. Tell us your format, volume, market and timing; we confirm what can be delivered before anything is quoted.",
+    "Roasted Ethiopian coffee for distributors, retailers and hospitality. Tell us your format, volume, market and timing; we confirm what we can supply before anything is quoted.",
 });
 
 const TOPICS = [
@@ -26,8 +26,8 @@ const FAQ = [
     q: "What roasted coffee can you supply?",
     a: (
       <p>
-        Roasted Ethiopian coffee from exporters in our network. Formats, pack types and minimum quantities depend on the supplier and your
-        market, so we confirm them for your inquiry rather than publish a fixed list that may not apply to you.
+        Roasted Ethiopian coffee, packed and shipped from Ethiopia. Formats, pack types and minimum quantities depend on the coffee and
+        your market, so we confirm them for your inquiry rather than publish a fixed list that may not apply to you.
       </p>
     ),
   },
@@ -35,7 +35,7 @@ const FAQ = [
     q: "How fresh will the coffee be when it arrives?",
     a: (
       <p>
-        That depends on roast date, packaging, transit and storage. Before any quotation we get the supplier’s roast-to-dispatch timing,
+        That depends on roast date, packaging, transit and storage. Before any quotation we confirm the roast-to-dispatch timing,
         packaging details and storage guidance, and talk through transit time to your destination with you.
       </p>
     ),
@@ -71,11 +71,11 @@ export default async function RoastedCoffeePage() {
             <h1 id="page-title">{pc?.heroTitle || "Roasted Ethiopian coffee for distributors, retailers and hospitality"}</h1>
             <p className="lead">
               {pc?.heroIntro ||
-                "Ethiopian coffee roasted for your shelves, your cafés and your customers. Freshness and food rules matter from the day of roasting, so every inquiry starts with a conversation: we agree format, volume, destination and timing with you and the supplier before anything is quoted."}
+                "Ethiopian coffee roasted for your shelves, your cafés and your customers. Freshness and food rules matter from the day of roasting, so every inquiry starts with a conversation: we agree format, volume, destination and timing with you before we quote."}
             </p>
             <div className="button-row">
               <Link className="button button-roasted" href="/inquiry?product=roasted">
-                Send a roasted coffee inquiry
+                Request a quote
               </Link>
               <Link className="button button-outline" href="/inquiry?product=roasted&request=samples">
                 Request samples
@@ -90,7 +90,7 @@ export default async function RoastedCoffeePage() {
         <div className="container media-split">
           <Visual media={asMedia(pc?.detailImage)} fallback="roasted" sizes="(min-width: 900px) 45vw, 100vw" className="split-visual" />
           <div className="prose">
-            <h2 id="who-title">Who we source for</h2>
+            <h2 id="who-title">Who we supply</h2>
             <ul className="check-list">
               <li><strong>Distributors and wholesalers</strong> supplying retail, offices or food service.</li>
               <li><strong>Retailers</strong> adding Ethiopian coffee to their shelves.</li>
@@ -116,7 +116,7 @@ export default async function RoastedCoffeePage() {
       </section>
 
       <Faq items={FAQ} id="roasted-faq" />
-      <CtaBand title="Bring Ethiopian coffee to your customers" href="/inquiry?product=roasted" label="Send a roasted coffee inquiry" cue="roasted" />
+      <CtaBand title="Bring Ethiopian coffee to your customers" href="/inquiry?product=roasted" label="Request a roasted coffee quote" cue="roasted" />
     </div>
   );
 }

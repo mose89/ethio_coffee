@@ -51,22 +51,22 @@ export default async function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Ethiopian coffee sourcing for the trade</p>
-            <h1 id="hero-title">{home?.heroTitle || "Ethiopian coffee, sourced with clarity."}</h1>
+            <p className="eyebrow">Green and roasted coffee from Ethiopia</p>
+            <h1 id="hero-title">{home?.heroTitle || "Ethiopian coffee for roasters, importers and distributors."}</h1>
             <p className="lead">
               {home?.heroIntro ||
-                "Green coffee for importers and roasters. Roasted coffee for distributors and hospitality. We connect you with the right Ethiopian exporters and manage everything in between, from first samples to shipment, so you deal with one accountable contact."}
+                "We supply Ethiopian green coffee to importers and roasters, and roasted coffee to distributors, retailers and hospitality. Tell us the quality, quantity and destination you need, and we’ll propose suitable coffees, arrange samples and quote. One company, accountable from first sample to shipment."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/green-coffee">
-                Source green coffee
+                Explore green coffee
               </Link>
               <Link className="button button-roasted" href="/roasted-coffee">
-                Source roasted coffee
+                Explore roasted coffee
               </Link>
             </div>
             <p className="hero-note">
-              Not sure which you need? <Link href="/inquiry">Tell us what you have in mind</Link>.
+              Know what you need? <Link href="/inquiry">Request a quote</Link> or <Link href="/inquiry?request=samples">request samples</Link>.
             </p>
           </div>
           <div className="hero-media">
@@ -91,7 +91,7 @@ export default async function HomePage() {
                 </div>
               </dl>
               <Link className="text-link" href="/inquiry">
-                Send your brief <span aria-hidden="true">→</span>
+                Request a quote <span aria-hidden="true">→</span>
               </Link>
             </aside>
           </div>
@@ -111,8 +111,8 @@ export default async function HomePage() {
                 <p className="path-label">Green coffee</p>
                 <h3>Green coffee for importers and roasters</h3>
                 <p>
-                  Share the origin, process, grade and volume you’re after. We check what’s available this season, arrange samples and
-                  bring you a formal offer from the exporter.
+                  Share the origin, process, grade and volume you’re after. We propose suitable coffees from what’s available this
+                  season, share the lot details, arrange samples and quote you directly.
                 </p>
                 <Link className="text-link" href="/green-coffee">
                   Explore green coffee <span aria-hidden="true">→</span>
@@ -125,7 +125,7 @@ export default async function HomePage() {
                 <p className="path-label">Roasted coffee</p>
                 <h3>Roasted coffee for distributors, retailers and hospitality</h3>
                 <p>
-                  Tell us the format, volume and market. We confirm with the supplier what can be delivered to you before anything is
+                  Tell us the format, volume and market. We confirm what we can supply for your market before anything is
                   quoted.
                 </p>
                 <Link className="text-link" href="/roasted-coffee">
@@ -142,14 +142,14 @@ export default async function HomePage() {
           <Visual media={asMedia(home?.introImage)} fallback="highlands" sizes="(min-width: 900px) 45vw, 100vw" className="split-visual" />
           <div className="prose">
             <p className="eyebrow">About us</p>
-            <h2 id="intro-title">{home?.introTitle || "Built from our own search for a reliable exporter"}</h2>
+            <h2 id="intro-title">{home?.introTitle || "Built from our own search for a reliable Ethiopian supplier"}</h2>
             <p>
               {home?.introText ||
-                "We are Norwegians with Ethiopian roots. Finding a reliable, compliant Ethiopian exporter took us time and hard lessons, so we built a network we trust, with a co-founder on the ground in Ethiopia for the past ten years. Now we use it to help other businesses buy with confidence."}
+                "We are Norwegians with Ethiopian roots. Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Along the way we built strong relationships in Ethiopia, with a co-founder on the ground for the past ten years. Now we supply Ethiopian coffee ourselves, with the clarity we were looking for as buyers."}
             </p>
             <p>
-              The exporter supplies and ships the coffee. We find the right lots, coordinate samples and offers, and stay with your order
-              until it leaves Ethiopia.
+              You buy from us. We select the coffee, share the product information, arrange samples, agree the quotation with you, and
+              prepare and ship your order from Ethiopia.
             </p>
             <TeamStrip team={team} />
             <Link className="text-link" href="/about">
@@ -181,11 +181,11 @@ export default async function HomePage() {
           <ul className="topic-grid topic-grid-4">
             <li className="topic">
               <h3>Importers and traders</h3>
-              <p>New Ethiopian offers and additional export partners, through a single point of contact.</p>
+              <p>Ethiopian coffees for your offer list, from one accountable supplier.</p>
             </li>
             <li className="topic">
               <h3>Roasters</h3>
-              <p>Green coffee matched to your roast profile, with samples to cup before you commit.</p>
+              <p>Green coffee selected for your roast profile, with samples to cup where available.</p>
             </li>
             <li className="topic">
               <h3>Distributors and retailers</h3>
@@ -198,7 +198,7 @@ export default async function HomePage() {
           </ul>
           <p className="section-note">
             Every order ships directly from Ethiopia. Large volume or small, tell us what you need and we’ll tell you honestly what makes
-            sense. <Link href="/inquiry">Start an inquiry</Link>
+            sense. <Link href="/inquiry">Request a quote</Link>
           </p>
         </div>
       </section>

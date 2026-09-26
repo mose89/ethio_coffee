@@ -15,6 +15,12 @@ const siteUrl = clean(config.site_url).replace(/\/+$/, "");
 
 export const missingForProduction = REQUIRED_FOR_PRODUCTION.filter((k) => !clean(config[k]));
 
+/**
+ * The copy presents the company as seller and exporter. That may only go live once the
+ * export licence is issued and the owner approves (docs/exporter-positioning-review.md).
+ */
+export const exporterPositioningApproved = (config as { exporter_positioning_approved?: boolean }).exporter_positioning_approved === true;
+
 const whatsappDigits = clean(config.whatsapp_number).replace(/\D/g, "");
 const whatsappText = clean((config as { whatsapp_message?: string }).whatsapp_message);
 const phone = clean(config.phone_number);
@@ -43,4 +49,4 @@ export const site = {
 };
 
 export const ORG_DESCRIPTION =
-  "Sourcing business dedicated to Ethiopian green and roasted coffee, connecting importers, roasters, distributors and hospitality businesses with established Ethiopian exporters.";
+  "Supplier of Ethiopian green and roasted coffee to importers, roasters, distributors and hospitality businesses, shipped from Ethiopia.";

@@ -6,9 +6,9 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   path: "/how-it-works",
-  title: "How sourcing Ethiopian coffee with us works",
+  title: "How buying Ethiopian coffee from us works",
   description:
-    "Our role as an Ethiopian coffee sourcing business, what happens after you inquire, and who does what between you, us and the Ethiopian exporter.",
+    "From your requirements to shipment: how we select coffee, arrange samples, quote and prepare your order in Ethiopia, and who does what.",
 });
 
 const ROLES = [
@@ -18,21 +18,21 @@ const ROLES = [
   },
   {
     party: "Us",
-    does: "Sharpens the brief, matches it with the right exporters, gathers lot details, samples and quotations, and keeps everyone in step through to shipment.",
+    does: "Selects suitable coffee, provides the product information and samples, issues the quotation, sells the coffee to you, prepares your order for export and keeps you informed through to shipment.",
   },
   {
-    party: "The Ethiopian exporter",
-    does: "Supplies, prepares and exports the coffee, and issues the quotation stating the seller, invoicing, payment and shipping terms.",
+    party: "Shipping and logistics providers",
+    does: "Carry the coffee from Ethiopia under the shipping terms agreed in your contract.",
   },
 ];
 
 const FAQ = [
   {
-    q: "Do you export the coffee yourselves?",
+    q: "Will I buy from you, or from another exporter?",
     a: (
       <p>
-        No. We’re a sourcing business: the coffee is supplied and exported by Ethiopian exporters in our network, who hold the export
-        licences. Our role is to find the right coffee for you and manage the process on your behalf.
+        From us. We sell the coffee to you and ship it from Ethiopia, so you’re not handed over to another company partway through. Your
+        quotation, contract and invoice come from us.
       </p>
     ),
   },
@@ -40,14 +40,19 @@ const FAQ = [
     q: "Who will I contract with and pay?",
     a: (
       <p>
-        It’s always set out in writing before you commit. The quotation states who sells the coffee to you, who invoices you, and the
-        payment and shipping terms.
+        With us. Before you commit, our written quotation sets out the price, payment terms and shipping terms for your order, and the
+        agreed terms are confirmed in your contract.
       </p>
     ),
   },
   {
-    q: "How are you paid?",
-    a: <p>We tell you how we’re compensated for your order before you commit to it. No surprises.</p>,
+    q: "Does every order follow the same steps?",
+    a: (
+      <p>
+        Not always. Some buyers want samples of every lot; others reorder a coffee they already know. Payment timing and shipping terms
+        are agreed for each order and set out in the quotation.
+      </p>
+    ),
   },
   {
     q: "Why don’t you publish prices?",
@@ -60,14 +65,14 @@ const FAQ = [
   },
   {
     q: "Do you hold stock outside Ethiopia?",
-    a: <p>No. Each order is sourced and shipped directly from Ethiopia.</p>,
+    a: <p>No. Each order is prepared and shipped directly from Ethiopia.</p>,
   },
   {
     q: "What happens after I send an inquiry?",
     a: (
       <p>
-        We read it and reply{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions. Then we check your
-        brief with the right exporters and come back with options, or an honest answer if we can’t help.
+        We read it and reply{site.responseTime ? ` within ${site.responseTime}` : ""}, usually with a few questions. Then we check what we
+        can offer against your brief and come back with options, or an honest answer if we can’t help.
       </p>
     ),
   },
@@ -79,10 +84,10 @@ export default function HowItWorksPage() {
       <section className="page-hero" aria-labelledby="page-title">
         <div className="container narrow">
           <p className="eyebrow">How it works</p>
-          <h1 id="page-title">How sourcing with us works</h1>
+          <h1 id="page-title">How buying from us works</h1>
           <p className="lead">
-            Five steps from first message to shipment, with one point of contact throughout. Here’s what happens, who does what, and the
-            questions buyers ask most.
+            Five steps from your requirements to shipment, with one accountable company throughout. Here’s what happens, who does what,
+            and the questions buyers ask most.
           </p>
         </div>
       </section>
@@ -99,7 +104,7 @@ export default function HowItWorksPage() {
           <h2 id="roles-title">Who does what</h2>
           <div className="spec-table-wrap">
             <table className="spec-table roles-table">
-              <caption className="visually-hidden">Responsibilities of the buyer, the sourcing business and the exporter</caption>
+              <caption className="visually-hidden">Responsibilities of the buyer, our company and logistics providers</caption>
               <thead>
                 <tr>
                   <th scope="col">Party</th>

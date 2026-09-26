@@ -65,7 +65,7 @@ Some businesses do. For example, a distributor may buy roasted coffee for one ma
 
 ## How we can help
 
-We help business buyers source both green and roasted Ethiopian coffee through our network of Ethiopian exporters. If you're not sure which format suits you, [send us an inquiry](/inquiry?product=unsure) describing your business, destination and approximate volumes. We'll ask the right questions and tell you honestly what can be arranged. Formats, pack options and quantities for roasted coffee are confirmed with the supplier for each inquiry; we don't advertise them in advance.
+We supply both green and roasted Ethiopian coffee to business buyers. If you're not sure which format suits you, [send us an inquiry](/inquiry?product=unsure) describing your business, destination and approximate volumes. We'll ask the right questions and tell you honestly what we can offer. Formats, pack options and quantities for roasted coffee are confirmed for each inquiry; we don't advertise them in advance.
 
 ## Sources
 

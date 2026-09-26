@@ -11,9 +11,9 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   path: "/about",
-  title: "About us: Norwegian–Ethiopian coffee sourcing",
+  title: "About us: a Norwegian–Ethiopian coffee supplier",
   description:
-    "Founded by Norwegians with Ethiopian roots, with a team on the ground in Ethiopia. We built a network of reliable, compliant Ethiopian exporters, and now help other businesses source with confidence.",
+    "Founded by Norwegians with Ethiopian roots, with a team on the ground in Ethiopia. We supply Ethiopian green and roasted coffee to international business buyers.",
 });
 
 const WHY = [
@@ -26,8 +26,8 @@ const WHY = [
     body: "Our operations leader has lived in Ethiopia for ten years. Samples, questions and shipments are followed up locally, not from a distance.",
   },
   {
-    title: "A network we trust",
-    body: "Exporters we know, chosen because they deliver: reliable quality, correct paperwork, communication you can count on.",
+    title: "Relationships we trust",
+    body: "The relationships we’ve built in Ethiopia, and a clear idea of what reliable supply means: quality that matches the sample, correct paperwork, communication you can count on.",
   },
   {
     title: "Your language, your market",
@@ -37,10 +37,10 @@ const WHY = [
 
 const HELP = [
   { title: "A clear brief", body: "We help you turn “we’d like Ethiopian coffee” into a precise brief: origin, process, quality, volume, destination and timing." },
-  { title: "The right exporters", body: "We check your brief with exporters in our network who fit it, not just a single company’s offer list." },
-  { title: "Straight answers", body: "We pass on what the exporter provides, say plainly what is confirmed and what isn’t, and chase the follow-up questions for you." },
-  { title: "Samples and offers, on track", body: "We keep samples, feedback and quotations moving, so you decide on facts, not guesswork." },
-  { title: "Follow-through", body: "Once you order, we stay involved, keeping you and the exporter in step through to shipment." },
+  { title: "The right coffee", body: "We propose coffees that fit your brief from what’s available this season, and tell you plainly when nothing fits." },
+  { title: "Clear product information", body: "Lot details, quality information and the evidence behind them, with a plain statement of what is confirmed and what isn’t." },
+  { title: "Samples and quotations, on track", body: "We arrange samples where available and quote in writing, so you decide on facts, not guesswork." },
+  { title: "One accountable company", body: "Once you order, we prepare it for shipment and keep you informed until it leaves Ethiopia." },
 ];
 
 export default async function AboutPage() {
@@ -67,14 +67,14 @@ export default async function AboutPage() {
         <div className="container page-hero-grid">
           <div className="page-hero-copy">
             <p className="eyebrow">About us</p>
-            <h1 id="page-title">{about?.heroTitle || "We built the exporter network we wish we’d had"}</h1>
+            <h1 id="page-title">{about?.heroTitle || "The Ethiopian coffee supplier we were looking for"}</h1>
             <p className="lead">
               {about?.heroIntro ||
-                "Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Today we have a network we trust, and we use it to help other businesses source Ethiopian coffee with confidence."}
+                "Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Now we supply Ethiopian coffee ourselves, with the clarity and follow-through we wanted as buyers."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry">
-                Tell us what you’re looking for
+                Request a quote
               </Link>
               {site.whatsappHref && (
                 <a className="button button-outline" href={site.whatsappHref} target="_blank" rel="noopener">
@@ -91,7 +91,7 @@ export default async function AboutPage() {
         <div className="container split">
           <div>
             <p className="eyebrow">Our story</p>
-            <h2 id="story-title">From a hard search to a trusted network</h2>
+            <h2 id="story-title">From a hard search to our own supply</h2>
           </div>
           <div className="prose story">
             {hasStory ? (
@@ -108,13 +108,13 @@ export default async function AboutPage() {
                   on. It took time, persistence and a presence on the ground.
                 </p>
                 <p>
-                  So we built the network we had been looking for. One of us has lived in Ethiopia for the past ten years and built an
-                  extensive network there; the other brings more than a decade in international trade, logistics, quality
-                  control and sales. Together, we got to know exporters personally and learned which ones deliver.
+                  So we built the relationships we had been looking for. One of us has lived in Ethiopia for the past ten years and built
+                  an extensive network there; the other brings more than a decade in international trade, logistics, quality control and
+                  sales. Together, we learned what separates dependable Ethiopian supply from a difficult one.
                 </p>
                 <p className="story-emphasis">
-                  Now we put that network to work for other businesses, so you get the right Ethiopian coffee without the years of searching
-                  it took us.
+                  Now we supply Ethiopian coffee ourselves: one accountable company for your order, without the years of searching it
+                  took us.
                 </p>
               </>
             )}
@@ -145,8 +145,8 @@ export default async function AboutPage() {
             ))}
           </ul>
           <p className="section-note">
-            We don’t publish our exporter partners’ names. We introduce the right exporter when we propose a coffee, and every quotation
-            states exactly who sells to you.
+            When you buy from us, your quotation, contract and invoice come from us, and we remain accountable for the agreed sale through
+            to shipment.
           </p>
         </div>
       </section>
@@ -155,7 +155,7 @@ export default async function AboutPage() {
         <div className="container split">
           <div>
             <p className="eyebrow">How we help</p>
-            <h2 id="help-title">Buying from origin, made straightforward</h2>
+            <h2 id="help-title">Buying from Ethiopia, made straightforward</h2>
             <p className="muted">Grades, samples, shipping terms, documents and timing. We guide you through each of them.</p>
           </div>
           <ol className="help-list">

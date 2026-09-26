@@ -2,6 +2,8 @@
 
 *Planning document for a developer or AI coding assistant. Prepared 25 September 2026. No code yet.*
 
+> **Superseded in part (26 September 2026).** The business model has changed: the company intends to sell and export coffee itself under its own Ethiopian export licence, rather than act as an agent for other exporters. Sections below on the agency model, commission and bypass risk are kept as the original record only. For the current positioning, what depends on the licence, and open decisions, see [exporter-positioning-review.md](exporter-positioning-review.md).
+
 **How to read this document.** Every claim uses one of these labels:
 
 | Label | Meaning |

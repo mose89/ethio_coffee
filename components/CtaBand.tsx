@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 export function CtaBand({
   title = "Let’s find your next Ethiopian coffee",
   href = "/inquiry",
-  label = "Send an inquiry",
+  label = "Request a quote",
   cue,
 }: {
   title?: string;
@@ -18,8 +18,8 @@ export function CtaBand({
         <div>
           <h2 id="cta-title">{title}</h2>
           <p>
-            A few lines are enough to start. We reply{site.responseTime ? ` within ${site.responseTime}` : " promptly"} with questions or a
-            first shortlist.
+            A few lines are enough to start. We reply{site.responseTime ? ` within ${site.responseTime}` : " promptly"} with questions or
+            suitable coffees to consider.
           </p>
         </div>
         <Link className="button button-light" href={href}>

@@ -278,7 +278,7 @@ export function InquiryForm({
       )}
 
       <p className="privacy-line">
-        We use your details only to answer your inquiry and, where needed, to check availability with exporters in our network. See
+        We use your details only to answer your inquiry and, if you go ahead, to prepare samples, quotations and your order. See
         our <Link href="/privacy">privacy notice</Link>.
       </p>
 

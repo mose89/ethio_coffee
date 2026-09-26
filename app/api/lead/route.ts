@@ -21,7 +21,7 @@ async function emailLink(to: string, title: string, url: string) {
       from: process.env.INQUIRY_FROM,
       to: [to],
       subject: `Your download: ${title}`,
-      text: `Thanks for your interest. Here is your download (link valid for 7 days):\n${url}\n\nIf you'd like help sourcing Ethiopian coffee, just reply to this email${site.whatsappNumber ? ` or message us on WhatsApp: ${site.whatsappNumber}` : ""}.\n\n${site.brand}`,
+      text: `Thanks for your interest. Here is your download (link valid for 7 days):\n${url}\n\nIf you'd like samples or a quote for Ethiopian coffee, just reply to this email${site.whatsappNumber ? ` or message us on WhatsApp: ${site.whatsappNumber}` : ""}.\n\n${site.brand}`,
     }),
     signal: AbortSignal.timeout(10_000),
   }).catch(() => undefined);

@@ -1,23 +1,23 @@
 const STEPS = [
   {
-    title: "Share your brief",
-    body: "Coffee type, destination and a rough volume. Add anything else you know: region, process, grade, timing.",
+    title: "Share your requirements",
+    body: "Coffee type, quality, destination and a rough volume. Add anything else you know: region, process, grade, timing.",
   },
   {
-    title: "We shortlist",
-    body: "We fill any gaps with a few questions, then check with the right exporters what they can offer this season.",
+    title: "We select suitable coffee",
+    body: "We fill any gaps with a few questions, then propose coffees that fit from what’s available this season.",
   },
   {
-    title: "You taste before you buy",
-    body: "For coffees that fit, we arrange samples where available and pass on the lot details, so you judge the coffee itself, not just a description.",
+    title: "Samples",
+    body: "We share the lot details and quality information, and arrange samples where available, so you judge the coffee itself, not just a description.",
   },
   {
-    title: "A clear written offer",
-    body: "The quotation names the seller and sets out price, payment and shipping terms. Nothing is agreed until you say yes.",
+    title: "Quotation and agreement",
+    body: "Our written quotation sets out price, payment and shipping terms. Nothing is agreed until you confirm, and the agreed terms are put in writing.",
   },
   {
-    title: "We see it through",
-    body: "Once you order, we keep you and the exporter in step through to shipment.",
+    title: "Order preparation and shipment",
+    body: "We prepare your order for export and keep you informed until it ships from Ethiopia.",
   },
 ];
 

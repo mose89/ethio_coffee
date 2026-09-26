@@ -9,7 +9,7 @@ export const metadata = pageMetadata({
   path: "/green-coffee",
   title: "Ethiopian green coffee for importers and roasters",
   description:
-    "Source Ethiopian green coffee from origin. Share the region, process, grade and volume you need; we shortlist lots, arrange samples and bring you a formal offer.",
+    "Ethiopian green coffee for importers and roasters. Share the region, process, grade and volume you need; we propose suitable lots, arrange samples and quote you directly.",
 });
 
 const REQUIREMENTS = [
@@ -31,7 +31,7 @@ const REQUIREMENTS = [
   {
     field: "Quantity",
     examples: "Kilos, 60 kg bags, tonnes or containers, per shipment or per year. A rough figure, or “not sure yet”, is fine.",
-    why: "Volume decides which exporters and shipping options make sense.",
+    why: "Volume decides which coffees and shipping options make sense.",
   },
   {
     field: "Destination",
@@ -46,12 +46,12 @@ const REQUIREMENTS = [
   {
     field: "Packaging and documents",
     examples: "Bag type and liners, plus any certificates or paperwork your market or customers require.",
-    why: "We confirm these with the exporter before any quotation. Nothing is assumed.",
+    why: "We confirm what we can provide before any quotation. Nothing is assumed.",
   },
   {
     field: "Shipping terms",
     examples: "Your preferred Incoterm, if you have one (for example FOB or CIF).",
-    why: "Terms are confirmed in the exporter’s quotation; knowing your preference early saves a round of emails.",
+    why: "Terms are confirmed in our quotation; knowing your preference early saves a round of emails.",
   },
 ];
 
@@ -61,7 +61,7 @@ const FAQ = [
     a: (
       <p>
         Not publicly. Ethiopian coffee is offered lot by lot and season by season, so any published list would be out of date within
-        weeks. Instead, we check what’s available against your brief and share the exporter’s details for every coffee we propose.
+        weeks. Instead, we check what’s available against your brief and share the lot details for every coffee we propose.
       </p>
     ),
   },
@@ -69,8 +69,8 @@ const FAQ = [
     q: "What is the minimum order for green coffee?",
     a: (
       <p>
-        There’s no single minimum: it depends on the coffee, the exporter and how it ships. Tell us your rough volume, however small or
-        uncertain, and we’ll tell you what’s realistic.
+        There’s no single minimum: it depends on the coffee and how it ships. Tell us your rough volume, however small or uncertain,
+        and we’ll tell you what’s realistic.
       </p>
     ),
   },
@@ -78,7 +78,7 @@ const FAQ = [
     q: "Can I get samples before ordering?",
     a: (
       <p>
-        We discuss samples for every coffee we propose. Availability, sample size and any cost depend on the exporter, and we confirm
+        We discuss samples for every coffee we propose. Availability, sample size and any cost depend on the coffee, and we confirm
         them with you before anything is sent.
       </p>
     ),
@@ -87,8 +87,8 @@ const FAQ = [
     q: "Can you supply certified coffee?",
     a: (
       <p>
-        Yes, where the specific coffee holds a current certificate, and we’ll share the evidence with you. Tell us which certifications
-        you need in your inquiry.
+        Only where the specific coffee holds a current certificate that covers your purchase, and we’ll share the evidence before you
+        commit. Tell us which certifications you need, and we’ll tell you plainly whether we can offer them.
       </p>
     ),
   },
@@ -105,11 +105,11 @@ export default async function GreenCoffeePage() {
             <h1 id="page-title">{pc?.heroTitle || "Ethiopian green coffee for importers and roasters"}</h1>
             <p className="lead">
               {pc?.heroIntro ||
-                "Tell us the cup you’re after and the volume you need. We check what our Ethiopian exporter partners can offer this season, arrange samples, bring you a formal offer, and stay with your order all the way to shipment."}
+                "Tell us the cup you’re after and the volume you need. We propose suitable coffees from what’s available this season, share the lot details and quality information, arrange samples and quote you directly. Once you order, we prepare it and ship it from Ethiopia."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry?product=green">
-                Send a green coffee inquiry
+                Request a quote
               </Link>
               <Link className="button button-outline" href="/inquiry?product=green&request=samples">
                 Request samples
@@ -123,16 +123,16 @@ export default async function GreenCoffeePage() {
       <section className="section" aria-labelledby="who-title">
         <div className="container split">
           <div>
-            <h2 id="who-title">Who we source for</h2>
+            <h2 id="who-title">Who we supply</h2>
           </div>
           <div className="prose">
             <ul className="check-list">
               <li>
-                <strong>Importers and green coffee traders</strong> adding Ethiopian coffees to their offer lists, or looking for new
-                export partners.
+                <strong>Importers and green coffee traders</strong> adding Ethiopian coffees to their offer lists, or looking for a new
+                Ethiopian supplier.
               </li>
               <li>
-                <strong>Roasters</strong> buying from origin, or ready to start, who want one dependable contact for Ethiopia.
+                <strong>Roasters</strong> buying from origin, or ready to start, who want one dependable supplier in Ethiopia.
               </li>
               <li>
                 <strong>Distributors and other trade buyers</strong> able to receive an international shipment, directly or through an importer.
@@ -153,7 +153,7 @@ export default async function GreenCoffeePage() {
           </p>
           <div className="spec-table-wrap">
             <table className="spec-table">
-              <caption className="visually-hidden">Information that helps us source green coffee for you</caption>
+              <caption className="visually-hidden">Information that helps us propose green coffee for you</caption>
               <thead>
                 <tr>
                   <th scope="col">Detail</th>
@@ -182,15 +182,15 @@ export default async function GreenCoffeePage() {
           </div>
           <ol className="plain-steps">
             <li>We read it and come back with any questions.</li>
-            <li>We check with the right exporters what they can offer against it.</li>
-            <li>We share the lot details for each coffee that fits and arrange samples.</li>
-            <li>When you’re ready, you receive a written quotation with the seller, price, payment and shipping terms.</li>
+            <li>We select the coffees that fit from what’s available this season.</li>
+            <li>We share the lot details and quality information for each one, and arrange samples where available.</li>
+            <li>When you’re ready, you receive our written quotation with price, payment and shipping terms.</li>
           </ol>
         </div>
       </section>
 
       <Faq items={FAQ} id="green-faq" />
-      <CtaBand title="Ready to brief us on green coffee?" href="/inquiry?product=green" label="Send a green coffee inquiry" cue="green" />
+      <CtaBand title="Ready to brief us on green coffee?" href="/inquiry?product=green" label="Request a green coffee quote" cue="green" />
     </div>
   );
 }

@@ -101,7 +101,7 @@ If you need certified coffee (for example organic or Fairtrade), ask for the cer
 
 ## How we can help
 
-We help business buyers source Ethiopian coffee through our network of Ethiopian exporters. When you send us an inquiry, we use questions like these to clarify your requirement, then gather the information and samples the exporter can provide, so you can compare options on a clear basis. Terms such as minimum quantities, sample arrangements and shipping options are confirmed for each coffee and each exporter. We don't assume them in advance.
+We supply Ethiopian green and roasted coffee to business buyers. When you send us an inquiry, we use questions like these to clarify your requirement, then propose suitable coffees with the lot details, quality information and samples available, so you can compare options on a clear basis. You can put every question in this guide to us too. Terms such as minimum quantities, sample arrangements and shipping options are confirmed for each coffee. We don't assume them in advance.
 
 ## Sources
 

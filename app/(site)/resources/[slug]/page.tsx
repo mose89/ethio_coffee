@@ -57,9 +57,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const CTA = {
-  green: { title: "Sourcing Ethiopian green coffee?", body: "Share your origin, process, volume and destination. We’ll shortlist what our exporter partners can offer this season.", href: "/inquiry?product=green", label: "Send a green coffee inquiry", link: { href: "/green-coffee", label: "About green coffee sourcing" } },
-  roasted: { title: "Looking for roasted Ethiopian coffee?", body: "Tell us your format, volume, market and timing. We’ll confirm what can be delivered before anything is quoted.", href: "/inquiry?product=roasted", label: "Send a roasted coffee inquiry", link: { href: "/roasted-coffee", label: "About roasted coffee sourcing" } },
-  general: { title: "Ready to source Ethiopian coffee?", body: "Green or roasted, send us a short brief and we’ll reply with questions or a first shortlist.", href: "/inquiry", label: "Send an inquiry", link: { href: "/how-it-works", label: "How sourcing with us works" } },
+  green: { title: "Buying Ethiopian green coffee?", body: "Share your origin, process, volume and destination. We’ll propose suitable coffees from what’s available this season.", href: "/inquiry?product=green", label: "Request a quote", link: { href: "/green-coffee", label: "Explore green coffee" } },
+  roasted: { title: "Looking for roasted Ethiopian coffee?", body: "Tell us your format, volume, market and timing. We’ll confirm what we can supply before anything is quoted.", href: "/inquiry?product=roasted", label: "Request a quote", link: { href: "/roasted-coffee", label: "Explore roasted coffee" } },
+  general: { title: "Ready to buy Ethiopian coffee?", body: "Green or roasted, send us a short brief and we’ll reply with questions or suitable coffees to consider.", href: "/inquiry", label: "Request a quote", link: { href: "/how-it-works", label: "How buying from us works" } },
 } as const;
 
 export default async function ArticlePage({ params }: Props) {

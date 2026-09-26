@@ -7,7 +7,7 @@ export const metadata = pageMetadata({
   description: "How we handle the information you send us through our website inquiry form.",
 });
 
-const LAST_UPDATED = "25 September 2026";
+const LAST_UPDATED = "26 September 2026";
 
 export default function PrivacyPage() {
   const operator = site.operatorName
@@ -53,22 +53,22 @@ export default function PrivacyPage() {
         <h2>How we use it</h2>
         <ul>
           <li>to reply to your inquiry and discuss your coffee requirement;</li>
-          <li>to check with Ethiopian coffee exporters in our network what they can offer, and to arrange samples and quotations you ask for;</li>
+          <li>to prepare the samples and quotations you ask for and, if you order, to arrange your contract, shipment and shipping documents;</li>
           <li>to send you the download you requested;</li>
           <li>to send you crop updates and offers by email, only if you agreed to this (you can unsubscribe at any time, by replying to any email or contacting us);</li>
           <li>to keep a record of our business communications.</li>
         </ul>
         <p>
-          We process this information to take steps you request before a possible contract, and because we have a legitimate interest in
-          responding to business inquiries. We don’t sell your information or use it for unrelated marketing.
+          We process this information to take steps you request before a possible contract, to perform a contract with you, and because
+          we have a legitimate interest in responding to business inquiries. We don’t sell your information or use it for unrelated marketing.
         </p>
 
         <h2>Who we share it with</h2>
         <ul>
           <li>
-            <strong>Ethiopian coffee exporters in our network</strong>, when needed to check availability or prepare an offer. We share
-            your requirement and, where an exporter needs them to prepare an offer or send samples, your company and contact details.
-            These exporters are located in Ethiopia.
+            <strong>Couriers, freight forwarders and shipping providers</strong>, when you go ahead with samples or an order. We share
+            only what they need to deliver, such as your company name, delivery address and contact details. Some of these providers
+            are located in Ethiopia.
           </li>
           <li>
             <strong>Service providers</strong> that run this website for us: our hosting provider
@@ -77,6 +77,10 @@ export default function PrivacyPage() {
             the information only to provide their service and may do so in other countries.
           </li>
         </ul>
+
+        <p>
+          Part of our team is based in Ethiopia, so your information may be accessed from there to handle your inquiry or order.
+        </p>
 
         <p>
           If you contact us on WhatsApp, WhatsApp (Meta) processes that conversation under its own privacy terms.

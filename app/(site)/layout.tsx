@@ -22,11 +22,11 @@ const sans = localFont({
 });
 
 const description =
-  "Ethiopian green and roasted coffee for importers, roasters, distributors and hospitality. One accountable contact from first sample to shipment.";
+  "Ethiopian green and roasted coffee for importers, roasters, distributors and hospitality. One accountable supplier from first sample to shipment.";
 
 export const metadata: Metadata = {
   ...(site.siteUrl ? { metadataBase: new URL(site.siteUrl) } : {}),
-  title: { default: `${site.brand}: Ethiopian green and roasted coffee sourcing`, template: `%s | ${site.brand}` },
+  title: { default: `${site.brand}: Ethiopian green and roasted coffee for business buyers`, template: `%s | ${site.brand}` },
   description,
   applicationName: site.brand,
   robots: site.indexable ? { index: true, follow: true } : { index: false, follow: false },
