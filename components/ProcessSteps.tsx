@@ -5,7 +5,7 @@ const STEPS = [
   },
   {
     title: "We select suitable coffee",
-    body: "We fill any gaps with a few questions, then propose coffees that fit from what’s available this season.",
+    body: "We fill any gaps with a few questions, then propose coffees that fit, bought directly from farmers and washing stations.",
   },
   {
     title: "Samples",
@@ -17,7 +17,7 @@ const STEPS = [
   },
   {
     title: "Order preparation and shipment",
-    body: "We prepare your order for export and keep you informed until it ships from Ethiopia.",
+    body: "We process and prepare your order for export and deliver it FOB Djibouti or FCA Addis Ababa, with freight arranged if you need it.",
   },
 ];
 

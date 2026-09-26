@@ -43,7 +43,7 @@ The **SEO** section below the content is optional. If you leave it empty, the si
 
 ## Editing pages and photos
 
-Go to **Content → Page content**. The tabs (Home, Green coffee, Roasted coffee, About us, Sourcing process) hold the main headlines, introductions and photos. **Empty fields use the built-in wording**, so you only fill in what you want to change. On the About us tab, **Our story** replaces the built-in story when filled in; leave it empty to keep the current one. Founder profiles and photos are under **Team**.
+Go to **Content → Page content**. The tabs (Home, Green coffee, Roasted coffee, About us, Our coffees, Origin trips, Sourcing process) hold the main headlines, introductions and photos. The Home tab also holds the wide **Origin photo band** behind Seife’s quote. **Empty fields use the built-in wording**, so you only fill in what you want to change. On the About us tab, **Our story** replaces the built-in story when filled in; leave it empty to keep the current one. Founder profiles and photos are under **Team**.
 
 Other wording (FAQs, process steps, legal text) is in the code; ask a developer to change it.
 
@@ -82,7 +82,7 @@ Other wording (FAQs, process steps, legal text) is in the code; ask a developer 
 
 ## Inquiries
 
-Inquiries from the website form appear under **Inquiries**. **Request** shows whether the buyer wants a quotation, samples, both, or a first conversation. Reply from your own email; use **Status** (New, Replied, Closed) and **Notes** to keep track.
+Inquiries from the website form appear under **Inquiries**. **Request** shows whether the buyer wants a quotation, samples, both, a first conversation, or an **origin trip**. Reply from your own email; use **Status** (New, Replied, Closed) and **Notes** to keep track.
 
 ## Backing up and exporting
 

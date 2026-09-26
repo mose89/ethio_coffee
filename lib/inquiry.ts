@@ -14,6 +14,7 @@ export const REQUEST_TYPES = {
   samples: "Samples",
   both: "Samples and quotation",
   advice: "Advice / first conversation",
+  trip: "Origin trip",
 } as const;
 
 export const UNITS = {
@@ -59,11 +60,13 @@ function oneLine(s: string): string {
 export function validateInquiry(form: FormLike): { ok: true; inquiry: Inquiry } | { ok: false; errors: FieldErrors } {
   const errors: FieldErrors = {};
 
-  const product = text(form, "product");
-  if (!Object.hasOwn(PRODUCTS, product)) errors.product = "Choose green coffee, roasted coffee or not sure yet.";
-
   const requestRaw = text(form, "request_type") || "quote";
   if (!Object.hasOwn(REQUEST_TYPES, requestRaw)) errors.product = "Choose what you would like from us.";
+  // An origin trip isn't a coffee order: product and quantity are optional.
+  const isTrip = requestRaw === "trip";
+
+  const product = text(form, "product") || (isTrip ? "unsure" : "");
+  if (!Object.hasOwn(PRODUCTS, product)) errors.product = "Choose green coffee, roasted coffee or not sure yet.";
 
   const name = oneLine(text(form, "name"));
   if (!name) errors.name = "Enter your name.";
@@ -78,11 +81,11 @@ export function validateInquiry(form: FormLike): { ok: true; inquiry: Inquiry } 
   else if (company.length > LIMITS.company) errors.company = `Keep the company name under ${LIMITS.company} characters.`;
 
   const country = oneLine(text(form, "country"));
-  if (!country) errors.country = "Enter the country the coffee would be shipped to.";
+  if (!country) errors.country = isTrip ? "Enter the country you’re based in." : "Enter the country the coffee would be shipped to.";
   else if (country.length > LIMITS.country) errors.country = `Keep the country under ${LIMITS.country} characters.`;
 
   let quantity: Inquiry["quantity"] = "unsure";
-  const unsure = text(form, "quantity_unsure") === "yes";
+  const unsure = isTrip || text(form, "quantity_unsure") === "yes";
   if (!unsure) {
     const rawAmount = text(form, "quantity_amount").replace(/\s/g, "").replace(",", ".");
     const unit = text(form, "quantity_unit");

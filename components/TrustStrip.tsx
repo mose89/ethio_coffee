@@ -1,12 +1,10 @@
-import { site } from "@/lib/site";
-
 /** Short, verifiable reasons to trust us, shown under the hero. */
 export function TrustStrip() {
   const items = [
-    { title: "Norwegian–Ethiopian founders", body: "Business standards you expect, roots at origin" },
-    { title: "Team on the ground in Ethiopia", body: "Samples and orders followed up locally" },
-    { title: "Communication in 7+ languages", body: "Clear answers, in your language" },
-    ...(site.responseTime ? [{ title: `Reply within ${site.responseTime}`, body: "Questions or suitable coffees" }] : []),
+    { title: "Licensed Ethiopian exporter", body: "You buy direct from origin" },
+    { title: "Direct from farmers", body: "Estates, single farms and washing stations" },
+    { title: "Team on the ground in Ethiopia", body: "Processing, samples and shipments followed up locally" },
+    { title: "Shipped by sea or air", body: "FOB Djibouti or FCA Addis Ababa, freight on request" },
   ];
   return (
     <section className="trust-strip" aria-label="Why buyers work with us">

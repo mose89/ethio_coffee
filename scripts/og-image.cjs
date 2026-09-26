@@ -8,7 +8,7 @@ const path = require("path");
 let chromium;
 try { ({ chromium } = require("playwright")); } catch { ({ chromium } = require("/opt/node22/lib/node_modules/playwright")); }
 
-const EYEBROW = "Green and roasted coffee from Ethiopia";
+const EYEBROW = "Licensed Ethiopian coffee exporter";
 const HEADLINE = "Ethiopian coffee for roasters, importers and distributors.";
 
 const root = path.resolve(__dirname, "..");

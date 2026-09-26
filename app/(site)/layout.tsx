@@ -22,7 +22,7 @@ const sans = localFont({
 });
 
 const description =
-  "Ethiopian green and roasted coffee for importers, roasters, distributors and hospitality. One accountable supplier from first sample to shipment.";
+  "Licensed Ethiopian coffee exporter. Green and roasted coffee for importers, roasters, distributors and hospitality, direct from farmers and washing stations. FOB Djibouti or FCA Addis Ababa.";
 
 export const metadata: Metadata = {
   ...(site.siteUrl ? { metadataBase: new URL(site.siteUrl) } : {}),

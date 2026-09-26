@@ -1,5 +1,5 @@
 {
-  "_comment": "Public business identity used by the site (lib/site.ts). Leave a value empty (\"\") if it is not confirmed; optional sections are omitted automatically. Production builds (SITE_ENV=production) fail if any required value is empty. Never put secrets here. contact_email is a PLACEHOLDER until the domain and mailbox exist. exporter_positioning_approved: the site copy presents the company as the seller and exporter of the coffee; keep this false until the Ethiopian export licence is issued, operations are confirmed and the owner approves publication (see docs/exporter-positioning-review.md). Production builds fail while it is false.",
+  "_comment": "Public business identity used by the site (lib/site.ts). Leave a value empty (\"\") if it is not confirmed; optional sections are omitted automatically. Production builds (SITE_ENV=production) fail if any required value is empty. Never put secrets here. contact_email is a PLACEHOLDER until the domain and mailbox exist. exporter_positioning_approved: the site presents the company as a licensed Ethiopian coffee exporter (licence confirmed by the owner, 26 Sep 2026). Set to true when the owner approves publication (see docs/exporter-positioning-review.md). Production builds fail while it is false.",
 
   "brand_name": "Ethiopian Coffee Sourcing",
   "site_url": "",

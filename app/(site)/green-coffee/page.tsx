@@ -9,7 +9,7 @@ export const metadata = pageMetadata({
   path: "/green-coffee",
   title: "Ethiopian green coffee for importers and roasters",
   description:
-    "Ethiopian green coffee for importers and roasters. Share the region, process, grade and volume you need; we propose suitable lots, arrange samples and quote you directly.",
+    "Ethiopian green coffee from a licensed exporter, direct from farmers and washing stations. Every export grade, washed or natural. FOB Djibouti or FCA Addis Ababa, with freight on request.",
 });
 
 const REQUIREMENTS = [
@@ -25,7 +25,7 @@ const REQUIREMENTS = [
   },
   {
     field: "Grade or quality level",
-    examples: "An export grade (for example Grade 1 or 2), a minimum cup score under a named protocol, or your usual spec.",
+    examples: "An export grade from Grade 1 to Grade 5, a minimum cup score under a named protocol, or your usual spec.",
     why: "It tells us which coffees to put in front of you, and which to leave out.",
   },
   {
@@ -50,12 +50,31 @@ const REQUIREMENTS = [
   },
   {
     field: "Shipping terms",
-    examples: "Your preferred Incoterm, if you have one (for example FOB or CIF).",
+    examples: "FOB Djibouti for sea freight, FCA Addis Ababa Bole International Airport for air freight, or freight arranged by us to your port.",
     why: "Terms are confirmed in our quotation; knowing your preference early saves a round of emails.",
   },
 ];
 
 const FAQ = [
+  {
+    q: "Which grades and regions can you supply?",
+    a: (
+      <p>
+        Every Ethiopian export grade, washed or natural, from specialty Grade 1 to commercial Grade 5. We source most from Yirgacheffe,
+        Gedeb, Sidama, Guji, Limu and Jimma, and can look further on request. See <Link href="/coffees">our coffees</Link> for regions,
+        processes and grades explained.
+      </p>
+    ),
+  },
+  {
+    q: "Where does the coffee ship from?",
+    a: (
+      <p>
+        We sell FOB Djibouti for sea freight, or FCA Addis Ababa Bole International Airport for air freight. If you’d rather have one
+        price to your port or airport, we can arrange the freight and quote it with the coffee.
+      </p>
+    ),
+  },
   {
     q: "Do you have a list of available lots?",
     a: (
@@ -105,7 +124,7 @@ export default async function GreenCoffeePage() {
             <h1 id="page-title">{pc?.heroTitle || "Ethiopian green coffee for importers and roasters"}</h1>
             <p className="lead">
               {pc?.heroIntro ||
-                "Tell us the cup you’re after and the volume you need. We propose suitable coffees from what’s available this season, share the lot details and quality information, arrange samples and quote you directly. Once you order, we prepare it and ship it from Ethiopia."}
+                "Tell us the cup you’re after and the volume you need. As a licensed exporter buying directly from farmers and washing stations, we propose suitable coffees, share the lot details and quality information, arrange samples and quote you directly. Once you order, we prepare it and ship it from Ethiopia."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry?product=green">
@@ -139,7 +158,7 @@ export default async function GreenCoffeePage() {
               </li>
             </ul>
             <p>
-              Every order ships directly from Ethiopia, so you buy at origin.
+              Every order ships directly from Ethiopia, FOB Djibouti or FCA Addis Ababa, so you buy at origin.
             </p>
           </div>
         </div>

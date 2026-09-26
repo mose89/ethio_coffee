@@ -12,6 +12,7 @@ const MESSAGE_HINTS: Record<string, string> = {
   green: "For example: region or cup profile, process, grade, shipment timing, bag type, and any certificates or documents you need.",
   roasted: "For example: whole bean or ground, pack size, one-off or regular supply, timing, and any labelling rules in your market.",
   unsure: "Tell us a little about your business and your customers, and we’ll suggest where to start.",
+  trip: "For example: preferred dates or season, number of people, which regions or kinds of farms you’d like to visit, and what you hope to get from the trip.",
   "": "Anything that helps us understand what you need: region, process, grade, format, timing or documents.",
 };
 
@@ -36,13 +37,14 @@ export function InquiryForm({
   const startedRef = useRef<HTMLInputElement>(null);
   const summaryRef = useRef<HTMLDivElement>(null);
   const successRef = useRef<HTMLHeadingElement>(null);
+  const isTrip = request === "trip";
 
   useEffect(() => {
     if (startedRef.current) startedRef.current.value = String(Date.now());
     const preset = new URLSearchParams(window.location.search).get("product");
     if (preset && ["green", "roasted", "unsure"].includes(preset)) setProduct(preset);
     const presetRequest = new URLSearchParams(window.location.search).get("request");
-    if (presetRequest && ["quote", "samples", "both", "advice"].includes(presetRequest)) setRequest(presetRequest);
+    if (presetRequest && ["quote", "samples", "both", "advice", "trip"].includes(presetRequest)) setRequest(presetRequest);
   }, []);
 
   useEffect(() => {
@@ -137,7 +139,7 @@ export function InquiryForm({
         </div>
       )}
 
-      <fieldset className="field product-field" id="field-product" aria-describedby={errorId("product")}>
+      <fieldset className="field product-field" id="field-product" aria-describedby={errorId("product")} hidden={isTrip}>
         <legend>
           What are you looking for? <span className="req">(required)</span>
         </legend>
@@ -174,6 +176,7 @@ export function InquiryForm({
             ["samples", "Samples first"],
             ["both", "Samples and a quotation"],
             ["advice", "Advice to get started"],
+            ["trip", "An origin trip"],
           ].map(([value, label]) => (
             <label key={value} className="pill">
               <input type="radio" name="request_type" value={value} checked={request === value} onChange={() => setRequest(value)} />
@@ -207,15 +210,15 @@ export function InquiryForm({
         </div>
         <div className="field" id="field-country">
           <label htmlFor="country">
-            Destination country <span className="req">(required)</span>
+            {isTrip ? "Your country" : "Destination country"} <span className="req">(required)</span>
           </label>
-          <p className="hint" id="country-hint">Where the coffee will be shipped.</p>
+          <p className="hint" id="country-hint">{isTrip ? "Where you and your group are based." : "Where the coffee will be shipped."}</p>
           {fieldError("country")}
           <input id="country" name="country" type="text" autoComplete="country-name" maxLength={80} required aria-invalid={!!errors.country} aria-describedby={describedBy("country", "country-hint")} />
         </div>
       </div>
 
-      <fieldset className="field" id="field-quantity" aria-describedby={describedBy("quantity", "quantity-hint")}>
+      <fieldset className="field" id="field-quantity" aria-describedby={describedBy("quantity", "quantity-hint")} hidden={isTrip} disabled={isTrip}>
         <legend>
           Approximate quantity <span className="req">(required, or tick “not sure yet”)</span>
         </legend>
@@ -256,7 +259,7 @@ export function InquiryForm({
           Requirements or message <span className="opt">(optional)</span>
         </label>
         <p className="hint" id="message-hint">
-          {MESSAGE_HINTS[product] ?? MESSAGE_HINTS[""]}
+          {MESSAGE_HINTS[isTrip ? "trip" : product] ?? MESSAGE_HINTS[""]}
         </p>
         {fieldError("message")}
         <textarea id="message" name="message" rows={6} maxLength={4000} aria-invalid={!!errors.message} aria-describedby={describedBy("message", "message-hint")} />

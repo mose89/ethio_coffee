@@ -1236,7 +1236,7 @@ ol {
   display: none;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1099px) {
   .site-nav {
     display: none;
   }
@@ -2560,4 +2560,185 @@ ol {
   body {
     padding-bottom: 4.5rem;
   }
+}
+
+/* =====================================================================
+   Origin: photo band, regions, refined section labels
+   ===================================================================== */
+
+/* Eyebrows get a short leading rule, like a label on a coffee sack. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  letter-spacing: 0.16em;
+}
+
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--cue);
+}
+
+/* ---------- Origin band ---------- */
+.origin-band {
+  position: relative;
+  isolation: isolate;
+  color: #fff;
+  background: var(--ink);
+  min-height: 34rem;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.origin-band-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.origin-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(20, 16, 13, 0.86) 0%, rgba(20, 16, 13, 0.62) 45%, rgba(20, 16, 13, 0.12) 100%),
+    linear-gradient(0deg, rgba(20, 16, 13, 0.55) 0%, transparent 45%);
+}
+
+.origin-band-plain {
+  min-height: 0;
+}
+
+.origin-band-plain::after {
+  display: none;
+}
+
+.origin-band-inner {
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.origin-quote {
+  margin: 0;
+  max-width: 40rem;
+}
+
+.origin-quote blockquote {
+  margin: 0;
+}
+
+.origin-quote p {
+  font-family: var(--font-serif-stack);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.origin-quote p::before {
+  content: "“";
+  display: block;
+  font-size: 1.8em;
+  line-height: 0.6;
+  height: 0.45em;
+  color: #d9b99b;
+  font-style: normal;
+}
+
+.origin-quote figcaption {
+  margin-top: var(--space-3);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e9dfd2;
+}
+
+.origin-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+}
+
+.text-link-light {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+
+.text-link-light:hover {
+  text-decoration-color: #fff;
+}
+
+.origin-band-credit {
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .origin-band {
+    min-height: 40rem;
+    align-items: center;
+  }
+}
+
+/* ---------- Regions ---------- */
+.region-grid {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: grid;
+  gap: 0 var(--space-5);
+}
+
+@media (min-width: 700px) {
+  .region-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1050px) {
+  .region-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.region {
+  border-top: 1px solid var(--ink);
+  padding: var(--space-3) 0 var(--space-4);
+}
+
+.region h3 {
+  font-size: 1.6rem;
+  margin: 0 0 0.4rem;
+}
+
+.region p {
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.topic-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cue-dark);
+  margin: 0 0 0.35rem;
+}
+
+.section-head + .section-intro {
+  margin-top: var(--space-2);
+}
+
+.origin-quote p {
+  font-size: clamp(1.5rem, 2.8vw, 2.15rem);
 }

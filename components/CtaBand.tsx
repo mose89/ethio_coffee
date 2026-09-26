@@ -6,11 +6,13 @@ export function CtaBand({
   href = "/inquiry",
   label = "Request a quote",
   cue,
+  body,
 }: {
   title?: string;
   href?: string;
   label?: string;
   cue?: "green" | "roasted";
+  body?: string;
 }) {
   return (
     <section className={`cta-band${cue ? ` cue-${cue}` : ""}`} aria-labelledby="cta-title">
@@ -18,8 +20,8 @@ export function CtaBand({
         <div>
           <h2 id="cta-title">{title}</h2>
           <p>
-            A few lines are enough to start. We reply{site.responseTime ? ` within ${site.responseTime}` : " promptly"} with questions or
-            suitable coffees to consider.
+            {body ??
+              `A few lines are enough to start. We reply ${site.responseTime ? `within ${site.responseTime}` : "promptly"} with questions or suitable coffees to consider.`}
           </p>
         </div>
         <Link className="button button-light" href={href}>

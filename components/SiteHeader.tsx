@@ -5,8 +5,10 @@ import { NavLink } from "./NavLink";
 import { site } from "@/lib/site";
 
 export const NAV = [
-  { href: "/green-coffee", label: "Green coffee" },
-  { href: "/roasted-coffee", label: "Roasted coffee" },
+  { href: "/coffees", label: "Our coffees" },
+  { href: "/green-coffee", label: "Green" },
+  { href: "/roasted-coffee", label: "Roasted" },
+  { href: "/origin-trips", label: "Origin trips" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About us" },
 ];

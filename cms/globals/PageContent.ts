@@ -40,6 +40,7 @@ export const PageContent: GlobalConfig = {
             text("introTitle", "About introduction: heading"),
             text("introText", "About introduction: text", undefined, true),
             image("introImage", "About introduction: photo"),
+            image("originImage", "Origin photo band", "Wide photo behind the quote from origin. Leave empty to hide the band's photo."),
           ],
         },
         {
@@ -72,6 +73,21 @@ export const PageContent: GlobalConfig = {
             },
             // Superseded by the Team collection; kept (hidden) so existing data and the schema stay intact.
             { ...image("founderPortrait", "Founder portrait"), hidden: true } as Field,
+          ],
+        },
+        {
+          name: "coffees",
+          label: "Our coffees",
+          fields: [text("heroTitle", "Headline"), text("heroIntro", "Introduction", undefined, true), image("heroImage", "Hero photo")],
+        },
+        {
+          name: "trips",
+          label: "Origin trips",
+          fields: [
+            text("heroTitle", "Headline"),
+            text("heroIntro", "Introduction", undefined, true),
+            image("heroImage", "Hero photo"),
+            image("detailImage", "Supporting photo"),
           ],
         },
         {

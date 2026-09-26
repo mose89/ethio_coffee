@@ -16,8 +16,8 @@ const siteUrl = clean(config.site_url).replace(/\/+$/, "");
 export const missingForProduction = REQUIRED_FOR_PRODUCTION.filter((k) => !clean(config[k]));
 
 /**
- * The copy presents the company as seller and exporter. That may only go live once the
- * export licence is issued and the owner approves (docs/exporter-positioning-review.md).
+ * The copy presents the company as a licensed seller and exporter. Production builds need the
+ * owner's approval to publish it (docs/exporter-positioning-review.md).
  */
 export const exporterPositioningApproved = (config as { exporter_positioning_approved?: boolean }).exporter_positioning_approved === true;
 
@@ -49,4 +49,4 @@ export const site = {
 };
 
 export const ORG_DESCRIPTION =
-  "Supplier of Ethiopian green and roasted coffee to importers, roasters, distributors and hospitality businesses, shipped from Ethiopia.";
+  "Licensed Ethiopian coffee exporter supplying green and roasted coffee to importers, roasters, distributors and hospitality businesses, direct from farmers and washing stations, with origin trips to Ethiopia's coffee farms.";

@@ -42,6 +42,7 @@ export const Inquiries: CollectionConfig = {
         { label: "Samples", value: "samples" },
         { label: "Samples and quotation", value: "both" },
         { label: "Advice / first conversation", value: "advice" },
+        { label: "Origin trip", value: "trip" },
       ],
       admin: { readOnly: true },
     },

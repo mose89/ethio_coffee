@@ -53,8 +53,9 @@ const FAQ = [
     q: "Can smaller businesses order?",
     a: (
       <p>
-        Yes, tell us what you need. Roasted coffee ships internationally from Ethiopia, so freight is a bigger share of the cost on small
-        orders. We’ll tell you what’s realistic for your volume and destination before you commit.
+        Yes, tell us what you need. Roasted coffee ships internationally from Ethiopia, by sea or by air from Addis Ababa, so freight is a
+        bigger share of the cost on small orders. We can arrange the freight, and we’ll tell you what’s realistic for your volume and
+        destination before you commit.
       </p>
     ),
   },

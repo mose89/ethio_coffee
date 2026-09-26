@@ -67,7 +67,8 @@ function summary(i: StoredInquiry): string {
 
 async function sendEmail(i: StoredInquiry, env: NodeJS.ProcessEnv) {
   const to = env.INQUIRY_TO!.split(",").map((s) => s.trim()).filter(Boolean);
-  const subject = `New ${PRODUCTS[i.product].toLowerCase()} inquiry (${REQUEST_TYPES[i.requestType].toLowerCase()}): ${i.company} (${i.country}) [${i.reference}]`.replace(/[\r\n]+/g, " ");
+  const kind = i.requestType === "trip" ? "origin trip" : `${PRODUCTS[i.product].toLowerCase()} (${REQUEST_TYPES[i.requestType].toLowerCase()})`;
+  const subject = `New ${kind} inquiry: ${i.company} (${i.country}) [${i.reference}]`.replace(/[\r\n]+/g, " ");
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },

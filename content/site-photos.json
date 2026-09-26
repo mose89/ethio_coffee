@@ -1,5 +1,5 @@
 {
-  "_comment": "Photos supplied by the site owner (25 September 2026). Source and licence still to be confirmed in writing before public launch. They illustrate Ethiopian coffee culture and roasted coffee; they do not depict our exporter partners, their facilities or our team, so they are marked as illustrative. Imported by `npm run images:import`, which only fills empty photo slots and empty featured images.",
+  "_comment": "Photos supplied by the site owner (25 September 2026). Source and licence still to be confirmed in writing before public launch. They illustrate Ethiopian coffee culture and roasted coffee; they do not depict our exporter partners, their facilities or our team, so they are marked as illustrative. Imported by `npm run images:import`, which only fills empty photo slots and empty featured images. The two Seife’s photos come from partner Seife Tuuloskorpi’s brochure and show his operations at origin (not illustrative).",
   "photos": [
     {
       "key": "coffee-ceremony-jebena-pour",
@@ -68,6 +68,39 @@
       ],
       "slots": [
         "roasted.detailImage"
+      ]
+    },
+    {
+      "key": "seifes-inspecting-coffee",
+      "file": "content/photos/seifes-inspecting-coffee.jpg",
+      "alt": "Checking the quality of coffee drying on mesh at a farm in Ethiopia",
+      "focal": [
+        45,
+        50
+      ],
+      "credit": "Seife’s",
+      "license": "other",
+      "licenseNotes": "From Seife’s company brochure, supplied by partner Seife Tuuloskorpi.",
+      "illustrative": false,
+      "slots": [
+        "home.originImage",
+        "coffees.heroImage"
+      ]
+    },
+    {
+      "key": "seifes-drying-beds",
+      "file": "content/photos/seifes-drying-beds.jpg",
+      "alt": "Workers pouring and turning coffee on large drying beds in Ethiopia's coffee country",
+      "focal": [
+        55,
+        60
+      ],
+      "credit": "Seife’s",
+      "license": "other",
+      "licenseNotes": "From Seife’s company brochure, supplied by partner Seife Tuuloskorpi.",
+      "illustrative": false,
+      "slots": [
+        "trips.heroImage"
       ]
     }
   ]

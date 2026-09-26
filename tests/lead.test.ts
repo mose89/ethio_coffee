@@ -83,3 +83,19 @@ test("inquiry rejects unknown or prototype request types and products", () => {
   assert.equal(validateInquiry(form({ ...inquiry, request_type: "constructor" })).ok, false);
   assert.equal(validateInquiry(form({ ...inquiry, product: "toString" })).ok, false);
 });
+
+test("origin trip inquiries need no product or quantity", () => {
+  const r = validateInquiry(form({ request_type: "trip", name: "Ana", email: "ana@roastery.example", company: "Roastery", country: "Sweden" }));
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    assert.equal(r.inquiry.requestType, "trip");
+    assert.equal(r.inquiry.product, "unsure");
+    assert.equal(r.inquiry.quantity, "unsure");
+  }
+});
+
+test("coffee inquiries still require a product and quantity", () => {
+  const r = validateInquiry(form({ request_type: "samples", name: "Ana", email: "ana@roastery.example", company: "Roastery", country: "Sweden" }));
+  assert.equal(r.ok, false);
+  if (!r.ok) assert.deepEqual(Object.keys(r.errors).sort(), ["product", "quantity"]);
+});

@@ -11,8 +11,8 @@ if (site.production && missingForProduction.length) {
 
 if (site.production && !exporterPositioningApproved) {
   throw new Error(
-    "SITE_ENV=production but exporter_positioning_approved is false in site.config.json. The site copy presents the company " +
-      "as seller and exporter, which may only go live after the export licence is issued and publication is approved. " +
+    "SITE_ENV=production but exporter_positioning_approved is false in site.config.json. The site presents the company " +
+      "as a licensed Ethiopian coffee exporter; set it to true once publication is approved. " +
       "See docs/exporter-positioning-review.md.",
   );
 }

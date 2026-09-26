@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   path: "/how-it-works",
   title: "How buying Ethiopian coffee from us works",
   description:
-    "From your requirements to shipment: how we select coffee, arrange samples, quote and prepare your order in Ethiopia, and who does what.",
+    "From your requirements to shipment: how we, a licensed Ethiopian coffee exporter, select coffee, arrange samples, quote and ship your order FOB Djibouti or FCA Addis Ababa.",
 });
 
 const ROLES = [
@@ -18,11 +18,11 @@ const ROLES = [
   },
   {
     party: "Us",
-    does: "Selects suitable coffee, provides the product information and samples, issues the quotation, sells the coffee to you, prepares your order for export and keeps you informed through to shipment.",
+    does: "Buys directly from farmers and washing stations, processes and selects suitable coffee, provides product information and samples, sells the coffee to you under our Ethiopian export licence, and delivers it FOB Djibouti or FCA Addis Ababa.",
   },
   {
     party: "Shipping and logistics providers",
-    does: "Carry the coffee from Ethiopia under the shipping terms agreed in your contract.",
+    does: "Carry the coffee onwards under the agreed terms. You can book the freight yourself, or we can arrange it for you.",
   },
 ];
 
@@ -31,8 +31,8 @@ const FAQ = [
     q: "Will I buy from you, or from another exporter?",
     a: (
       <p>
-        From us. We sell the coffee to you and ship it from Ethiopia, so you’re not handed over to another company partway through. Your
-        quotation, contract and invoice come from us.
+        From us. We are a licensed Ethiopian coffee exporter: we sell the coffee to you and ship it from Ethiopia, so you’re not handed
+        over to another company partway through. Your quotation, contract and invoice come from us.
       </p>
     ),
   },
@@ -51,6 +51,15 @@ const FAQ = [
       <p>
         Not always. Some buyers want samples of every lot; others reorder a coffee they already know. Payment timing and shipping terms
         are agreed for each order and set out in the quotation.
+      </p>
+    ),
+  },
+  {
+    q: "Which shipping terms do you offer?",
+    a: (
+      <p>
+        FOB Djibouti for sea freight, and FCA Addis Ababa Bole International Airport for air freight. If you’d like the coffee delivered
+        to your port or airport, we can arrange the freight and include it in the quotation.
       </p>
     ),
   },

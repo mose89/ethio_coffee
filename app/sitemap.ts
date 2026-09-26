@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const PATHS = ["/", "/green-coffee", "/roasted-coffee", "/about", "/how-it-works", "/resources", "/inquiry", "/privacy"];
+const PATHS = ["/", "/coffees", "/green-coffee", "/roasted-coffee", "/origin-trips", "/about", "/how-it-works", "/resources", "/inquiry", "/privacy"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (!site.indexable) return [];

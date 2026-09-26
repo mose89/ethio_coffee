@@ -368,7 +368,7 @@ export interface Inquiry {
   reference?: string | null;
   status?: ('new' | 'replied' | 'closed') | null;
   product?: ('green' | 'roasted' | 'unsure') | null;
-  requestType?: ('quote' | 'samples' | 'both' | 'advice') | null;
+  requestType?: ('quote' | 'samples' | 'both' | 'advice' | 'trip') | null;
   name?: string | null;
   email?: string | null;
   company?: string | null;
@@ -848,6 +848,10 @@ export interface PageContent {
      * Leave empty to show the built-in design without a photo.
      */
     introImage?: (number | null) | Media;
+    /**
+     * Wide photo behind the quote from origin. Leave empty to hide the band's photo.
+     */
+    originImage?: (number | null) | Media;
   };
   green?: {
     /**
@@ -917,6 +921,38 @@ export interface PageContent {
      */
     founderPortrait?: (number | null) | Media;
   };
+  coffees?: {
+    /**
+     * Leave empty to use the built-in wording.
+     */
+    heroTitle?: string | null;
+    /**
+     * Leave empty to use the built-in wording.
+     */
+    heroIntro?: string | null;
+    /**
+     * Leave empty to show the built-in design without a photo.
+     */
+    heroImage?: (number | null) | Media;
+  };
+  trips?: {
+    /**
+     * Leave empty to use the built-in wording.
+     */
+    heroTitle?: string | null;
+    /**
+     * Leave empty to use the built-in wording.
+     */
+    heroIntro?: string | null;
+    /**
+     * Leave empty to show the built-in design without a photo.
+     */
+    heroImage?: (number | null) | Media;
+    /**
+     * Leave empty to show the built-in design without a photo.
+     */
+    detailImage?: (number | null) | Media;
+  };
   process?: {
     /**
      * Leave empty to show the built-in design without a photo.
@@ -944,6 +980,7 @@ export interface PageContentSelect<T extends boolean = true> {
         introTitle?: T;
         introText?: T;
         introImage?: T;
+        originImage?: T;
       };
   green?:
     | T
@@ -968,6 +1005,21 @@ export interface PageContentSelect<T extends boolean = true> {
         heroImage?: T;
         story?: T;
         founderPortrait?: T;
+      };
+  coffees?:
+    | T
+    | {
+        heroTitle?: T;
+        heroIntro?: T;
+        heroImage?: T;
+      };
+  trips?:
+    | T
+    | {
+        heroTitle?: T;
+        heroIntro?: T;
+        heroImage?: T;
+        detailImage?: T;
       };
   process?:
     | T

@@ -2,12 +2,14 @@ import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { DownloadList } from "@/components/Downloads";
 import { NewsletterBand } from "@/components/NewsletterBand";
+import { OriginBand } from "@/components/OriginBand";
 import { TeamStrip } from "@/components/Team";
 import { TrustStrip } from "@/components/TrustStrip";
 import { CtaBand } from "@/components/CtaBand";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { Visual } from "@/components/Visual";
 import { asMedia, getDownloads, getPageContent, getPublishedPosts, getTeam } from "@/lib/cms";
+import { SUPPLY_TYPES } from "@/lib/coffee";
 import { ORG_DESCRIPTION, site } from "@/lib/site";
 
 export const metadata = site.siteUrl
@@ -51,11 +53,11 @@ export default async function HomePage() {
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Green and roasted coffee from Ethiopia</p>
+            <p className="eyebrow">Licensed Ethiopian coffee exporter</p>
             <h1 id="hero-title">{home?.heroTitle || "Ethiopian coffee for roasters, importers and distributors."}</h1>
             <p className="lead">
               {home?.heroIntro ||
-                "We supply Ethiopian green coffee to importers and roasters, and roasted coffee to distributors, retailers and hospitality. Tell us the quality, quantity and destination you need, and we’ll propose suitable coffees, arrange samples and quote. One company, accountable from first sample to shipment."}
+                "We supply Ethiopian green coffee to importers and roasters, and roasted coffee to distributors, retailers and hospitality, bought directly from farmers and washing stations. Tell us the quality, quantity and destination you need, and we’ll send samples and a quote."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/green-coffee">
@@ -137,27 +139,63 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section section-stone" aria-labelledby="intro-title">
+      <section className="section section-stone" aria-labelledby="supply-title">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Our coffee</p>
+              <h2 id="supply-title">Every grade Ethiopia exports, from the source</h2>
+            </div>
+            <Link className="text-link" href="/coffees">
+              Regions, processes and grades <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <p className="section-intro">
+            Washed or natural, specialty Grade 1 to commercial Grade 5. We buy directly from farmers and washing stations and handle
+            processing and export preparation ourselves, so quality is checked at every step. What is available depends on the harvest.
+          </p>
+          <ul className="topic-grid topic-grid-4">
+            {SUPPLY_TYPES.map((s) => (
+              <li key={s.title} className="topic">
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="intro-title">
         <div className="container media-split">
           <Visual media={asMedia(home?.introImage)} fallback="highlands" sizes="(min-width: 900px) 45vw, 100vw" className="split-visual" />
           <div className="prose">
             <p className="eyebrow">About us</p>
-            <h2 id="intro-title">{home?.introTitle || "Built from our own search for a reliable Ethiopian supplier"}</h2>
+            <h2 id="intro-title">{home?.introTitle || "We went looking for a reliable exporter. Then we became one."}</h2>
             <p>
               {home?.introText ||
-                "We are Norwegians with Ethiopian roots. Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Along the way we built strong relationships in Ethiopia, with a co-founder on the ground for the past ten years. Now we supply Ethiopian coffee ourselves, with the clarity we were looking for as buyers."}
+                "We are a Scandinavian–Ethiopian team. Finding a reliable, compliant Ethiopian exporter took us time and hard lessons, so we built the company we were looking for: a licensed exporter with a partner on the ground in Ethiopia for the past ten years, and the coffee experience of Seife Tuuloskorpi, whose company Seife’s is joining us."}
             </p>
             <p>
-              You buy from us. We select the coffee, share the product information, arrange samples, agree the quotation with you, and
-              prepare and ship your order from Ethiopia.
+              You buy from us. We buy directly from farmers and washing stations, process and select the coffee, arrange samples, agree
+              the quotation with you, and ship your order from Ethiopia.
             </p>
             <TeamStrip team={team} />
             <Link className="text-link" href="/about">
-              Our story and the founders <span aria-hidden="true">→</span>
+              Our story and the team <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
       </section>
+
+      <OriginBand
+        media={asMedia(home?.originImage)}
+        quote="Randomly finding a great quality coffee in Ethiopia is not the difficult thing. The trick is to come back to the same quality, over and over again, in greater quantity."
+        cite="Seife Tuuloskorpi, partner and founder of Seife’s"
+        links={[
+          { href: "/origin-trips", label: "Visit the farms with us" },
+          { href: "/coffees", label: "Explore our coffees" },
+        ]}
+      />
 
       <section className="section" aria-labelledby="process-title">
         <div className="container">
@@ -197,8 +235,8 @@ export default async function HomePage() {
             </li>
           </ul>
           <p className="section-note">
-            Every order ships directly from Ethiopia. Large volume or small, tell us what you need and we’ll tell you honestly what makes
-            sense. <Link href="/inquiry">Request a quote</Link>
+            Every order ships directly from Ethiopia: FOB Djibouti by sea, or FCA Addis Ababa Bole International Airport by air, with
+            onward freight arranged if you need it. <Link href="/inquiry">Request a quote</Link>
           </p>
         </div>
       </section>

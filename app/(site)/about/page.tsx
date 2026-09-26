@@ -11,27 +11,27 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   path: "/about",
-  title: "About us: a Norwegian–Ethiopian coffee supplier",
+  title: "About us: a Scandinavian–Ethiopian coffee exporter",
   description:
-    "Founded by Norwegians with Ethiopian roots, with a team on the ground in Ethiopia. We supply Ethiopian green and roasted coffee to international business buyers.",
+    "A licensed Ethiopian coffee exporter founded by Norwegians with Ethiopian roots, joined by coffee expert Seife Tuuloskorpi and his company Seife’s. Green and roasted coffee, direct from origin.",
 });
 
 const WHY = [
   {
-    title: "Both sides of the trade",
-    body: "Norwegian business standards and Ethiopian roots. We understand what international buyers expect, and how things work at origin.",
+    title: "Direct from origin",
+    body: "A licensed Ethiopian exporter buying directly from farmers, washing stations and estates, with processing and export preparation in our own hands.",
   },
   {
     title: "On the ground in Ethiopia",
     body: "Our operations leader has lived in Ethiopia for ten years. Samples, questions and shipments are followed up locally, not from a distance.",
   },
   {
-    title: "Relationships we trust",
-    body: "The relationships we’ve built in Ethiopia, and a clear idea of what reliable supply means: quality that matches the sample, correct paperwork, communication you can count on.",
+    title: "Coffee expertise",
+    body: "Through Seife Tuuloskorpi and Seife’s, years in Ethiopian green coffee and more than SEK 100 million in coffee revenue since 2018.",
   },
   {
-    title: "Your language, your market",
-    body: "Communication in more than seven languages, and experience from more than eleven countries. You get clear answers, in terms that fit your market.",
+    title: "Both sides of the trade",
+    body: "Scandinavian business standards and Ethiopian roots, communication in more than seven languages, and clear answers in terms that fit your market.",
   },
 ];
 
@@ -40,7 +40,7 @@ const HELP = [
   { title: "The right coffee", body: "We propose coffees that fit your brief from what’s available this season, and tell you plainly when nothing fits." },
   { title: "Clear product information", body: "Lot details, quality information and the evidence behind them, with a plain statement of what is confirmed and what isn’t." },
   { title: "Samples and quotations, on track", body: "We arrange samples where available and quote in writing, so you decide on facts, not guesswork." },
-  { title: "One accountable company", body: "Once you order, we prepare it for shipment and keep you informed until it leaves Ethiopia." },
+  { title: "One accountable company", body: "Once you order, we process and prepare it for export, deliver it FOB Djibouti or FCA Addis Ababa, and arrange freight if you need it." },
 ];
 
 export default async function AboutPage() {
@@ -67,10 +67,10 @@ export default async function AboutPage() {
         <div className="container page-hero-grid">
           <div className="page-hero-copy">
             <p className="eyebrow">About us</p>
-            <h1 id="page-title">{about?.heroTitle || "The Ethiopian coffee supplier we were looking for"}</h1>
+            <h1 id="page-title">{about?.heroTitle || "We went looking for a reliable exporter. Then we became one."}</h1>
             <p className="lead">
               {about?.heroIntro ||
-                "Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Now we supply Ethiopian coffee ourselves, with the clarity and follow-through we wanted as buyers."}
+                "Finding a reliable, compliant Ethiopian exporter took us time and hard lessons. Today we are a licensed exporter ourselves, buying directly from farmers and washing stations, with the clarity and follow-through we wanted as buyers."}
             </p>
             <div className="button-row">
               <Link className="button button-green" href="/inquiry">
@@ -91,7 +91,7 @@ export default async function AboutPage() {
         <div className="container split">
           <div>
             <p className="eyebrow">Our story</p>
-            <h2 id="story-title">From a hard search to our own supply</h2>
+            <h2 id="story-title">From a hard search to our own export company</h2>
           </div>
           <div className="prose story">
             {hasStory ? (
@@ -110,11 +110,17 @@ export default async function AboutPage() {
                 <p>
                   So we built the relationships we had been looking for. One of us has lived in Ethiopia for the past ten years and built
                   an extensive network there; the other brings more than a decade in international trade, logistics, quality control and
-                  sales. Together, we learned what separates dependable Ethiopian supply from a difficult one.
+                  sales. Together, we learned what separates dependable Ethiopian supply from a difficult one, and we became a licensed
+                  Ethiopian coffee exporter ourselves.
+                </p>
+                <p>
+                  Then we joined forces with Seife Tuuloskorpi. Born in Ethiopia and raised in Sweden, Seife founded Seife’s in 2018, an
+                  Ethiopian green coffee business that has since generated more than SEK 100 million in revenue. Seife’s operations and
+                  relationships at origin, from washing stations to single farms and estates, are now becoming part of our company.
                 </p>
                 <p className="story-emphasis">
-                  Now we supply Ethiopian coffee ourselves: one accountable company for your order, without the years of searching it
-                  took us.
+                  Together, we buy directly from the people who grow the coffee, process and prepare it ourselves, and sell it to you as one
+                  accountable company.
                 </p>
               </>
             )}
@@ -125,7 +131,7 @@ export default async function AboutPage() {
       {team.length > 0 && (
         <section className="section section-stone" aria-labelledby="team-title">
           <div className="container">
-            <p className="eyebrow">The founders</p>
+            <p className="eyebrow">The team</p>
             <h2 id="team-title">The people you’ll work with</h2>
             <TeamGrid team={team} />
           </div>
@@ -145,8 +151,8 @@ export default async function AboutPage() {
             ))}
           </ul>
           <p className="section-note">
-            When you buy from us, your quotation, contract and invoice come from us, and we remain accountable for the agreed sale through
-            to shipment.
+            As a licensed Ethiopian coffee exporter, we sell to you directly: your quotation, contract and invoice come from us, and we
+            remain accountable for the agreed sale through to shipment.
           </p>
         </div>
       </section>

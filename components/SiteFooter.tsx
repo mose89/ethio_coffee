@@ -9,8 +9,8 @@ export function SiteFooter() {
         <div>
           <p className="footer-brand">{site.brand}</p>
           <p>
-            Ethiopian green and roasted coffee for importers, roasters, distributors and hospitality businesses, prepared and shipped
-            from Ethiopia.
+            Licensed Ethiopian coffee exporter. Green and roasted coffee for importers, roasters, distributors and hospitality
+            businesses, direct from origin.
           </p>
           <Link className="button button-light button-small" href="/inquiry">
             Request a quote
@@ -19,8 +19,10 @@ export function SiteFooter() {
         <nav aria-label="Coffee">
           <p className="footer-heading">Coffee</p>
           <ul>
+            <li><Link href="/coffees">Our coffees</Link></li>
             <li><Link href="/green-coffee">Green coffee</Link></li>
             <li><Link href="/roasted-coffee">Roasted coffee</Link></li>
+            <li><Link href="/origin-trips">Origin trips</Link></li>
             <li><Link href="/how-it-works">How it works</Link></li>
             <li><Link href="/resources">Resources</Link></li>
           </ul>

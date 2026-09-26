@@ -11,7 +11,19 @@
 import fs from "node:fs";
 import path from "node:path";
 
-type LocalPhoto = { key: string; file: string; alt: string; focal?: [number, number]; slots?: string[]; featuredFor?: string[] };
+type LocalPhoto = {
+  key: string;
+  file: string;
+  alt: string;
+  focal?: [number, number];
+  slots?: string[];
+  featuredFor?: string[];
+  /** Defaults: owner-supplied, illustrative. */
+  credit?: string;
+  license?: "own" | "permission" | "other";
+  licenseNotes?: string;
+  illustrative?: boolean;
+};
 type UnsplashPhoto = { key: string; slot?: string; unsplashId: string; pageUrl: string; photographer?: string; alt: string };
 
 const root = process.cwd();
@@ -45,12 +57,12 @@ for (const p of readJson<{ photos: LocalPhoto[] }>("content/site-photos.json").p
       collection: "media",
       data: {
         alt: p.alt,
-        illustrative: true,
-        credit: "",
+        illustrative: p.illustrative ?? true,
+        credit: p.credit ?? "",
         sourceUrl,
-        license: "other",
+        license: p.license ?? "other",
         // Shown publicly on /photo-credits. Photographer and licence are tracked in content/site-photos.json.
-        licenseNotes: "Supplied by the site owner.",
+        licenseNotes: p.licenseNotes ?? "Supplied by the site owner.",
         ...(p.focal ? { focalX: p.focal[0], focalY: p.focal[1] } : {}),
       },
       file: { data, mimetype: "image/jpeg", name: path.basename(p.file), size: data.length },

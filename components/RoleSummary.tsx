@@ -5,10 +5,11 @@ export function RoleSummary() {
         <div className="role-col">
           <h3>What we do</h3>
           <ul className="check-list">
-            <li>Select coffee that fits your requirements</li>
+            <li>Buy directly from farmers and washing stations</li>
+            <li>Process and select coffee that fits your requirements</li>
             <li>Provide lot details, quality information and samples</li>
-            <li>Quote in writing and sell the coffee to you</li>
-            <li>Prepare your order and ship it from Ethiopia</li>
+            <li>Sell to you as a licensed Ethiopian exporter</li>
+            <li>Deliver FOB Djibouti or FCA Addis Ababa, or arrange freight to you</li>
           </ul>
         </div>
         <div className="role-col role-col-muted">
